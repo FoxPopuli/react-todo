@@ -5,7 +5,17 @@ const TodoList = (props) => {
   return (
     <ul className={classes.todoList}>
       {props.data.map((entry) => {
-        return <TodoItem title={entry.title} />;
+        return (
+          <TodoItem
+            title={entry.title}
+            id={entry.id}
+            dateAdded={entry.dateAdded}
+            dueDate={entry.dueDate}
+            priority={entry.priority}
+            complete={entry.complete}
+            onRemoveItem={props.onRemoveItem}
+          />
+        );
       })}
     </ul>
   );
