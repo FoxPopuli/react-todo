@@ -4,9 +4,9 @@ import TodoItem from "../TodoItem/TodoItem";
 const TodoList = (props) => {
   return (
     <ul className={classes.todoList}>
-      <TodoItem title="A test item" />
-      <TodoItem title="A test item" />
-      <TodoItem title="A test item" />
+      {props.data.map((entry) => {
+        return <TodoItem title={entry.title} />;
+      })}
     </ul>
   );
 };
