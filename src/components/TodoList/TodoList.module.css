@@ -1,3 +1,10 @@
 .todoList {
-  width: 50vw;
+  width: 90vw;
+  max-width: 550px;
 }
+
+/* @media screen and (min-width: 400px) {
+  .todoList {
+    width: 50vw;
+  }
+} */

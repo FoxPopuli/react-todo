@@ -1,3 +1,9 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .home h1 {
   font-size: 3rem;
   text-align: center;
