@@ -9,7 +9,7 @@ const TodoItem = (props) => {
         <input type="checkbox" className={classes.checkbox}></input>
         <div className="todo-item__title-card">{props.title}</div>
         <div className="todo-item__tag"></div>
-        <button onClick={removeItemHandler}>Hello</button>
+        <button onClick={removeItemHandler}>Remove</button>
       </li>
     </Card>
   );

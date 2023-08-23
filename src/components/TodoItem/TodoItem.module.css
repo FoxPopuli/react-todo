@@ -12,3 +12,9 @@
   margin-right: 15px;
   margin-left: 10px;
 }
+
+.main button {
+  margin-left: auto;
+  padding: 5px;
+  border-radius: 5px;
+}
