@@ -1,10 +1,10 @@
-import TodoItem from "../components/TodoItem/TodoItem";
-
+import classes from "./HomePage.module.css";
+import TodoList from "../components/TodoList/TodoList";
 const HomePage = (props) => {
   return (
-    <section>
+    <section className={classes.home}>
       <h1>Todo List Website</h1>
-      <TodoItem title="First Item" />
+      <TodoList />
     </section>
   );
 };
