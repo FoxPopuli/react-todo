@@ -8,13 +8,3 @@
   font-size: 3rem;
   text-align: center;
 }
-
-.addNewButton {
-  display: flex;
-  flex: auto;
-  /* padding: auto; */
-}
-
-.buttonCard {
-  height: 200px;
-}
