@@ -2,9 +2,20 @@
   width: 90vw;
   max-width: 550px;
 }
+.todoList li {
+  list-style: none;
+}
 
-/* @media screen and (min-width: 400px) {
-  .todoList {
-    width: 50vw;
-  }
-} */
+.addNewButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: blue;
+  border-radius: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.addNewButton:hover {
+  color: red;
+}
