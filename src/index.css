@@ -1,6 +1,8 @@
 :root {
   --light-grey: #333333;
   --dark-grey: #1f1f1f;
+  --header-text: ##e4ecf8;
+  --active-link: #c3d8fa;
   --default-font: Arial, Helvetica, sans-serif;
   --alternate-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
     "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -18,4 +20,11 @@ body {
   background-color: #fafafa;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
 }

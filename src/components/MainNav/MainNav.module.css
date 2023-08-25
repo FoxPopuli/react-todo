@@ -23,3 +23,17 @@
   font-size: 24px;
   /* font-weight: bold; */
 }
+
+.list a,
+.list a:visited {
+  color: var(--header-text);
+}
+
+.list a:active,
+.list a:hover {
+  color: var(--active-link);
+}
+
+/* .list a:visited {
+  color: red;
+} */

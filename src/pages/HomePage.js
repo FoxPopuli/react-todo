@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import classes from "./HomePage.module.css";
 import TodoList from "../components/TodoList/TodoList";
-import NewTaskForm from "../components/NewTaskForm/NewTaskForm";
 const DUMMY_DATA = [
   {
     title: "Take out rubbish",
@@ -43,8 +42,7 @@ const HomePage = (props) => {
   return (
     <section className={classes.home}>
       <h1>Todo List Website</h1>
-      {/* <TodoList data={todoData} onRemoveItem={onRemoveItem} /> */}
-      <NewTaskForm />
+      <TodoList data={todoData} onRemoveItem={onRemoveItem} />
     </section>
   );
 };
