@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import Card from "../UI/Card/Card";
+import Button from "../UI/Button/Button";
 import classes from "./NewTaskForm.module.css";
 const NewTaskForm = () => {
   const titleInputRef = useRef();
@@ -25,7 +26,7 @@ const NewTaskForm = () => {
           <label htmlFor="due-date">Due Date</label>
           <input type="date" ref={dueDateInputRef}></input>
         </div>
-        <button>Submit</button>
+        <Button>Submit</Button>
       </form>
     </Card>
   );
