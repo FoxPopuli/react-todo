@@ -12,6 +12,7 @@ const NewTaskForm = () => {
   return (
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
+        <h2>Add New Task</h2>
         <div className={classes.formSection}>
           <label htmlFor="title">Title</label>
           <input type="text" required ref={titleInputRef}></input>
