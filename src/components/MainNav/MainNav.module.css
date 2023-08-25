@@ -1,0 +1,25 @@
+.mainNav {
+  display: flex;
+  justify-content: space-between;
+  background-color: navy;
+  color: white;
+  padding: 20px;
+}
+
+.mainNav h3 {
+  font-size: 34px;
+}
+
+.mainNav ul {
+  display: flex;
+  list-style: none;
+  margin-right: 50px;
+}
+
+.mainNav ul li {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  font-size: 24px;
+  /* font-weight: bold; */
+}
