@@ -5,17 +5,3 @@
 .todoList li {
   list-style: none;
 }
-
-.addNewButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: blue;
-  border-radius: 10px;
-  font-size: 30px;
-  cursor: pointer;
-}
-
-.addNewButton:hover {
-  color: red;
-}

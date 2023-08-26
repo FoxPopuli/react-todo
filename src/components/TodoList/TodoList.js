@@ -21,13 +21,13 @@ const TodoList = (props) => {
           />
         );
       })}
-      <li className={classes.addButtonContainer}>
+      {/* <li className={classes.addButtonContainer}>
         <Card>
           <div onClick={addNewTaskHandler} className={classes.addNewButton}>
             +
           </div>
         </Card>
-      </li>
+      </li> */}
     </ul>
   );
 };
