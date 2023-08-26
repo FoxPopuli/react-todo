@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import NewTaskPage from "./pages/NewTaskPage";
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const DUMMY_DATA = [
   {
@@ -34,25 +35,24 @@ const DUMMY_DATA = [
 
 function App() {
   const [data, setData] = useState(DUMMY_DATA);
+  const navigate = useNavigate();
+
   const onAddTask = (newItem) => {
     newItem.dateAdded = new Date();
-
     newItem.id = Math.floor(Math.random() * 100);
 
     const newData = [...data, newItem];
-    console.log("using this data: ");
-    console.log(newData);
     setData(newData);
+    navigate("/");
   };
 
   const onRemoveItem = (id) => {
     const newData = data.filter((item) => {
-      if (data.id !== id) return item;
+      if (item.id !== id) return item;
     });
-    console.log("using this data: ");
-    console.log(newData);
     setData(newData);
   };
+
   return (
     <Layout>
       <Routes>

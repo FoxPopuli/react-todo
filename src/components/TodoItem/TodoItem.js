@@ -3,7 +3,9 @@ import classes from "./TodoItem.module.css";
 import Button from "../UI/Button/Button";
 
 const TodoItem = (props) => {
-  const removeItemHandler = () => props.onRemoveItem(props.id);
+  const removeItemHandler = () => {
+    props.onRemoveItem(props.id);
+  };
   return (
     <Card>
       <li className={classes.main}>
