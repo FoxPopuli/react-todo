@@ -10,10 +10,11 @@ const NewTaskForm = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     console.log("submitted");
+
     const inputs = {
       title: titleInputRef.current.value,
       priority: priorityInputRef.current.value,
-      dueDate: dueDateInputRef.current.value,
+      dueDate: new Date(dueDateInputRef.current.value.split("-")),
     };
     props.onAddTask(inputs);
   };
@@ -33,7 +34,7 @@ const NewTaskForm = (props) => {
           <label htmlFor="due-date">Due Date</label>
           <input type="date" ref={dueDateInputRef}></input>
         </div>
-        <Button onClick={submitHandler}>Submit</Button>
+        <Button onClick={submitHandler}>Add</Button>
       </form>
     </Card>
   );

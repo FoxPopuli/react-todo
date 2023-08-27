@@ -2,14 +2,19 @@ import Card from "../UI/Card/Card";
 import classes from "./TodoItem.module.css";
 import Button from "../UI/Button/Button";
 
-const parseDate = (dateObj) => {};
+const parseDate = (dateObj) => {
+  console.log("Date stuff");
+  console.log(dateObj);
+  console.log(dateObj.toString());
+  return dateObj.toString().split("").splice(4, 11).join("");
+};
 
 const TodoItem = (props) => {
   const removeItemHandler = () => {
     props.onRemoveItem(props.id);
   };
 
-  const dateMod = props.dueDate.toString().split("").splice(4, 11).join("");
+  const dateMod = parseDate(props.dueDate);
   return (
     <Card>
       <li className={classes.main}>
