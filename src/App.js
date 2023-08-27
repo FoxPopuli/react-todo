@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const DUMMY_DATA = [
   {
     title: "Take out rubbish",
-    id: Math.floor(Math.random() * 100),
+    id: Math.floor(Math.random() * 1000),
     dateAdded: new Date(),
     dueDate: new Date(2023, 10, 14),
     priority: 1,
@@ -17,7 +17,7 @@ const DUMMY_DATA = [
   },
   {
     title: "Do laundry",
-    id: Math.floor(Math.random() * 100),
+    id: Math.floor(Math.random() * 1000),
     dateAdded: new Date(),
     dueDate: new Date(2023, 9, 12),
     priority: 2,
@@ -25,10 +25,18 @@ const DUMMY_DATA = [
   },
   {
     title: "Cook dinner",
-    id: Math.floor(Math.random() * 100),
+    id: Math.floor(Math.random() * 1000),
     dateAdded: new Date(),
     dueDate: new Date(2023, 10, 15),
     priority: 3,
+    complete: false,
+  },
+  {
+    title: "Doctor's Appointment",
+    id: Math.floor(Math.random() * 1000),
+    dateAdded: new Date(),
+    dueDate: new Date(2023, 7, 10),
+    priority: 2,
     complete: false,
   },
 ];
