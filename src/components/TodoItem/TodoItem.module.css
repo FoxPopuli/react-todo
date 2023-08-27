@@ -6,6 +6,7 @@
   margin: 15px 0;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .main input {
@@ -15,20 +16,44 @@
 }
 
 .main button {
-  margin-left: auto;
+  /* margin-left: auto; */
   padding: 5px;
   border-radius: 5px;
 }
 
 .title {
   font-weight: bold;
+  font-size: 22px;
 }
 
 .infoContainer {
   /* margin-right: auto; */
   /* color: green; */
-  flex: 1;
+  /* flex: 1;
   text-align: right;
   align-self: right;
-  margin-right: 20px;
+  margin-right: 20px; */
+}
+
+.leftGroup,
+.rightGroup {
+  display: flex;
+  align-items: center;
+}
+
+.dueDate {
+  font-style: italic;
+  /* margin-left: 15px; */
+  font-size: 14px;
+  color: rgb(79, 79, 79);
+}
+
+.priority {
+  display: none;
+}
+
+@media (min-width: 400px) {
+  .priority {
+    display: block;
+  }
 }
