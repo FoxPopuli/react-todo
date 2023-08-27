@@ -29,7 +29,6 @@ const parseDate2 = (dateObj) => {
   } else {
     const numYears = Math.floor(diffDays / 365);
     returnString += numYears === 1 ? numYears + " year" : numYears + " years";
-    returnString += Math.floor(diffDays / 365) + " years";
   }
 
   return returnString;
