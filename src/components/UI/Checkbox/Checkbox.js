@@ -4,7 +4,7 @@ import { useState } from "react";
 const Checkbox = (props) => {
   const [isChecked, setIsChecked] = useState(false);
   const clickHandler = () => {
-    // props.clickHandler();
+    props.onClick();
     if (isChecked) {
       setIsChecked(false);
     } else {

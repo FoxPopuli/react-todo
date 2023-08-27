@@ -24,17 +24,11 @@ const parseDate = (dateObj) => {
     midString = numYears === 1 ? numYears + " year" : numYears + " years";
   }
 
-  let firstString;
-  let lastString;
   if (isOverdue) {
-    firstString = "Due ";
-    lastString = " ago";
+    return "Due " + midString + " ago";
   } else {
-    firstString = "Due in ";
-    lastString = "";
+    return "Due in " + midString;
   }
-
-  return firstString + midString + lastString;
 };
 
 const TodoItem = (props) => {
@@ -43,7 +37,7 @@ const TodoItem = (props) => {
   };
 
   const checkboxHandler = () => {
-    console.log("fired");
+    props.onMarkDone(props.id);
   };
 
   return (
@@ -54,8 +48,18 @@ const TodoItem = (props) => {
           <Checkbox onClick={checkboxHandler} />
 
           <div className={classes.infoContainer}>
-            <h3 className={classes.title}>{props.title}</h3>
-            <div className={classes.dueDate}>{parseDate(props.dueDate)}</div>
+            <h3
+              className={props.complete ? classes.titleChecked : classes.title}
+            >
+              {props.title}
+            </h3>
+            <i
+              className={
+                props.complete ? classes.dueDateChecked : classes.dueDate
+              }
+            >
+              {parseDate(props.dueDate)}
+            </i>
           </div>
         </div>
 

@@ -14,6 +14,7 @@ const TodoList = (props) => {
             priority={entry.priority}
             complete={entry.complete}
             onRemoveItem={props.onRemoveItem}
+            onMarkDone={props.onMarkDone}
           />
         );
       })}

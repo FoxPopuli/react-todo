@@ -26,6 +26,12 @@
   font-size: 22px;
 }
 
+.titleChecked {
+  font-weight: bold;
+  font-size: 22px;
+  text-decoration: line-through;
+}
+
 .leftGroup,
 .rightGroup {
   display: flex;
@@ -33,10 +39,14 @@
 }
 
 .dueDate {
-  font-style: italic;
-  /* margin-left: 15px; */
   font-size: 14px;
   color: rgb(79, 79, 79);
+}
+
+.dueDateChecked {
+  font-size: 14px;
+  color: rgb(79, 79, 79);
+  text-decoration: line-through;
 }
 
 .priority {
@@ -45,6 +55,13 @@
 
 .infoContainer {
   margin-left: 10px;
+}
+
+.titleChecked,
+.dueDateChecked {
+  /* color: green; */
+  text-decoration: line-through;
+  color: grey;
 }
 
 @media (min-width: 400px) {

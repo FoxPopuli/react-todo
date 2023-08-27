@@ -62,12 +62,30 @@ function App() {
     setData(newData);
   };
 
+  const onMarkDone = (id) => {
+    const newData = data.map((item) => {
+      if (item.id === id) {
+        item.complete = !item.complete;
+        return item;
+      }
+      return item;
+    });
+    console.log(newData);
+    setData(newData);
+  };
+
   return (
     <Layout>
       <Routes>
         <Route
           path="/"
-          element={<HomePage data={data} onRemoveItem={onRemoveItem} />}
+          element={
+            <HomePage
+              data={data}
+              onRemoveItem={onRemoveItem}
+              onMarkDone={onMarkDone}
+            />
+          }
         ></Route>
         <Route
           path="/new-task"
