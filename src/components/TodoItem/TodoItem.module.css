@@ -26,15 +26,6 @@
   font-size: 22px;
 }
 
-.infoContainer {
-  /* margin-right: auto; */
-  /* color: green; */
-  /* flex: 1;
-  text-align: right;
-  align-self: right;
-  margin-right: 20px; */
-}
-
 .leftGroup,
 .rightGroup {
   display: flex;

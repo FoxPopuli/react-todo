@@ -1,6 +1,7 @@
 import Card from "../UI/Card/Card";
 import classes from "./TodoItem.module.css";
 import Button from "../UI/Button/Button";
+import PriorityMarker from "../UI/PriorityMarker/PriorityMarker";
 
 const parseDate = (dateObj) => {
   const date2 = new Date();
@@ -43,9 +44,10 @@ const TodoItem = (props) => {
         </div>
 
         <div className={classes.rightGroup}>
-          <div className={classes.priority}>
+          {/* <div className={classes.priority}>
             {"Priority: " + props.priority}
-          </div>
+          </div> */}
+          <PriorityMarker priority={props.priority} />
           <Button onClick={removeItemHandler}>Remove</Button>
         </div>
       </li>
