@@ -43,6 +43,10 @@
   display: none;
 }
 
+.infoContainer {
+  margin-left: 10px;
+}
+
 @media (min-width: 400px) {
   .priority {
     display: block;

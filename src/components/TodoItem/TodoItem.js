@@ -2,6 +2,7 @@ import Card from "../UI/Card/Card";
 import classes from "./TodoItem.module.css";
 import Button from "../UI/Button/Button";
 import PriorityMarker from "../UI/PriorityMarker/PriorityMarker";
+import Checkbox from "../UI/Checkbox/Checkbox";
 
 const parseDate = (dateObj) => {
   const date2 = new Date();
@@ -41,11 +42,16 @@ const TodoItem = (props) => {
     props.onRemoveItem(props.id);
   };
 
+  const checkboxHandler = () => {
+    console.log("fired");
+  };
+
   return (
     <Card>
       <li className={classes.main}>
         <div className={classes.leftGroup}>
-          <input type="checkbox" className={classes.checkbox}></input>
+          {/* <input type="checkbox" className={classes.checkbox}></input> */}
+          <Checkbox onClick={checkboxHandler} />
 
           <div className={classes.infoContainer}>
             <h3 className={classes.title}>{props.title}</h3>
