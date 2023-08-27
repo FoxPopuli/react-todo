@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import classes from "./HomePage.module.css";
 import TodoList from "../components/TodoList/TodoList";
 

@@ -1,11 +1,7 @@
 import classes from "./TodoList.module.css";
 import TodoItem from "../TodoItem/TodoItem";
-import Card from "../UI/Card/Card";
 
 const TodoList = (props) => {
-  const addNewTaskHandler = () => {
-    console.log("Hi");
-  };
   return (
     <ul className={classes.todoList}>
       {props.data.map((entry) => {
@@ -21,13 +17,6 @@ const TodoList = (props) => {
           />
         );
       })}
-      {/* <li className={classes.addButtonContainer}>
-        <Card>
-          <div onClick={addNewTaskHandler} className={classes.addNewButton}>
-            +
-          </div>
-        </Card>
-      </li> */}
     </ul>
   );
 };

@@ -49,6 +49,7 @@ function App() {
   const onRemoveItem = (id) => {
     const newData = data.filter((item) => {
       if (item.id !== id) return item;
+      return null;
     });
     setData(newData);
   };
