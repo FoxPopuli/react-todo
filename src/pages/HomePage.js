@@ -1,10 +1,10 @@
 import classes from "./HomePage.module.css";
 import TodoList from "../components/TodoList/TodoList";
 import { useContext } from "react";
-// import CompleteTasksContext from "../components/store/todoDataContext";
+import TaskContext from "../store/task-context";
 
 const HomePage = (props) => {
-  // const completedTasksCtx = useContext(CompleteTasksContext);
+  const completedTasksCtx = useContext(TaskContext);
 
   return (
     <section className={classes.home}>

@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { useState } from "react";
-const CompleteTasksContext = createContext({
+const TaskContext = createContext({
   completeTasks: [],
   // For autocompletion
   markTaskComplete: (task) => {},
@@ -8,16 +8,19 @@ const CompleteTasksContext = createContext({
   isTaskComplete: (id) => {},
 });
 
-export const CompleteTasksContextProvider = (props) => {
+export const TaskContextProvider = (props) => {
   const [completeTasks, setCompleteTasks] = useState([]);
 
-  const completeTaskHandler = (completeTask) => {
+  const markCompleteHandler = (completeTask) => {
+    // When the updated state value depends on the previous value,
+    // pass an arrow function since useState doesn't update instantly and
+    // can lead to desync otherwise (scheduler)
     setCompleteTasks((prevCompletedTasks) => {
-      prevCompletedTasks.concat(completeTask);
+      return prevCompletedTasks.concat(completeTask);
     });
   };
 
-  const incompleteTaskHandler = (id) => {
+  const markIncompleteHandler = (id) => {
     setCompleteTasks((prevCompletedTasks) => {
       return prevCompletedTasks.filter((task) => {
         if (task.id !== id) return task;
@@ -31,16 +34,16 @@ export const CompleteTasksContextProvider = (props) => {
 
   const context = {
     completedTasks: completeTasks,
-    markTaskComplete: completeTaskHandler,
-    markTaskIncomplete: incompleteTaskHandler,
+    markTaskComplete: markCompleteHandler,
+    markTaskIncomplete: markIncompleteHandler,
     isComplete: isTaskComplete,
   };
 
   return (
-    <CompleteTasksContext.Provider value={context}>
+    <TaskContext.Provider value={context}>
       {props.children}
-    </CompleteTasksContext.Provider>
+    </TaskContext.Provider>
   );
 };
 
-export default CompleteTasksContext;
+export default TaskContext;

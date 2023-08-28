@@ -3,15 +3,15 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import CompleteTasksContextProvider from "./store/todoDataContext";
+import { TaskContextProvider } from "./store/task-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <CompleteTasksContextProvider>
+  <TaskContextProvider>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </CompleteTasksContextProvider>
+  </TaskContextProvider>
 
   // <App />
 );
