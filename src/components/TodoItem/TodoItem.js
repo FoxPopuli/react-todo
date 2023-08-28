@@ -12,7 +12,7 @@ const TodoItem = (props) => {
   const taskCtx = useContext(TaskContext);
 
   const removeItemHandler = () => {
-    taskCtx.removeItem(props.id);
+    taskCtx.removeTask(props.id);
   };
 
   const checkboxHandler = () => {

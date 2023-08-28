@@ -7,7 +7,8 @@ const TaskContext = createContext({
   // For autocompletion
   markTaskComplete: (id) => {},
   markTaskIncomplete: (id) => {},
-  removeItem: (id) => {},
+  removeTask: (id) => {},
+  addTask: (task) => {},
 });
 
 export const TaskContextProvider = (props) => {
@@ -39,15 +40,20 @@ export const TaskContextProvider = (props) => {
     });
   };
 
-  const removeItemHandler = (id) => {
+  const removeTaskHandler = (id) => {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+  };
+
+  const addTaskHandler = (task) => {
+    setTasks((prevTasks) => prevTasks.concat(task));
   };
 
   const context = {
     tasks: tasks,
     markTaskComplete: markCompleteHandler,
     markTaskIncomplete: markIncompleteHandler,
-    removeItem: removeItemHandler,
+    removeTask: removeTaskHandler,
+    addTask: addTaskHandler,
   };
 
   return (

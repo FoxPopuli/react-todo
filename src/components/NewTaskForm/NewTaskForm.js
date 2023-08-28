@@ -1,23 +1,39 @@
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
 import classes from "./NewTaskForm.module.css";
+import TaskContext from "../../store/task-context";
+import { useNavigate } from "react-router-dom";
+
 const NewTaskForm = (props) => {
   const titleInputRef = useRef();
   const priorityInputRef = useRef();
   const dueDateInputRef = useRef();
 
+  const taskCtx = useContext(TaskContext);
+
+  const navigate = useNavigate();
+
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log("submitted");
 
     const inputs = {
       title: titleInputRef.current.value,
+      id: Math.floor(Math.random() * 1000),
       priority: priorityInputRef.current.value,
+      dateAdded: new Date(),
       dueDate: new Date(dueDateInputRef.current.value.split("-")),
+      complete: false,
     };
-    props.onAddTask(inputs);
+    taskCtx.addTask(inputs);
+    navigate("/");
   };
+
+  const cancelHandler = (event) => {
+    event.preventDefault();
+    navigate("/");
+  };
+
   return (
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
@@ -34,7 +50,10 @@ const NewTaskForm = (props) => {
           <label htmlFor="due-date">Due Date</label>
           <input type="date" ref={dueDateInputRef}></input>
         </div>
-        <Button onClick={submitHandler}>Add</Button>
+        <div className={classes.buttonContainer}>
+          <Button onClick={cancelHandler}>Cancel</Button>
+          <Button onClick={submitHandler}>Add</Button>
+        </div>
       </form>
     </Card>
   );
