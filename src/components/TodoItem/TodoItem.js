@@ -3,23 +3,32 @@ import classes from "./TodoItem.module.css";
 import Button from "../UI/Button/Button";
 import PriorityMarker from "../UI/PriorityMarker/PriorityMarker";
 import Checkbox from "../UI/Checkbox/Checkbox";
-
+import { useContext } from "react";
 import helperFunctions from "../../helperFunctions";
 
+import TaskContext from "../../store/task-context";
+
 const TodoItem = (props) => {
+  const taskCtx = useContext(TaskContext);
+
   const removeItemHandler = () => {
-    props.onRemoveItem(props.id);
+    taskCtx.removeItem(props.id);
   };
 
   const checkboxHandler = () => {
-    props.onMarkDone(props.id);
+    if (props.complete) {
+      taskCtx.markTaskIncomplete(props.id);
+    } else {
+      taskCtx.markTaskComplete(props.id);
+    }
+    console.log(taskCtx.tasks);
   };
 
   return (
     <Card>
       <li className={classes.main}>
         <div className={classes.leftGroup}>
-          <Checkbox onClick={checkboxHandler} />
+          <Checkbox onClick={checkboxHandler} isChecked={props.complete} />
           <div className={classes.infoContainer}>
             <h3
               className={props.complete ? classes.titleChecked : classes.title}

@@ -4,14 +4,23 @@ import { useContext } from "react";
 import TaskContext from "../store/task-context";
 
 const HomePage = (props) => {
-  const completedTasksCtx = useContext(TaskContext);
+  const taskCtx = useContext(TaskContext);
+
+  const completeTasks = taskCtx.tasks.filter((task) => task.complete);
+  console.log(completeTasks);
+  const incompleteTasks = taskCtx.tasks.filter((task) => !task.complete);
+  console.log(incompleteTasks);
 
   return (
     <section className={classes.home}>
       <h1>Todo List Website</h1>
       <TodoList
-        data={props.data}
-        // data={completedTasksCtx.completeTasks}
+        data={incompleteTasks}
+        onRemoveItem={props.onRemoveItem}
+        onMarkDone={props.onMarkDone}
+      />
+      <TodoList
+        data={completeTasks}
         onRemoveItem={props.onRemoveItem}
         onMarkDone={props.onMarkDone}
       />

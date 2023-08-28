@@ -1,42 +1,53 @@
 import { createContext } from "react";
 import { useState } from "react";
+import DummyData from "../data/dummyData";
+
 const TaskContext = createContext({
-  completeTasks: [],
+  tasks: [],
   // For autocompletion
-  markTaskComplete: (task) => {},
+  markTaskComplete: (id) => {},
   markTaskIncomplete: (id) => {},
-  isTaskComplete: (id) => {},
+  removeItem: (id) => {},
 });
 
 export const TaskContextProvider = (props) => {
-  const [completeTasks, setCompleteTasks] = useState([]);
+  const [tasks, setTasks] = useState(DummyData);
 
-  const markCompleteHandler = (completeTask) => {
+  const markCompleteHandler = (id) => {
     // When the updated state value depends on the previous value,
     // pass an arrow function since useState doesn't update instantly and
     // can lead to desync otherwise (scheduler)
-    setCompleteTasks((prevCompletedTasks) => {
-      return prevCompletedTasks.concat(completeTask);
-    });
-  };
 
-  const markIncompleteHandler = (id) => {
-    setCompleteTasks((prevCompletedTasks) => {
-      return prevCompletedTasks.filter((task) => {
-        if (task.id !== id) return task;
+    setTasks((prevTasks) => {
+      return prevTasks.map((task) => {
+        if (task.id === id) {
+          task.complete = true;
+        }
+        return task;
       });
     });
   };
 
-  const isTaskComplete = (id) => {
-    return completeTasks.some((task) => task.id === id);
+  const markIncompleteHandler = (id) => {
+    setTasks((prevTasks) => {
+      return prevTasks.map((task) => {
+        if (task.id === id) {
+          task.complete = false;
+        }
+        return task;
+      });
+    });
+  };
+
+  const removeItemHandler = (id) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
 
   const context = {
-    completedTasks: completeTasks,
+    tasks: tasks,
     markTaskComplete: markCompleteHandler,
     markTaskIncomplete: markIncompleteHandler,
-    isComplete: isTaskComplete,
+    removeItem: removeItemHandler,
   };
 
   return (
