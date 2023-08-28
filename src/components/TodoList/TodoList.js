@@ -8,6 +8,7 @@ const TodoList = (props) => {
         return (
           <TodoItem
             title={entry.title}
+            key={entry.id}
             id={entry.id}
             dateAdded={entry.dateAdded}
             dueDate={entry.dueDate}

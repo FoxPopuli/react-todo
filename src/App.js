@@ -5,44 +5,10 @@ import NewTaskPage from "./pages/NewTaskPage";
 import { Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const DUMMY_DATA = [
-  {
-    title: "Take out rubbish",
-    id: Math.floor(Math.random() * 1000),
-    dateAdded: new Date(),
-    dueDate: new Date(2023, 10, 14),
-    priority: 1,
-    complete: false,
-  },
-  {
-    title: "Do laundry",
-    id: Math.floor(Math.random() * 1000),
-    dateAdded: new Date(),
-    dueDate: new Date(2023, 9, 12),
-    priority: 2,
-    complete: false,
-  },
-  {
-    title: "Cook dinner",
-    id: Math.floor(Math.random() * 1000),
-    dateAdded: new Date(),
-    dueDate: new Date(2023, 10, 15),
-    priority: 3,
-    complete: false,
-  },
-  {
-    title: "Doctor's Appointment",
-    id: Math.floor(Math.random() * 1000),
-    dateAdded: new Date(),
-    dueDate: new Date(2023, 7, 10),
-    priority: 2,
-    complete: false,
-  },
-];
+import DummyData from "./data/dummyData";
 
 function App() {
-  const [data, setData] = useState(DUMMY_DATA);
+  const [data, setData] = useState(DummyData);
   const navigate = useNavigate();
 
   const onAddTask = (newItem) => {

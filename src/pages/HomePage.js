@@ -11,6 +11,7 @@ const HomePage = (props) => {
       <h1>Todo List Website</h1>
       <TodoList
         data={props.data}
+        // data={completedTasksCtx.completeTasks}
         onRemoveItem={props.onRemoveItem}
         onMarkDone={props.onMarkDone}
       />
