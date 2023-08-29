@@ -7,9 +7,7 @@ const HomePage = (props) => {
   const taskCtx = useContext(TaskContext);
 
   const completeTasks = taskCtx.tasks.filter((task) => task.complete);
-  console.log(completeTasks);
   const incompleteTasks = taskCtx.tasks.filter((task) => !task.complete);
-  console.log(incompleteTasks);
 
   return (
     <section className={classes.home}>

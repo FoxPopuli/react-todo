@@ -51,8 +51,12 @@ const NewTaskForm = (props) => {
           <input type="date" ref={dueDateInputRef}></input>
         </div>
         <div className={classes.buttonContainer}>
-          <Button onClick={cancelHandler}>Cancel</Button>
-          <Button onClick={submitHandler}>Add</Button>
+          <Button onClick={cancelHandler} theme="light">
+            Cancel
+          </Button>
+          <Button onClick={submitHandler} theme="blue">
+            Add
+          </Button>
         </div>
       </form>
     </Card>

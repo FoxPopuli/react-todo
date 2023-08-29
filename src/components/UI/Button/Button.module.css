@@ -1,3 +1,33 @@
+.lightTheme,
+.blueTheme,
+.darkTheme {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.lightTheme {
+  background-color: white;
+  color: darkblue;
+  border: 1px solid darkblue;
+}
+
+.lightTheme:hover {
+  color: blue;
+  border: 1px solid blue;
+}
+
+.blueTheme {
+  background-color: darkblue;
+  color: white;
+  border: 1px solid navy;
+}
+
+.blueTheme:hover {
+  background-color: blue;
+}
+
 .button {
   background-color: darkblue;
   color: white;
@@ -6,8 +36,4 @@
   padding: 10px;
   border-radius: 4px;
   border: 1px solid navy;
-}
-
-.button:hover {
-  background-color: blue;
 }
