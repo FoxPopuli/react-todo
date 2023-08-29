@@ -24,6 +24,7 @@ const NewTaskForm = () => {
       dateAdded: new Date(),
       dueDate: new Date(dueDateInputRef.current.value.split("-")),
       complete: false,
+      projId: 1, // FOR NOW
     };
     taskCtx.addTask(inputs);
     navigate("/");

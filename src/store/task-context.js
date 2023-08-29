@@ -4,6 +4,7 @@ import DummyData from "../data/dummyData";
 
 const TaskContext = createContext({
   tasks: [],
+  projects: [],
   // For autocompletion
   markTaskComplete: (id) => {},
   markTaskIncomplete: (id) => {},
@@ -12,7 +13,8 @@ const TaskContext = createContext({
 });
 
 export const TaskContextProvider = (props) => {
-  const [tasks, setTasks] = useState(DummyData);
+  const [tasks, setTasks] = useState(DummyData.tasks);
+  const [projects, setProjects] = useState(DummyData.projects);
 
   const markCompleteHandler = (id) => {
     // When the updated state value depends on the previous value,
@@ -24,10 +26,13 @@ export const TaskContextProvider = (props) => {
         if (task.id === id) {
           task.complete = true;
         }
+        console.log(task);
         return task;
       });
     });
   };
+
+  const navToProjectHandler = (projId) => {};
 
   const markIncompleteHandler = (id) => {
     setTasks((prevTasks) => {
@@ -50,6 +55,7 @@ export const TaskContextProvider = (props) => {
 
   const context = {
     tasks,
+    projects,
     markTaskComplete: markCompleteHandler,
     markTaskIncomplete: markIncompleteHandler,
     removeTask: removeTaskHandler,
