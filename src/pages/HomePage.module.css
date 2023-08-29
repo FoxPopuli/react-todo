@@ -4,7 +4,7 @@
   justify-content: center;
 }
 
-.home h1 {
-  font-size: 3rem;
-  text-align: center;
+.home h2 {
+  font-size: 2rem;
+  padding-left: 20px;
 }

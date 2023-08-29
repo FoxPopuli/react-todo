@@ -5,7 +5,7 @@ import classes from "./NewTaskForm.module.css";
 import TaskContext from "../../store/task-context";
 import { useNavigate } from "react-router-dom";
 
-const NewTaskForm = (props) => {
+const NewTaskForm = () => {
   const titleInputRef = useRef();
   const priorityInputRef = useRef();
   const dueDateInputRef = useRef();
@@ -37,7 +37,7 @@ const NewTaskForm = (props) => {
   return (
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
-        <h2>Add New Task</h2>
+        <h2>Add New</h2>
         <div className={classes.formSection}>
           <label htmlFor="title">Title</label>
           <input type="text" required ref={titleInputRef}></input>

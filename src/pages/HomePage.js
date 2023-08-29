@@ -11,7 +11,7 @@ const HomePage = (props) => {
 
   return (
     <section className={classes.home}>
-      <h1>Todo List Website</h1>
+      <h2>All Tasks</h2>
       <TodoList
         data={incompleteTasks}
         onRemoveItem={props.onRemoveItem}

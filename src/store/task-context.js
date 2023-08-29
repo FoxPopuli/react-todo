@@ -49,7 +49,7 @@ export const TaskContextProvider = (props) => {
   };
 
   const context = {
-    tasks: tasks,
+    tasks,
     markTaskComplete: markCompleteHandler,
     markTaskIncomplete: markIncompleteHandler,
     removeTask: removeTaskHandler,

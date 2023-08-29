@@ -3,14 +3,14 @@
   flex-direction: column;
   justify-content: center;
   padding: 15px;
+  width: 80vw;
+  max-width: 350px;
 }
 
 .formSection {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* margin: 10px 0px; */
-  /* box-sizing: border-box; */
 }
 
 .formSection label {
@@ -30,6 +30,7 @@
 
 .form h2 {
   text-align: center;
+  font-size: 2rem;
   margin-bottom: 10px;
 }
 

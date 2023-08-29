@@ -27,13 +27,3 @@
 .blueTheme:hover {
   background-color: blue;
 }
-
-.button {
-  background-color: darkblue;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid navy;
-}
