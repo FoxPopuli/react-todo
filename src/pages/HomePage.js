@@ -11,7 +11,7 @@ const HomePage = (props) => {
 
   return (
     <div>
-      <TaskGroup tasks={taskCtx.tasks} sortBy="alpha" />
+      <TaskGroup tasks={taskCtx.tasks} sortBy="priority" />
     </div>
   );
 };

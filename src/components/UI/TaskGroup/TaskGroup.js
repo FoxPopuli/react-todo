@@ -16,9 +16,7 @@ const TaskGroup = (props) => {
       break;
     case "priority":
       sortedTasks = arrClone.sort((a, b) => {
-        const priorityA = a.prority;
-        const priorityB = b.prority;
-        return priorityA < priorityB ? -1 : priorityA > priorityB ? 1 : 0;
+        return +a.priority - +b.priority;
       });
       break;
     case "date":
