@@ -1,5 +1,7 @@
 const DummyData = {};
-
+// Data is structured this way since many operations are easier with access
+// to one array containing all tasks
+// Further, project data isn't frequently updated
 DummyData.tasks = [
   {
     title: "Take out rubbish",
