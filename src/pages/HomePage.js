@@ -12,34 +12,7 @@ const HomePage = (props) => {
   const projects = taskCtx.projects;
   console.log(projects);
 
-  return (
-    <section className={classes.home}>
-      {projects.map((project) => {
-        const completeProjectTasks = completeTasks.filter((task) => {
-          return task.projId === project.id;
-        });
-        const incompleteProjectTasks = incompleteTasks.filter((task) => {
-          return task.projId === project.id;
-        });
-
-        return (
-          <div>
-            <h2>{project.title}</h2>
-            <TodoList
-              data={incompleteProjectTasks}
-              onRemoveItem={props.onRemoveItem}
-              onMarkDone={props.onMarkDone}
-            />
-            <TodoList
-              data={completeProjectTasks}
-              onRemoveItem={props.onRemoveItem}
-              onMarkDone={props.onMarkDone}
-            />
-          </div>
-        );
-      })}
-    </section>
-  );
+  return <div>Homepage</div>;
 };
 
 export default HomePage;

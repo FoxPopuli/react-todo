@@ -10,22 +10,21 @@
   font-size: 34px;
 }
 
-.mainNav ul {
+.list {
   display: flex;
   list-style: none;
   margin-right: 50px;
 }
 
-.mainNav ul li {
+.list li {
   display: flex;
   align-items: center;
   margin-right: 15px;
   font-size: 24px;
-  /* font-weight: bold; */
 }
 
-.list a,
-.list a:visited {
+.mainNav a,
+.mainNav a:visited {
   color: var(--header-text);
 }
 
@@ -33,7 +32,3 @@
 .list a:hover {
   color: var(--active-link);
 }
-
-/* .list a:visited {
-  color: red;
-} */

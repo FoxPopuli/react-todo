@@ -26,7 +26,6 @@ export const TaskContextProvider = (props) => {
         if (task.id === id) {
           task.complete = true;
         }
-        console.log(task);
         return task;
       });
     });

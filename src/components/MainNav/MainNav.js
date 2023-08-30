@@ -4,10 +4,12 @@ import classes from "./MainNav.module.css";
 const MainNav = () => {
   return (
     <nav className={classes.mainNav}>
-      <h3>React Todo</h3>
+      <h3>
+        <Link to="/">React Todo</Link>
+      </h3>
       <ul className={classes.list}>
         <li>
-          <Link to="/">All Tasks</Link>
+          <Link to="/all-projects">All Projects</Link>
         </li>
         <li>
           <Link to="/new-task">Add New</Link>

@@ -21,7 +21,6 @@ const TodoItem = (props) => {
     } else {
       taskCtx.markTaskComplete(props.id);
     }
-    console.log(taskCtx.tasks);
   };
 
   return (

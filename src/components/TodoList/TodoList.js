@@ -14,8 +14,6 @@ const TodoList = (props) => {
             dueDate={entry.dueDate}
             priority={entry.priority}
             complete={entry.complete}
-            onRemoveItem={props.onRemoveItem}
-            onMarkDone={props.onMarkDone}
           />
         );
       })}
