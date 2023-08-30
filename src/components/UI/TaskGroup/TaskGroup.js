@@ -1,5 +1,5 @@
 import TodoList from "../../TodoList/TodoList";
-
+import classes from "./TaskGroup.module.css";
 const TaskGroup = (props) => {
   // User specified sorting
 
@@ -24,7 +24,7 @@ const TaskGroup = (props) => {
   }
 
   return (
-    <div>
+    <div className={classes.taskGroup}>
       <h3>{props.groupTitle}</h3>
       <TodoList tasks={sortedTasks} />
     </div>

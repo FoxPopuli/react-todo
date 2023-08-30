@@ -72,12 +72,12 @@ DummyData.projects = [
   {
     title: "Chores",
     deadLine: new Date(2023, 9, 2),
-    id: 1,
+    projId: 1,
   },
   {
     title: "Build House",
     deadLine: new Date(2024, 9, 2),
-    id: 2,
+    projId: 2,
   },
 ];
 

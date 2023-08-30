@@ -5,11 +5,23 @@ import { useContext } from "react";
 const AllProjectsPage = () => {
   const taskCtx = useContext(TaskContext);
   const projects = taskCtx.projects;
-  return {
-    //Stopped here, produce TaskGroups mapped to projects
-    // projects.map()
-  };
-  //   return <TaskGroup tasks={taskCtx.tasks} sortBy="priority" />;
+  let currentProjectTasks;
+  return (
+    <ul>
+      {projects.map((project) => {
+        currentProjectTasks = taskCtx.tasks.filter(
+          (task) => task.projId === project.projId
+        );
+        return (
+          <TaskGroup
+            groupTitle={project.title}
+            tasks={currentProjectTasks}
+            sortBy="alpha"
+          />
+        );
+      })}
+    </ul>
+  );
 };
 
 export default AllProjectsPage;
