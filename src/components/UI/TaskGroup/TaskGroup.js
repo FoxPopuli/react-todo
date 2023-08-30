@@ -16,14 +16,12 @@ const TaskGroup = (props) => {
       break;
     case "priority":
       sortedTasks = arrClone.sort((a, b) => {
-        return +a.priority - +b.priority;
+        return a.priority - b.priority;
       });
       break;
     case "date":
       sortedTasks = arrClone.sort((a, b) => {
-        const dateA = a.dueDate;
-        const dateB = b.dueDate;
-        return dateA < dateB ? -1 : dateA > dateB ? 1 : 0;
+        return a.dueDate - b.dueDate;
       });
       break;
     default:
@@ -34,7 +32,6 @@ const TaskGroup = (props) => {
       });
       break;
   }
-  console.log(sortedTasks);
 
   return (
     <div>
