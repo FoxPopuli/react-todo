@@ -2,8 +2,8 @@ import classes from "./TodoList.module.css";
 import TodoItem from "../TodoItem/TodoItem";
 
 const TodoList = (props) => {
-  const incompleteTasks = props.data.filter((task) => !task.complete);
-  const completeTasks = props.data.filter((task) => task.complete);
+  const incompleteTasks = props.tasks.filter((task) => !task.complete);
+  const completeTasks = props.tasks.filter((task) => task.complete);
 
   return (
     <ul className={classes.todoList}>

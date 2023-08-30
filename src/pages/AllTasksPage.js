@@ -9,7 +9,7 @@ const AllTasksPage = (props) => {
 
   return (
     <section className={classes.home}>
-      <TodoList data={taskCtx.tasks} />
+      <TodoList tasks={taskCtx.tasks} />
     </section>
   );
 };
