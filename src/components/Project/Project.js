@@ -1,10 +1,9 @@
-import TodoList from "../TodoList/TodoList";
-
+import TaskGroup from "../UI/TaskGroup/TaskGroup";
 const Project = (props) => {
   return (
     <div>
       <h3>{props.title}</h3>
-      <TodoList tasks={props.tasks} />
+      <TaskGroup tasks={props.tasks} />
     </div>
   );
 };

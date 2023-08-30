@@ -9,11 +9,7 @@ const HomePage = (props) => {
 
   const projects = taskCtx.projects;
 
-  return (
-    <div>
-      <TaskGroup tasks={taskCtx.tasks} sortBy="date" />
-    </div>
-  );
+  return <div>Homepage</div>;
 };
 
 export default HomePage;

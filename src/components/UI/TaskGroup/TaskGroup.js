@@ -3,11 +3,11 @@ import TodoList from "../../TodoList/TodoList";
 const TaskGroup = (props) => {
   // User specified sorting
 
+  // spread operater to avoid mutating original array
   let arrClone = [...props.tasks];
   let sortedTasks;
   switch (props.sortBy) {
     case "alpha":
-      // spread operater to avoid mutating original array
       sortedTasks = arrClone.sort((a, b) => {
         const titleA = a.title.toUpperCase();
         const titleB = b.title.toUpperCase();
@@ -15,21 +15,11 @@ const TaskGroup = (props) => {
       });
       break;
     case "priority":
-      sortedTasks = arrClone.sort((a, b) => {
-        return a.priority - b.priority;
-      });
+      sortedTasks = arrClone.sort((a, b) => a.priority - b.priority);
       break;
     case "date":
-      sortedTasks = arrClone.sort((a, b) => {
-        return a.dueDate - b.dueDate;
-      });
-      break;
     default:
-      sortedTasks = arrClone.sort((a, b) => {
-        const priorityA = a.prority;
-        const priorityB = b.prority;
-        return priorityA < priorityB ? -1 : priorityA > priorityB ? 1 : 0;
-      });
+      sortedTasks = arrClone.sort((a, b) => a.dueDate - b.dueDate);
       break;
   }
 

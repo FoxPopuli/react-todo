@@ -9,6 +9,9 @@ const MainNav = () => {
       </h3>
       <ul className={classes.list}>
         <li>
+          <Link to="/all-tasks">All Tasks</Link>
+        </li>
+        <li>
           <Link to="/all-projects">All Projects</Link>
         </li>
         <li>
