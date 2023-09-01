@@ -19,17 +19,6 @@ export const TaskContextProvider = (props) => {
     // pass an arrow function since useState doesn't update instantly and
     // can lead to desync otherwise (scheduler)
 
-    // setData((prevData) => {
-    //   prevData.tasks = prevData.tasks.map((task) => {
-    //     if (task.id === id) {
-    //       task.complete = true;
-    //     }
-    //     return task;
-    //   });
-    //   console.log(prevData);
-    //   return prevData;
-    // });
-
     setData((prevData) => {
       const newData = { ...prevData };
       const newTasks = prevData.tasks.map((task) => {
@@ -40,8 +29,6 @@ export const TaskContextProvider = (props) => {
       });
 
       newData.tasks = newTasks;
-      console.log(newData);
-      console.log(prevData);
       return newData;
     });
   };
@@ -65,27 +52,21 @@ export const TaskContextProvider = (props) => {
       });
 
       newData.tasks = newTasks;
-      console.log(newData);
-      console.log(prevData);
       return newData;
     });
   };
 
   const removeTaskHandler = (id) => {
     setData((prevData) => {
-      prevData.tasks.filter((task) => task.id !== id);
-      return prevData;
+      const newData = { ...prevData };
+      const newTasks = prevData.tasks.filter((task) => task.id !== id);
+      newData.tasks = newTasks;
+      return newData;
     });
   };
 
   const addTaskHandler = (task) => {
     setData((prevData) => prevData.tasks.concat(task));
-    // setData((prevData) => {
-    //   const newData = prevData;
-    //   const newTasks = prevData.tasks.filter((task) => task.id !== id);
-    //   newData.tasks = newTasks;
-    //   return newData;
-    // });
   };
 
   const context = {
