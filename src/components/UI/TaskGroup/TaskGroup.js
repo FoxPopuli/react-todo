@@ -14,8 +14,11 @@ const TaskGroup = (props) => {
   };
   return (
     <div className={classes.taskGroup}>
-      <h3 className={classes.groupTitle}>{props.groupTitle}</h3>
-      <SortMenu sortGroup={placeholder} />
+      <div className={classes.titleContainer}>
+        <h3 className={classes.groupTitle}>{props.groupTitle}</h3>
+        <SortMenu sortGroup={placeholder} />
+      </div>
+
       <TodoList tasks={sortedTasks} />
     </div>
   );

@@ -8,7 +8,11 @@ const AllTasksPage = () => {
 
   return (
     <section className={classes.home}>
-      <TaskGroup tasks={taskCtx.data.tasks} sortBy="priority" />
+      <TaskGroup
+        groupTitle="All Tasks"
+        tasks={taskCtx.data.tasks}
+        sortBy="priority"
+      />
     </section>
   );
 };

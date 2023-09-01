@@ -1,3 +1,13 @@
 .groupTitle {
   font-size: 28px;
 }
+
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.taskGroup {
+  margin-bottom: 30px;
+}
