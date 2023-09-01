@@ -16,7 +16,7 @@ const AllProjectsPage = () => {
           <TaskGroup
             groupTitle={project.title}
             tasks={currentProjectTasks}
-            sortBy="alpha"
+            sortBy="priority"
           />
         );
       })}

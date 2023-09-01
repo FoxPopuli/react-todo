@@ -24,5 +24,30 @@ const parseDate = (dateObj) => {
     return "Due in " + midString;
   }
 };
-const helperFunctions = { parseDate };
+
+const sortGroup = (group, sortString) => {
+  // User specified sorting
+
+  // spread operater to avoid mutating original array
+  let arrClone = [...group];
+  let sortedTasks;
+  switch (sortString) {
+    case "alpha":
+      sortedTasks = arrClone.sort((a, b) => {
+        const titleA = a.title.toUpperCase();
+        const titleB = b.title.toUpperCase();
+        return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
+      });
+      break;
+    case "priority":
+      sortedTasks = arrClone.sort((a, b) => a.priority - b.priority);
+      break;
+    case "date":
+    default:
+      sortedTasks = arrClone.sort((a, b) => a.dueDate - b.dueDate);
+      break;
+  }
+  return sortedTasks;
+};
+const helperFunctions = { parseDate, sortGroup };
 export default helperFunctions;
