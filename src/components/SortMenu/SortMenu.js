@@ -12,7 +12,11 @@ const SortMenu = (props) => {
 
       <select onChange={dropdownChangeHandler}>
         {options.map((option) => {
-          return <option value={option}>{capitalize(option)}</option>;
+          return (
+            <option value={option} key={option}>
+              {capitalize(option)}
+            </option>
+          );
         })}
       </select>
     </div>
