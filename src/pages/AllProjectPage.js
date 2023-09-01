@@ -4,12 +4,13 @@ import { useContext } from "react";
 
 const AllProjectsPage = () => {
   const taskCtx = useContext(TaskContext);
-  const projects = taskCtx.projects;
+  const projects = taskCtx.data.projects;
+  console.log("All projects page rendered");
   let currentProjectTasks;
   return (
     <ul>
       {projects.map((project) => {
-        currentProjectTasks = taskCtx.tasks.filter(
+        currentProjectTasks = taskCtx.data.tasks.filter(
           (task) => task.projId === project.projId
         );
         return (
