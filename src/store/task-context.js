@@ -25,7 +25,7 @@ export const TaskContextProvider = (props) => {
         return project;
       });
       newData.projects = newProjects;
-      return newProjects;
+      return newData;
     });
   };
 

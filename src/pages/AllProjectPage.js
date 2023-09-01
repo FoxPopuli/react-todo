@@ -16,6 +16,7 @@ const AllProjectsPage = () => {
         return (
           <TaskGroup
             groupTitle={project.title}
+            groupId={project.projId}
             tasks={currentProjectTasks}
             sortBy={project.sortedBy}
             key={project.projId}

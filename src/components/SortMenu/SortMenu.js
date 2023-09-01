@@ -3,9 +3,9 @@ import classes from "./SortMenu.module.css";
 
 const SortMenu = (props) => {
   const dropdownChangeHandler = (event) => {
-    props.sortString(event.target.value);
+    props.sortGroup(event.target.value);
   };
-  const options = ["alpha", "priority", "date"];
+  const options = ["priority", "alpha", "date"];
   return (
     <div>
       <label className={classes.label}>Sort by</label>
