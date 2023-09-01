@@ -73,11 +73,13 @@ DummyData.projects = [
     title: "Chores",
     deadLine: new Date(2023, 9, 2),
     projId: 1,
+    sortedBy: "priority",
   },
   {
     title: "Build House",
     deadLine: new Date(2024, 9, 2),
     projId: 2,
+    sortedBy: "priority",
   },
 ];
 

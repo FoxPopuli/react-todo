@@ -8,7 +8,7 @@ const TaskGroup = (props) => {
 
   return (
     <div className={classes.taskGroup}>
-      <h3>{props.groupTitle}</h3>
+      <h3 className={classes.groupTitle}>{props.groupTitle}</h3>
       <TodoList tasks={sortedTasks} />
     </div>
   );
