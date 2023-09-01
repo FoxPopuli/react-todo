@@ -8,11 +8,13 @@ const AllTasksPage = () => {
 
   return (
     <section className={classes.home}>
-      <TaskGroup
+      ALL TASKS DOESN'T SORT. FIX IT
+      {/* <TaskGroup
         groupTitle="All Tasks"
         tasks={taskCtx.data.tasks}
-        sortBy="priority"
-      />
+        sortBy={project.sortedBy}
+
+      /> */}
     </section>
   );
 };
