@@ -16,11 +16,7 @@ const TodoItem = (props) => {
   };
 
   const checkboxHandler = () => {
-    if (props.complete) {
-      taskCtx.markTaskIncomplete(props.id);
-    } else {
-      taskCtx.markTaskComplete(props.id);
-    }
+    taskCtx.toggleComplete(props.id);
   };
 
   return (

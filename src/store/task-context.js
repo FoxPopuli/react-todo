@@ -5,8 +5,7 @@ import DummyData from "../data/dummyData";
 const TaskContext = createContext({
   data: [],
   // For autocompletion
-  markTaskComplete: (id) => {},
-  markTaskIncomplete: (id) => {},
+  toggleComplete: (id) => {},
   removeTask: (id) => {},
   addTask: (task) => {},
   setGroupSort: (groupId, sortString) => {},
@@ -29,40 +28,23 @@ export const TaskContextProvider = (props) => {
     });
   };
 
-  const markCompleteHandler = (id) => {
+  const toggleCompleteHandler = (id) => {
     // When the updated state value depends on the previous value,
     // pass an arrow function since useState doesn't update instantly and
     // can lead to desync otherwise (scheduler)
 
+    // Apparently when using useState on an object, prevData must be deconstructed
+    // and assigned, then modified and returned
+
+    // Modifying and returning pevData doesn't rerender
+    // components using this context
+
+    // This doesn't apply when using useState on arrays
+
     setData((prevData) => {
       const newData = { ...prevData };
       const newTasks = prevData.tasks.map((task) => {
-        if (task.id === id) {
-          task.complete = true;
-        }
-        return task;
-      });
-
-      newData.tasks = newTasks;
-      return newData;
-    });
-  };
-
-  const markIncompleteHandler = (id) => {
-    setData((prevData) => {
-      // Apparently when using useState on an object, prevData must be deconstructed
-      // and assigned, then modified and returned
-
-      // Modifying and returning pevData doesn't rerender
-      // components using this context
-
-      // This doesn't apply when using useState on arrays
-
-      const newData = { ...prevData };
-      const newTasks = prevData.tasks.map((task) => {
-        if (task.id === id) {
-          task.complete = false;
-        }
+        if (task.id === id) task.complete = !task.complete;
         return task;
       });
 
@@ -87,8 +69,7 @@ export const TaskContextProvider = (props) => {
   const context = {
     data,
     setGroupSort,
-    markTaskComplete: markCompleteHandler,
-    markTaskIncomplete: markIncompleteHandler,
+    toggleComplete: toggleCompleteHandler,
     removeTask: removeTaskHandler,
     addTask: addTaskHandler,
   };
