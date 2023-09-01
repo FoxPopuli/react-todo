@@ -1,10 +1,10 @@
 import TodoList from "../../TodoList/TodoList";
 import classes from "./TaskGroup.module.css";
 
-import helperFunctions from "../../../helperFunctions";
+import { sortGroup } from "../../../helperFunctions";
 
 const TaskGroup = (props) => {
-  const sortedTasks = helperFunctions.sortGroup(props.tasks, props.sortBy);
+  const sortedTasks = sortGroup(props.tasks, props.sortBy);
 
   return (
     <div className={classes.taskGroup}>

@@ -4,7 +4,7 @@ import Button from "../UI/Button/Button";
 import PriorityMarker from "../UI/PriorityMarker/PriorityMarker";
 import Checkbox from "../UI/Checkbox/Checkbox";
 import { useContext } from "react";
-import helperFunctions from "../../helperFunctions";
+import { parseDate } from "../../helperFunctions";
 
 import TaskContext from "../../store/task-context";
 
@@ -39,7 +39,7 @@ const TodoItem = (props) => {
                 props.complete ? classes.dueDateChecked : classes.dueDate
               }
             >
-              {helperFunctions.parseDate(props.dueDate)}
+              {parseDate(props.dueDate)}
             </i>
           </div>
         </div>

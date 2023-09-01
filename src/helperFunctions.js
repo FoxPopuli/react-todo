@@ -49,5 +49,4 @@ const sortGroup = (group, sortString) => {
   }
   return sortedTasks;
 };
-const helperFunctions = { parseDate, sortGroup };
-export default helperFunctions;
+export { parseDate, sortGroup };
