@@ -31,8 +31,6 @@ export const TaskContextProvider = (props) => {
     });
   };
 
-  const navToProjectHandler = (projId) => {};
-
   const markIncompleteHandler = (id) => {
     setTasks((prevTasks) => {
       return prevTasks.map((task) => {
