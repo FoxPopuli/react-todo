@@ -8,7 +8,7 @@ const AllTasksPage = () => {
 
   return (
     <section className={classes.home}>
-      ALL TASKS DOESN'T SORT. FIX IT
+      ALL TASKS DOESN'T SORT. FIX IT ALSO ROLL BACK MERGE INTO MAIN
       {/* <TaskGroup
         groupTitle="All Tasks"
         tasks={taskCtx.data.tasks}
