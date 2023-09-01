@@ -9,10 +9,25 @@ const TaskContext = createContext({
   markTaskIncomplete: (id) => {},
   removeTask: (id) => {},
   addTask: (task) => {},
+  setGroupSort: (groupId, sortString) => {},
 });
 
 export const TaskContextProvider = (props) => {
   const [data, setData] = useState(DummyData);
+
+  const setGroupSort = (groupId, sortString) => {
+    setData((prevData) => {
+      const newData = { ...prevData };
+      const newProjects = prevData.projects.map((project) => {
+        if (project.projId === groupId) {
+          project.sortedBy = sortString;
+        }
+        return project;
+      });
+      newData.projects = newProjects;
+      return newProjects;
+    });
+  };
 
   const markCompleteHandler = (id) => {
     // When the updated state value depends on the previous value,
@@ -71,6 +86,7 @@ export const TaskContextProvider = (props) => {
 
   const context = {
     data,
+    setGroupSort,
     markTaskComplete: markCompleteHandler,
     markTaskIncomplete: markIncompleteHandler,
     removeTask: removeTaskHandler,
