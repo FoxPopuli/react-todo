@@ -10,6 +10,7 @@ const TaskGroup = (props) => {
 
   const taskCtx = useContext(TaskContext);
   const placeholder = (sortString) => {
+    console.log(props.groupId);
     taskCtx.setGroupSort(props.groupId, sortString);
   };
   return (

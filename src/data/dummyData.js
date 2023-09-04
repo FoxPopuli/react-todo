@@ -70,6 +70,12 @@ DummyData.tasks = [
 
 DummyData.projects = [
   {
+    title: "General",
+    projId: 0,
+    deadLine: new Date(2023, 9, 2),
+    sortedBy: "priority",
+  },
+  {
     title: "Chores",
     deadLine: new Date(2023, 9, 2),
     projId: 1,
