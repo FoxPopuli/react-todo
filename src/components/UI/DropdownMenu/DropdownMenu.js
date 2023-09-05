@@ -18,7 +18,8 @@ const DropdownMenu = (props) => {
     <div className={classes.dropdown}>
       <div className={classes.label}>{props.label}</div>
       <div onClick={showDropdownHandler} className={classes.currentOption}>
-        {currentOption}
+        <span>{currentOption}</span>
+        <i className={isActive ? classes.arrowDown : classes.arrowRight}></i>
       </div>
 
       <ul className={isActive ? classes.containerActive : classes.container}>
