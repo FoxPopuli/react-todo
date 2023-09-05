@@ -1,24 +1,21 @@
-import { capitalize } from "../../../helperFunctions";
 import classes from "./NavDropdown.module.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const NavDropdown = (props) => {
   const [isActive, setIsActive] = useState(false);
-  const [currentOption, setCurrentOption] = useState(props.options[0]);
 
   const showDropdownHandler = () => {
     setIsActive(!isActive);
   };
 
   const selectOptionHandler = (e) => {
-    setCurrentOption(e.target.textContent);
     setIsActive(false);
-    props.onDropdownChange(e.target.textContent);
+    // props.onDropdownChange(e.target.textContent);
   };
   return (
     <div className={classes.dropdown}>
-      <div className={classes.label}>{props.label}</div>
       <div onClick={showDropdownHandler} className={classes.currentOption}>
-        <span>{currentOption}</span>
+        <span>{props.title}</span>
         <i className={isActive ? classes.arrowDown : classes.arrowRight}></i>
       </div>
 
@@ -27,11 +24,11 @@ const NavDropdown = (props) => {
           return (
             <li
               onClick={selectOptionHandler}
-              value={option}
-              key={option}
+              value={option.value}
+              key={option.value}
               className={classes.listItem}
             >
-              {option}
+              <Link to={option.link}>{option.value}</Link>
             </li>
           );
         })}

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import classes from "./MainNav.module.css";
+import NavDropdown from "../NavDropdown/NavDropdown";
 
 const MainNav = () => {
   return (
@@ -15,7 +16,19 @@ const MainNav = () => {
           <Link to="/all-projects">All Projects</Link>
         </li>
         <li>
-          <Link to="/new-task">Add New</Link>
+          <NavDropdown
+            options={[
+              {
+                value: "Project",
+                link: "/new-task",
+              },
+              {
+                value: "Task",
+                link: "/new-task",
+              },
+            ]}
+            title="Add New"
+          />
         </li>
       </ul>
     </nav>

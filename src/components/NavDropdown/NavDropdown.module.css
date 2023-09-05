@@ -4,7 +4,7 @@
 
 .containerActive {
   position: absolute;
-  margin: 120px 0 0 60px;
+  margin: 120px 0 0 0;
 }
 
 .listItem {
@@ -12,7 +12,7 @@
   border: 1px solid darkblue;
   padding: 5px 8px;
   background-color: navy;
-  width: 90px;
+  /* width: 90px; */
   color: white;
   cursor: pointer;
 }
@@ -30,14 +30,14 @@
   /* border: 1px solid ; */
   padding: 5px;
   background-color: navy;
-  width: 90px;
+  /* width: 100px; */
   display: flex;
   align-items: center;
   padding: 5px 8px;
   cursor: pointer;
 }
 .currentOption span {
-  margin-right: auto;
+  margin-right: 10px;
 }
 
 .arrowDown {
