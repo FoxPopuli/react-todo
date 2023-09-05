@@ -32,15 +32,15 @@ const sortGroup = (group, sortString) => {
   let arrClone = [...group];
   let sortedTasks;
   switch (sortString) {
-    case "alpha":
+    case "Alpha":
       sortedTasks = arrClone.sort((a, b) => {
         const titleA = a.title.toUpperCase();
         const titleB = b.title.toUpperCase();
         return titleA < titleB ? -1 : titleA > titleB ? 1 : 0;
       });
       break;
-    case "priority":
-      sortedTasks = arrClone.sort((a, b) => a.priority - b.priority);
+    case "Priority":
+      sortedTasks = arrClone.sort((a, b) => b.priority - a.priority);
       break;
     case "date":
     default:

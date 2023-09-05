@@ -1,17 +1,12 @@
-.dropdown label {
-  margin-right: 10px;
-}
-
-.dropdown select option {
-  font-size: 200px;
-}
-
 .container {
   display: none;
 }
 
 .containerActive {
-  display: block;
+  position: absolute;
+  margin: 20px 0 0 60px;
+
+  /* display: flex; */
 }
 
 .listItem {
@@ -19,4 +14,15 @@
   border: 1px solid #ccc;
   margin: 5px 0;
   padding: 5px;
+  background-color: #fff;
+  width: 80px;
+}
+
+.dropdown {
+  display: flex;
+  width: 120px;
+}
+
+.label {
+  margin-right: 5px;
 }

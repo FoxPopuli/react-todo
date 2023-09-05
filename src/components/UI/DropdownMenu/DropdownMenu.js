@@ -13,13 +13,14 @@ const DropdownMenu = (props) => {
     setCurrentOption(e.target.textContent);
     setIsActive(false);
     props.onDropdownChange(e.target.textContent);
-    // console.log(e.target.textContent);
   };
   return (
     <div className={classes.dropdown}>
+      <div className={classes.label}>{props.label}</div>
       <div onClick={showDropdownHandler} className={classes.title}>
         {currentOption}
       </div>
+
       <ul className={isActive ? classes.containerActive : classes.container}>
         {props.options.map((option) => {
           return (
@@ -36,25 +37,6 @@ const DropdownMenu = (props) => {
       </ul>
     </div>
   );
-
-  //   const dropdownChangeHandler = (event) => {
-  //     props.onDropdownChange(event.target.value);
-  //   };
-  //   return (
-  //     <div className={classes.dropdown}>
-  //       <label className={classes.label}>{props.title}</label>
-
-  //       <select onChange={dropdownChangeHandler}>
-  //         {props.options.map((option) => {
-  //           return (
-  //             <option value={option} key={option}>
-  //               {capitalize(option)}
-  //             </option>
-  //           );
-  //         })}
-  //       </select>
-  //     </div>
-  //   );
 };
 
 export default DropdownMenu;
