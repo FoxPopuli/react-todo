@@ -32,7 +32,7 @@ const sortGroup = (group, sortString) => {
   let arrClone = [...group];
   let sortedTasks;
   switch (sortString) {
-    case "Alpha":
+    case "ABC":
       sortedTasks = arrClone.sort((a, b) => {
         const titleA = a.title.toUpperCase();
         const titleB = b.title.toUpperCase();

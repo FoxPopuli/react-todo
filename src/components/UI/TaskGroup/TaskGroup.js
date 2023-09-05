@@ -21,7 +21,7 @@ const TaskGroup = (props) => {
         {/* <SortMenu sortGroup={placeholder} /> */}
         <DropdownMenu
           label="Sort by: "
-          options={["Priority", "Alpha", "Date"]}
+          options={["Priority", "ABC", "Date"]}
           onDropdownChange={placeholder}
           // label="Test dropdown"
         />

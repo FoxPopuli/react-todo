@@ -13,7 +13,7 @@ DummyData.tasks = [
     projId: 1,
   },
   {
-    title: "Do laundry",
+    title: "Wash laundry",
     id: Math.floor(Math.random() * 10000),
     dateAdded: new Date(),
     dueDate: new Date(2023, 9, 12),
@@ -73,19 +73,19 @@ DummyData.projects = [
     title: "General",
     projId: 0,
     deadLine: new Date(2023, 9, 2),
-    sortedBy: "priority",
+    sortedBy: "Priority",
   },
   {
     title: "Chores",
     deadLine: new Date(2023, 9, 2),
     projId: 1,
-    sortedBy: "priority",
+    sortedBy: "Priority",
   },
   {
     title: "Build House",
     deadLine: new Date(2024, 9, 2),
     projId: 2,
-    sortedBy: "priority",
+    sortedBy: "Priority",
   },
 ];
 

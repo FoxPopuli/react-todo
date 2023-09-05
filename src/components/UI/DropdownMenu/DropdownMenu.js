@@ -17,7 +17,7 @@ const DropdownMenu = (props) => {
   return (
     <div className={classes.dropdown}>
       <div className={classes.label}>{props.label}</div>
-      <div onClick={showDropdownHandler} className={classes.title}>
+      <div onClick={showDropdownHandler} className={classes.currentOption}>
         {currentOption}
       </div>
 
