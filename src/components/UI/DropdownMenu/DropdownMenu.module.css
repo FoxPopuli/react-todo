@@ -1,0 +1,22 @@
+.dropdown label {
+  margin-right: 10px;
+}
+
+.dropdown select option {
+  font-size: 200px;
+}
+
+.container {
+  display: none;
+}
+
+.containerActive {
+  display: block;
+}
+
+.listItem {
+  list-style: none;
+  border: 1px solid #ccc;
+  margin: 5px 0;
+  padding: 5px;
+}

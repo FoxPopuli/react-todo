@@ -8,3 +8,8 @@
   font-size: 2rem;
   padding-left: 20px;
 }
+
+.Dropdown {
+  flex: 1;
+  background-color: green;
+}
