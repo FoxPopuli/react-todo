@@ -9,7 +9,6 @@ import { findProjectId } from "../../helperFunctions";
 
 const NewTaskForm = () => {
   const titleInputRef = useRef();
-  const priorityInputRef = useRef();
   const dueDateInputRef = useRef();
 
   const taskCtx = useContext(TaskContext);
@@ -17,6 +16,7 @@ const NewTaskForm = () => {
   const navigate = useNavigate();
 
   let currentProject = "General";
+  let currentPriority = "Low";
   const submitHandler = (event) => {
     event.preventDefault();
     console.log(findProjectId("Chores", taskCtx.data.projects));
@@ -24,7 +24,7 @@ const NewTaskForm = () => {
     const inputs = {
       title: titleInputRef.current.value,
       id: Math.floor(Math.random() * 100000),
-      priority: priorityInputRef.current.value,
+      priority: currentPriority,
       dateAdded: new Date(),
       dueDate: new Date(dueDateInputRef.current.value.split("-")),
       complete: false,
@@ -44,6 +44,21 @@ const NewTaskForm = () => {
     currentProject = projectTitle;
   };
 
+  const priorityChangeHandler = (projectPriority) => {
+    switch (projectPriority) {
+      case "High":
+        currentPriority = 2;
+        break;
+      case "Urgent":
+        currentPriority = 3;
+        break;
+      case "Low":
+      default:
+        currentPriority = 1;
+        break;
+    }
+  };
+
   const projectTitles = [...taskCtx.data.projects].map(
     (project) => project.title
   );
@@ -58,7 +73,10 @@ const NewTaskForm = () => {
         </div>
         <div className={classes.formSection}>
           <label htmlFor="priority">Priority</label>
-          <input type="number" ref={priorityInputRef}></input>
+          <DropdownMenu
+            options={["Low", "High", "Urgent"]}
+            onDropdownChange={priorityChangeHandler}
+          />
         </div>
         <div className={classes.formSection}>
           <label htmlFor="due-date">Due Date</label>
