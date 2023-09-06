@@ -9,8 +9,7 @@ const TaskGroup = (props) => {
   const sortedTasks = sortGroup(props.tasks, props.sortBy);
 
   const taskCtx = useContext(TaskContext);
-  const placeholder = (sortString) => {
-    console.log(props.groupId);
+  const changeGroupSortHandler = (sortString) => {
     taskCtx.setGroupSort(props.groupId, sortString);
   };
   return (
@@ -20,7 +19,7 @@ const TaskGroup = (props) => {
         <DropdownMenu
           label="Sort by "
           options={["Priority", "ABC", "Date"]}
-          onDropdownChange={placeholder}
+          onDropdownChange={changeGroupSortHandler}
         />
       </div>
 

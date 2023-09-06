@@ -37,7 +37,7 @@ DummyData.tasks = [
     dueDate: new Date(2023, 7, 10),
     priority: 2,
     complete: false,
-    projId: 1,
+    projId: 0,
   },
   {
     title: "Fetch bricks",
