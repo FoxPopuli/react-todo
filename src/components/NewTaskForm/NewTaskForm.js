@@ -4,6 +4,8 @@ import Button from "../UI/Button/Button";
 import classes from "./NewTaskForm.module.css";
 import TaskContext from "../../store/task-context";
 import { useNavigate } from "react-router-dom";
+import DropdownMenu from "../UI/DropdownMenu/DropdownMenu";
+import { findProjectId } from "../../helperFunctions";
 
 const NewTaskForm = () => {
   const titleInputRef = useRef();
@@ -14,19 +16,22 @@ const NewTaskForm = () => {
 
   const navigate = useNavigate();
 
+  let currentProject = "General";
   const submitHandler = (event) => {
     event.preventDefault();
+    console.log(findProjectId("Chores", taskCtx.data.projects));
 
     const inputs = {
       title: titleInputRef.current.value,
-      id: Math.floor(Math.random() * 1000),
+      id: Math.floor(Math.random() * 100000),
       priority: priorityInputRef.current.value,
       dateAdded: new Date(),
       dueDate: new Date(dueDateInputRef.current.value.split("-")),
       complete: false,
-      projId: 1, // FOR NOW
+      projId: findProjectId(currentProject, taskCtx.data.projects),
     };
     taskCtx.addTask(inputs);
+
     navigate("/");
   };
 
@@ -34,6 +39,14 @@ const NewTaskForm = () => {
     event.preventDefault();
     navigate("/");
   };
+
+  const projectChangeHandler = (projectTitle) => {
+    currentProject = projectTitle;
+  };
+
+  const projectTitles = [...taskCtx.data.projects].map(
+    (project) => project.title
+  );
 
   return (
     <Card>
@@ -50,6 +63,14 @@ const NewTaskForm = () => {
         <div className={classes.formSection}>
           <label htmlFor="due-date">Due Date</label>
           <input type="date" ref={dueDateInputRef}></input>
+        </div>
+        <div className={classes.formSection}>
+          <label htmlFor="due-date">Project</label>
+
+          <DropdownMenu
+            options={projectTitles}
+            onDropdownChange={projectChangeHandler}
+          />
         </div>
         <div className={classes.buttonContainer}>
           <Button onClick={cancelHandler} theme="light">

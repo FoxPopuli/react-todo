@@ -64,7 +64,12 @@ export const TaskContextProvider = (props) => {
   };
 
   const addTaskHandler = (task) => {
-    setData((prevData) => prevData.tasks.concat(task));
+    setData((prevData) => {
+      const newData = { ...prevData };
+      const newTasks = prevData.tasks.concat(task);
+      newData.tasks = newTasks;
+      return newData;
+    });
   };
 
   const addProjectHandler = (project) => {

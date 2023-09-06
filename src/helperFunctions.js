@@ -54,4 +54,17 @@ const capitalize = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
-export { parseDate, sortGroup, capitalize };
+const findProjectId = (projTitle, projects) => {
+  // returns project id matching projTitle
+  // allows user to assign projId to tasks in NewTaskForm
+  let id;
+  projects.forEach((project) => {
+    if (project.title === projTitle) {
+      console.log(project.projId);
+      id = project.projId;
+    }
+  });
+  return id;
+};
+
+export { parseDate, sortGroup, capitalize, findProjectId };
