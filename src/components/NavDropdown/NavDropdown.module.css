@@ -1,25 +1,32 @@
+.dropdown {
+  display: flex;
+  align-items: center;
+  color: var(--header-text);
+}
+
 .container {
   display: none;
 }
 
 .containerActive {
   position: absolute;
-  margin: 120px 0 0 0;
+  margin-top: 140px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 5px;
+  background-color: var(--main-dark);
+  width: 130px;
 }
 
 .listItem {
   list-style: none;
-  border: 1px solid darkblue;
   padding: 5px 8px;
-  background-color: navy;
-  /* width: 90px; */
-  color: white;
   cursor: pointer;
+  display: flex;
 }
 
-.dropdown {
-  display: flex;
-  align-items: center;
+.listItem a {
+  flex: 1;
 }
 
 .label {
@@ -27,22 +34,21 @@
 }
 
 .currentOption {
-  /* border: 1px solid ; */
   padding: 5px;
-  background-color: navy;
-  /* width: 100px; */
+  background-color: var(--main-dark);
   display: flex;
   align-items: center;
   padding: 5px 8px;
   cursor: pointer;
 }
+
 .currentOption span {
   margin-right: 10px;
 }
 
 .arrowDown {
   align-self: right;
-  border: solid white;
+  border: solid var(--header-text);
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
@@ -52,11 +58,10 @@
 }
 
 .arrowRight {
-  border: solid white;
+  border: solid var(--header-text);
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
-  margin-bottom: 2px;
 }

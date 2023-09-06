@@ -9,13 +9,13 @@ const MainNav = () => {
         <Link to="/">React Todo</Link>
       </h3>
       <ul className={classes.list}>
-        <li>
+        <li className={classes.headerLinks}>
           <Link to="/all-tasks">All Tasks</Link>
         </li>
-        <li>
+        <li className={classes.headerLinks}>
           <Link to="/all-projects">All Projects</Link>
         </li>
-        <li>
+        <li className={classes.headerLinks}>
           <NavDropdown
             options={[
               {

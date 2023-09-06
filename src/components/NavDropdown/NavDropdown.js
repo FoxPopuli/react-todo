@@ -10,7 +10,6 @@ const NavDropdown = (props) => {
 
   const selectOptionHandler = (e) => {
     setIsActive(false);
-    // props.onDropdownChange(e.target.textContent);
   };
   return (
     <div className={classes.dropdown}>

@@ -16,7 +16,7 @@
   margin-right: 50px;
 }
 
-.list li {
+.headerLinks {
   display: flex;
   align-items: center;
   margin-right: 15px;
