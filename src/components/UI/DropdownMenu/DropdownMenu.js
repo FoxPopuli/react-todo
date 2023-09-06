@@ -14,25 +14,26 @@ const DropdownMenu = (props) => {
   return (
     <div className={classes.dropdown}>
       <div className={classes.label}>{props.label}</div>
-      <div onClick={showDropdownHandler} className={classes.currentOption}>
-        <span>{currentOption}</span>
-        <i className={isActive ? classes.arrowDown : classes.arrowRight}></i>
+      <div>
+        <div onClick={showDropdownHandler} className={classes.currentOption}>
+          <span>{currentOption}</span>
+          <i className={isActive ? classes.arrowDown : classes.arrowRight}></i>
+        </div>
+        <ul className={isActive ? classes.containerActive : classes.container}>
+          {props.options.map((option) => {
+            return (
+              <li
+                onClick={selectOptionHandler}
+                value={option}
+                key={option}
+                className={classes.listItem}
+              >
+                {option}
+              </li>
+            );
+          })}
+        </ul>
       </div>
-
-      <ul className={isActive ? classes.containerActive : classes.container}>
-        {props.options.map((option) => {
-          return (
-            <li
-              onClick={selectOptionHandler}
-              value={option}
-              key={option}
-              className={classes.listItem}
-            >
-              {option}
-            </li>
-          );
-        })}
-      </ul>
     </div>
   );
 };
