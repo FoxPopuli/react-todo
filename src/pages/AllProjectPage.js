@@ -4,9 +4,8 @@ import { useContext } from "react";
 
 const AllProjectsPage = () => {
   const taskCtx = useContext(TaskContext);
-  // Filtered like this to exclude group 0
-  console.log(taskCtx.data.projects);
-  const projects = taskCtx.data.projects.filter((project) => project.projId);
+  const projects = taskCtx.data.projects;
+
   let currentProjectTasks;
   return (
     <ul>
