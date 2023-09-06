@@ -1,6 +1,6 @@
 import NewTaskForm from "../components/NewTaskForm/NewTaskForm";
 import classes from "./NewTaskPage.module.css";
-const NewTaskPage = (props) => {
+const NewTaskPage = () => {
   return (
     <section className={classes.main}>
       <NewTaskForm />

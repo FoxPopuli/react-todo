@@ -1,6 +1,6 @@
 import NewProjectForm from "../components/NewProjectForm/NewProjectForm";
 import classes from "./NewProjectPage.module.css";
-const NewProjectPage = (props) => {
+const NewProjectPage = () => {
   return (
     <section className={classes.main}>
       <NewProjectForm />
