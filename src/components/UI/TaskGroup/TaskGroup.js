@@ -1,6 +1,5 @@
 import TodoList from "../../TodoList/TodoList";
 import classes from "./TaskGroup.module.css";
-import SortMenu from "../../SortMenu/SortMenu";
 import { sortGroup } from "../../../helperFunctions";
 import { useContext } from "react";
 import TaskContext from "../../../store/task-context";
@@ -18,12 +17,10 @@ const TaskGroup = (props) => {
     <div className={classes.taskGroup}>
       <div className={classes.titleContainer}>
         <h3 className={classes.groupTitle}>{props.groupTitle}</h3>
-        {/* <SortMenu sortGroup={placeholder} /> */}
         <DropdownMenu
-          label="Sort by: "
+          label="Sort by "
           options={["Priority", "ABC", "Date"]}
           onDropdownChange={placeholder}
-          // label="Test dropdown"
         />
       </div>
 

@@ -1,10 +1,8 @@
 import DropdownMenu from "../components/UI/DropdownMenu/DropdownMenu";
-import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-import classes from "./HomePage.module.css";
 const HomePage = (props) => {
-  const logDropdownValue = (e) => {
-    console.log(e);
+  const logDropdownValue = (value) => {
+    console.log(value);
     return;
   };
   return (

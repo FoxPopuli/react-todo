@@ -1,13 +1,10 @@
-import { capitalize } from "../../../helperFunctions";
 import classes from "./DropdownMenu.module.css";
 import { useState } from "react";
 const DropdownMenu = (props) => {
   const [isActive, setIsActive] = useState(false);
   const [currentOption, setCurrentOption] = useState(props.options[0]);
 
-  const showDropdownHandler = () => {
-    setIsActive(!isActive);
-  };
+  const showDropdownHandler = () => setIsActive(!isActive);
 
   const selectOptionHandler = (e) => {
     setCurrentOption(e.target.textContent);
