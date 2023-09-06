@@ -8,6 +8,7 @@ const TaskContext = createContext({
   toggleComplete: (id) => {},
   removeTask: (id) => {},
   addTask: (task) => {},
+  addProject: (project) => {},
   setGroupSort: (groupId, sortString) => {},
 });
 
@@ -66,12 +67,22 @@ export const TaskContextProvider = (props) => {
     setData((prevData) => prevData.tasks.concat(task));
   };
 
+  const addProjectHandler = (project) => {
+    setData((prevData) => {
+      const newData = { ...prevData };
+      const newProjects = prevData.projects.concat(project);
+      newData.projects = newProjects;
+      return newData;
+    });
+  };
+
   const context = {
     data,
     setGroupSort,
     toggleComplete: toggleCompleteHandler,
     removeTask: removeTaskHandler,
     addTask: addTaskHandler,
+    addProject: addProjectHandler,
   };
 
   return (

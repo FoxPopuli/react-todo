@@ -1,13 +1,12 @@
 import { useRef, useContext } from "react";
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
-import classes from "./NewTaskForm.module.css";
+import classes from "./NewProjectForm.module.css";
 import TaskContext from "../../store/task-context";
 import { useNavigate } from "react-router-dom";
 
-const NewTaskForm = () => {
+const NewProjectForm = () => {
   const titleInputRef = useRef();
-  const priorityInputRef = useRef();
   const dueDateInputRef = useRef();
 
   const taskCtx = useContext(TaskContext);
@@ -19,33 +18,30 @@ const NewTaskForm = () => {
 
     const inputs = {
       title: titleInputRef.current.value,
-      id: Math.floor(Math.random() * 1000),
-      priority: priorityInputRef.current.value,
+      projd: Math.floor(Math.random() * 100000),
       dateAdded: new Date(),
       dueDate: new Date(dueDateInputRef.current.value.split("-")),
       complete: false,
-      projId: 1, // FOR NOW
+      sortedBy: "Priority",
     };
-    taskCtx.addTask(inputs);
-    navigate("/");
+
+    console.log(inputs);
+    taskCtx.addProject(inputs);
+    navigate("/all-projects");
   };
 
   const cancelHandler = (event) => {
     event.preventDefault();
-    navigate("/");
+    navigate("/all-projects");
   };
 
   return (
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
-        <h2>Add New Task</h2>
+        <h2>Add New Project</h2>
         <div className={classes.formSection}>
           <label htmlFor="title">Title</label>
           <input type="text" required ref={titleInputRef}></input>
-        </div>
-        <div className={classes.formSection}>
-          <label htmlFor="priority">Priority</label>
-          <input type="number" ref={priorityInputRef}></input>
         </div>
         <div className={classes.formSection}>
           <label htmlFor="due-date">Due Date</label>
@@ -64,4 +60,4 @@ const NewTaskForm = () => {
   );
 };
 
-export default NewTaskForm;
+export default NewProjectForm;

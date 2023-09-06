@@ -20,7 +20,7 @@ const MainNav = () => {
             options={[
               {
                 value: "Project",
-                link: "/new-task",
+                link: "/new-project",
               },
               {
                 value: "Task",

@@ -3,7 +3,7 @@ import classes from "./NewTaskPage.module.css";
 const NewTaskPage = (props) => {
   return (
     <section className={classes.main}>
-      <NewTaskForm onAddTask={props.onAddTask} />
+      <NewTaskForm />
     </section>
   );
 };
