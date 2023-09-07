@@ -6,7 +6,7 @@ import TaskContext from "../../store/task-context";
 import { useNavigate } from "react-router-dom";
 import DropdownMenu from "../UI/DropdownMenu/DropdownMenu";
 import { findProjectId } from "../../helperFunctions";
-import dropdownStyle from "../UI/DropdownMenu/ExtDropdownMenu.module.css";
+import dropdownStyle from "../UI/DropdownMenu/NewTaskFormDropdown.module.css";
 
 const NewTaskForm = () => {
   const titleInputRef = useRef();
@@ -90,6 +90,7 @@ const NewTaskForm = () => {
           <DropdownMenu
             options={projectTitles}
             onDropdownChange={projectChangeHandler}
+            styles={dropdownStyle}
           />
         </div>
         <div className={classes.buttonContainer}>

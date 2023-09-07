@@ -1,7 +1,6 @@
 .dropdown {
   display: flex;
   align-items: center;
-  /* margin-right: 10px; */
 }
 
 .label {
@@ -9,11 +8,11 @@
 }
 
 .container {
-  display: none;
+  position: absolute;
 }
 
-.containerActive {
-  position: absolute;
+.container.hidden {
+  display: none;
 }
 
 .listItem {
@@ -24,7 +23,9 @@
 
   padding: 5px 8px;
   background-color: #fff;
-  width: 90px;
+  width: 185px;
+  height: 36px;
+
   cursor: pointer;
 }
 
@@ -36,7 +37,8 @@
   justify-content: space-between;
   border: 1px solid #ccc;
   background-color: #fff;
-  width: 90px;
+  width: 185px;
+  height: 36px;
   display: flex;
   align-items: center;
   padding: 5px 8px;
@@ -44,34 +46,25 @@
   border-radius: 5px;
 }
 
-.currentOptionActive {
-  justify-content: space-between;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  width: 90px;
-  display: flex;
-  align-items: center;
-  padding: 5px 8px;
-  cursor: pointer;
+.currentOption.open {
   border-radius: 5px 5px 0 0;
 }
 
-.arrowDown {
+.arrow {
   align-self: right;
   border: solid #454545;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
+}
+
+.arrow.down {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   margin-bottom: 4px;
 }
 
-.arrowRight {
-  border: solid #454545;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
+.arrow.right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   margin-bottom: 2px;
