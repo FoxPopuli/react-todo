@@ -31,7 +31,6 @@ const NavDropdown = (props) => {
               onClick={selectOptionHandler}
               value={option.value}
               key={option.value}
-              className={classes.listItem}
             >
               <Link to={option.link}>{option.value}</Link>
             </li>

@@ -1,6 +1,7 @@
 .dropdown {
   display: flex;
   align-items: center;
+  /* margin-right: 10px; */
 }
 
 .label {
@@ -8,11 +9,11 @@
 }
 
 .container {
-  position: absolute;
+  display: none;
 }
 
-.container.hidden {
-  display: none;
+.containerActive {
+  position: absolute;
 }
 
 .listItem {
@@ -43,25 +44,34 @@
   border-radius: 5px;
 }
 
-.currentOption.open {
+.currentOptionActive {
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  width: 90px;
+  display: flex;
+  align-items: center;
+  padding: 5px 8px;
+  cursor: pointer;
   border-radius: 5px 5px 0 0;
 }
 
-.arrow {
+.arrowDown {
   align-self: right;
   border: solid #454545;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
-}
-
-.arrow.down {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   margin-bottom: 4px;
 }
 
-.arrow.right {
+.arrowRight {
+  border: solid #454545;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   margin-bottom: 2px;

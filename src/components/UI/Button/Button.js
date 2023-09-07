@@ -7,10 +7,9 @@ const Button = (props) => {
       theme = classes.lightTheme;
       break;
     case "blue":
-      theme = classes.blueTheme;
-      break;
     default:
       theme = classes.blueTheme;
+      break;
   }
 
   return (

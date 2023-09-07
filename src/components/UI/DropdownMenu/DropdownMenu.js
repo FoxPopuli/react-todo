@@ -4,6 +4,8 @@ const DropdownMenu = (props) => {
   const [isActive, setIsActive] = useState(false);
   const [currentOption, setCurrentOption] = useState(props.options[0]);
 
+  //   if (props.styles) classes = props.styles;
+
   const showDropdownHandler = () => setIsActive(!isActive);
 
   const selectOptionHandler = (e) => {
@@ -17,14 +19,22 @@ const DropdownMenu = (props) => {
       <div>
         <div
           onClick={showDropdownHandler}
-          className={
-            isActive ? classes.currentOptionActive : classes.currentOption
-          }
+          className={`${classes.currentOption} ${
+            isActive ? classes.open : null
+          }`}
         >
           <span>{currentOption}</span>
-          <i className={isActive ? classes.arrowDown : classes.arrowRight}></i>
+          <i
+            className={`${classes.arrow} ${
+              isActive ? classes.down : classes.right
+            }`}
+          ></i>
         </div>
-        <ul className={isActive ? classes.containerActive : classes.container}>
+        <ul
+          className={`${classes.container} ${
+            !isActive ? classes.hidden : null
+          }`}
+        >
           {props.options.map((option) => {
             return (
               <li

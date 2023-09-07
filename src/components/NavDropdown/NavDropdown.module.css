@@ -18,13 +18,13 @@
   display: none;
 }
 
-.listItem {
+.dropdown li {
   list-style: none;
   cursor: pointer;
   display: flex;
 }
 
-.listItem a {
+.dropdown li a {
   padding: 5px 8px;
   flex: 1;
 }
