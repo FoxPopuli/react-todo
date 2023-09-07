@@ -15,10 +15,16 @@ const NavDropdown = (props) => {
     <div className={classes.dropdown}>
       <div onClick={showDropdownHandler} className={classes.currentOption}>
         <span>{props.title}</span>
-        <i className={isActive ? classes.arrowDown : classes.arrowRight}></i>
+        <i
+          className={`${classes.arrow} ${
+            isActive ? classes.down : classes.right
+          }`}
+        ></i>
       </div>
 
-      <ul className={isActive ? classes.containerActive : classes.container}>
+      <ul
+        className={`${classes.container} ${!isActive ? classes.hidden : null}`}
+      >
         {props.options.map((option) => {
           return (
             <li
