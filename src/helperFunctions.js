@@ -67,4 +67,13 @@ const findProjectId = (projTitle, projects) => {
   return id;
 };
 
-export { parseDate, sortGroup, capitalize, findProjectId };
+const mergeStyles = (incomingStyles, oldStyles) => {
+  const newStyles = { ...oldStyles };
+  console.log(newStyles);
+  for (let key in incomingStyles) {
+    newStyles[key] = incomingStyles[key];
+  }
+  return newStyles;
+};
+
+export { parseDate, sortGroup, capitalize, findProjectId, mergeStyles };

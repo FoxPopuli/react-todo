@@ -1,0 +1,29 @@
+.currentOption {
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  width: 185px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  padding: 5px 8px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.listItem {
+  list-style: none;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+
+  display: flex;
+  align-items: center;
+
+  padding: 5px 8px;
+  background-color: #fff;
+  width: 185px;
+  height: 36px;
+
+  cursor: pointer;
+}

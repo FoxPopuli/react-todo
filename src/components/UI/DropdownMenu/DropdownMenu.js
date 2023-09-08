@@ -1,10 +1,13 @@
 import classes from "./DropdownMenu.module.css";
 import { useState } from "react";
+
+import { mergeStyles } from "../../../helperFunctions";
 const DropdownMenu = (props) => {
   const [isActive, setIsActive] = useState(false);
   const [currentOption, setCurrentOption] = useState(props.options[0]);
 
-  let activeClass = props.styles ? props.styles : classes;
+  let activeClass = mergeStyles(props.styles, classes);
+  console.log(activeClass);
 
   const showDropdownHandler = () => setIsActive(!isActive);
 

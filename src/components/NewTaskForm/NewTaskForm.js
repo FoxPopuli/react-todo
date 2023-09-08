@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import DropdownMenu from "../UI/DropdownMenu/DropdownMenu";
 import { findProjectId } from "../../helperFunctions";
 import dropdownStyle from "../UI/DropdownMenu/NewTaskFormDropdown.module.css";
+import testStyles from "./DropdownStyles.module.css";
 
 const NewTaskForm = () => {
   const titleInputRef = useRef();
@@ -20,7 +21,6 @@ const NewTaskForm = () => {
   let currentPriority = "Low";
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(findProjectId("Chores", taskCtx.data.projects));
 
     const inputs = {
       title: titleInputRef.current.value,
@@ -33,12 +33,12 @@ const NewTaskForm = () => {
     };
     taskCtx.addTask(inputs);
 
-    navigate("/");
+    navigate("/all-projects");
   };
 
   const cancelHandler = (event) => {
     event.preventDefault();
-    navigate("/");
+    navigate("/all-projects");
   };
 
   const projectChangeHandler = (projectTitle) => {
@@ -77,7 +77,8 @@ const NewTaskForm = () => {
           <DropdownMenu
             options={["Low", "High", "Urgent"]}
             onDropdownChange={priorityChangeHandler}
-            styles={dropdownStyle}
+            // styles={dropdownStyle}
+            styles={testStyles}
           />
         </div>
         <div className={classes.formSection}>
