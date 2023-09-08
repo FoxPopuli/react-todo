@@ -5,10 +5,12 @@
   height: 18px;
   border: 1px solid var(--main-dark);
   cursor: pointer;
+  transition: background-color 0.1s ease-in-out;
 }
 
 .checkbox:hover {
   background-color: var(--faded-blue);
+  transition: background-color 0.1s ease-in-out;
 }
 
 .checkbox.checked {
