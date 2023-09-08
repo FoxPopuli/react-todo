@@ -1,11 +1,16 @@
-.checked,
-.unchecked {
+.checkbox {
+  background-color: #fff;
   border-radius: 100%;
   width: 18px;
   height: 18px;
-  border: 1px solid navy;
+  border: 1px solid var(--main-dark);
+  cursor: pointer;
 }
 
-.checked {
-  background-color: blue;
+.checkbox:hover {
+  background-color: var(--faded-blue);
+}
+
+.checkbox.checked {
+  background-color: var(--main-highlight);
 }

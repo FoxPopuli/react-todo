@@ -8,6 +8,10 @@
   justify-content: space-between;
 }
 
+.main.checked {
+  opacity: 50%;
+}
+
 .main input {
   border-radius: 100%;
   margin-right: 15px;

@@ -6,7 +6,9 @@ const Checkbox = (props) => {
   };
   return (
     <div
-      className={props.isChecked ? classes.checked : classes.unchecked}
+      className={`${classes.checkbox} ${
+        props.isChecked ? classes.checked : null
+      }`}
       onClick={clickHandler}
     ></div>
   );

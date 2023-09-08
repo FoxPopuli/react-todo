@@ -9,13 +9,13 @@
 
 .lightTheme {
   background-color: white;
-  color: darkblue;
-  border: 1px solid darkblue;
+  color: var(--main-dark);
+  border: 1px solid var(--main-dark);
 }
 
 .lightTheme:hover {
-  color: blue;
-  border: 1px solid blue;
+  color: var(--main-highlight);
+  /* border: 1px solid blue; */
 }
 
 .blueTheme {

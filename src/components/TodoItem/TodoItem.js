@@ -21,7 +21,9 @@ const TodoItem = (props) => {
 
   return (
     <Card>
-      <li className={classes.main}>
+      <li
+        className={`${classes.main} ${props.complete ? classes.checked : null}`}
+      >
         <div className={classes.leftGroup}>
           <Checkbox onClick={checkboxHandler} isChecked={props.complete} />
           <div className={classes.infoContainer}>
@@ -43,7 +45,7 @@ const TodoItem = (props) => {
         </div>
 
         <div className={classes.rightGroup}>
-          <PriorityMarker priority={props.priority} checked={props.complete} />
+          <PriorityMarker priority={props.priority} />
           <Button onClick={removeItemHandler}>Remove</Button>
         </div>
       </li>
