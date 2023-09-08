@@ -69,7 +69,6 @@ const findProjectId = (projTitle, projects) => {
 
 const mergeStyles = (incomingStyles, oldStyles) => {
   const newStyles = { ...oldStyles };
-  console.log(newStyles);
   for (let key in incomingStyles) {
     newStyles[key] = incomingStyles[key];
   }

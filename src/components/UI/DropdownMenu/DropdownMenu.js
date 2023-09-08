@@ -1,13 +1,26 @@
 import classes from "./DropdownMenu.module.css";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { mergeStyles } from "../../../helperFunctions";
 const DropdownMenu = (props) => {
   const [isActive, setIsActive] = useState(false);
   const [currentOption, setCurrentOption] = useState(props.options[0]);
+  const btnRef = useRef();
+  useEffect(() => {
+    const closeDropdown = (e) => {
+      if (
+        e.composedPath()[0] !== btnRef.current &&
+        e.composedPath()[1] !== btnRef.current
+      ) {
+        setIsActive(false);
+      }
+    };
+    document.body.addEventListener("click", closeDropdown);
+
+    return () => document.body.removeEventListener("click", closeDropdown);
+  }, []);
 
   let activeClass = mergeStyles(props.styles, classes);
-  console.log(activeClass);
 
   const showDropdownHandler = () => setIsActive(!isActive);
 
@@ -25,6 +38,7 @@ const DropdownMenu = (props) => {
           className={`${activeClass.currentOption} ${
             isActive ? activeClass.open : null
           }`}
+          ref={btnRef}
         >
           <span>{currentOption}</span>
           <i
