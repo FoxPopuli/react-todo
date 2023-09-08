@@ -1,6 +1,7 @@
 .dropdown {
   display: flex;
   align-items: center;
+  z-index: 1;
   color: var(--header-text);
 }
 
