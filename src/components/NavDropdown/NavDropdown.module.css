@@ -35,7 +35,6 @@
 }
 
 .currentOption {
-  padding: 5px;
   background-color: var(--main-dark);
   display: flex;
   align-items: center;

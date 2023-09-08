@@ -22,7 +22,7 @@ const NavDropdown = (props) => {
     setIsActive(!isActive);
   };
 
-  const selectOptionHandler = (e) => {
+  const selectOptionHandler = () => {
     setIsActive(false);
   };
   return (
