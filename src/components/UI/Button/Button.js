@@ -1,19 +1,24 @@
 import classes from "./Button.module.css";
 
 const Button = (props) => {
-  let theme;
+  let subClass;
   switch (props.theme) {
     case "light":
-      theme = classes.lightTheme;
+      subClass = classes.light;
       break;
     case "blue":
     default:
-      theme = classes.blueTheme;
+      subClass = classes.blue;
       break;
   }
 
   return (
-    <button className={theme} onClick={props.onClick}>
+    <button
+      className={`${classes.button} ${
+        props.theme === "light" ? classes.light : classes.blue
+      }`}
+      onClick={props.onClick}
+    >
       {props.children}
     </button>
   );
