@@ -1,6 +1,5 @@
 .main {
   border-radius: 10px;
-  /* border: 1px black solid; */
 
   padding: 15px;
   margin: 15px 0;
@@ -16,7 +15,6 @@
 }
 
 .main button {
-  /* margin-left: auto; */
   padding: 5px;
   border-radius: 5px;
 }
@@ -26,10 +24,9 @@
   font-size: 22px;
 }
 
-.titleChecked {
-  font-weight: bold;
-  font-size: 22px;
+.title.checked {
   text-decoration: line-through;
+  color: rgb(79, 79, 79);
 }
 
 .leftGroup,
@@ -43,9 +40,7 @@
   color: rgb(79, 79, 79);
 }
 
-.dueDateChecked {
-  font-size: 14px;
-  color: rgb(79, 79, 79);
+.dueDate.checked {
   text-decoration: line-through;
 }
 
@@ -59,7 +54,6 @@
 
 .titleChecked,
 .dueDateChecked {
-  /* color: green; */
   text-decoration: line-through;
   color: grey;
 }

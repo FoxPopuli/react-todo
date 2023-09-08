@@ -26,14 +26,16 @@ const TodoItem = (props) => {
           <Checkbox onClick={checkboxHandler} isChecked={props.complete} />
           <div className={classes.infoContainer}>
             <h3
-              className={props.complete ? classes.titleChecked : classes.title}
+              className={`${classes.title} ${
+                props.complete ? classes.checked : null
+              }`}
             >
               {props.title}
             </h3>
             <i
-              className={
-                props.complete ? classes.dueDateChecked : classes.dueDate
-              }
+              className={`${classes.dueDate} ${
+                props.complete ? classes.checked : null
+              }`}
             >
               {parseDate(props.dueDate)}
             </i>
@@ -41,7 +43,7 @@ const TodoItem = (props) => {
         </div>
 
         <div className={classes.rightGroup}>
-          <PriorityMarker priority={props.priority} />
+          <PriorityMarker priority={props.priority} checked={props.complete} />
           <Button onClick={removeItemHandler}>Remove</Button>
         </div>
       </li>
