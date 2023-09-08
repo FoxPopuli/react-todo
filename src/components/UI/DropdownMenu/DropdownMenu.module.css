@@ -10,10 +10,18 @@
 .container {
   position: absolute;
   z-index: 1;
+  opacity: 1;
+  height: auto;
+  transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  overflow: auto;
 }
 
 .container.hidden {
-  display: none;
+  opacity: 0;
+  height: 0px;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
 }
 
 .listItem {
@@ -60,10 +68,15 @@
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
   margin-bottom: 4px;
+  transition: transform 0.3s ease;
+  -webkit-transition: transform 0.3s ease;
 }
 
 .arrow.right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   margin-bottom: 2px;
+  transition: transform 0.3s ease;
+
+  -webkit-transition: transform 0.3s ease;
 }
