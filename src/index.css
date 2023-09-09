@@ -4,7 +4,8 @@
   --header-text: #e4ecf8;
   --active-link: #c3d8fa;
   --main-dark: navy;
-  --main-highlight: blue;
+  --main-highlight: rgb(27, 27, 184);
+  --header-height: 60px;
 
   --background: #fafafa;
   --faded-blue: rgb(159, 159, 252);

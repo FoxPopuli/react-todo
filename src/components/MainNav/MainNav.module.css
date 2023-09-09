@@ -1,26 +1,37 @@
 .mainNav {
   display: flex;
-  justify-content: space-between;
-  background-color: navy;
+  justify-content: space-around;
+  background-color: var(--main-dark);
   color: white;
-  padding: 20px;
 }
 
-.mainNav h3 {
+.logo {
+  height: var(--header-height);
+  align-items: center;
   font-size: 34px;
 }
 
 .list {
   display: flex;
   list-style: none;
-  margin-right: 50px;
 }
 
 .headerLinks {
   display: flex;
   align-items: center;
-  margin-right: 15px;
   font-size: 24px;
+  border-bottom: 3px solid var(--main-dark);
+  transition: border-bottom 0.2s ease-in-out;
+}
+
+.headerLinks > * {
+  /* padding: 10px 0px; */
+  /* height: var(--header-height); */
+  padding: 0px 8px;
+  height: var(--header-height);
+  text-align: center;
+  display: flex;
+  align-items: center;
 }
 
 .mainNav a,
@@ -28,7 +39,11 @@
   color: var(--header-text);
 }
 
-.list a:active,
-.list a:hover {
+.headerLinks a:active,
+.headerLinks a:hover {
   color: var(--active-link);
+}
+
+.headerLinks:hover {
+  border-bottom: 3px solid var(--main-highlight);
 }

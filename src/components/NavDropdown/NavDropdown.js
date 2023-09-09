@@ -27,11 +27,7 @@ const NavDropdown = (props) => {
   };
   return (
     <div className={classes.dropdown}>
-      <div
-        onClick={showDropdownHandler}
-        className={classes.currentOption}
-        ref={btnRef}
-      >
+      <div onClick={showDropdownHandler} className={classes.title} ref={btnRef}>
         <span>{props.title}</span>
         <i
           className={`${classes.arrow} ${

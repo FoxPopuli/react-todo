@@ -1,4 +1,7 @@
 .dropdown {
+  --header-dropdown-height: var(--header-height);
+
+  --header-dropdown-width: 130px;
   display: flex;
   align-items: center;
   z-index: 1;
@@ -7,17 +10,18 @@
 
 .container {
   position: absolute;
-  margin-top: 140px;
+  margin-right: 20px;
+  margin-top: calc(86px + var(--header-dropdown-height));
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  padding: 5px;
+  border-radius: 0px 0px 10px 10px;
   background-color: var(--main-dark);
-  width: 135px;
   opacity: 1;
   height: auto;
   overflow: hidden;
+  padding-bottom: 5px;
+  translate: -8px;
 
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s, background-color 0.2s ease-in-out;
 }
 
 .container.hidden {
@@ -28,31 +32,32 @@
   transition: opacity 0.2s ease-in-out;
 }
 
-.dropdown li {
+.container li {
   list-style: none;
   cursor: pointer;
   display: flex;
 }
 
-.dropdown li a {
-  padding: 5px 8px;
-  flex: 1;
+.container li a {
+  width: var(--header-dropdown-width);
+  padding: 5px;
 }
 
-.label {
-  margin-right: 5px;
+.container li a:hover {
+  background-color: var(--main-highlight);
+  color: white;
 }
 
-.currentOption {
+.title {
   background-color: var(--main-dark);
   display: flex;
   align-items: center;
-  padding: 5px 8px;
   cursor: pointer;
+  height: var(--header-height);
 }
 
-.currentOption span {
-  margin-right: 10px;
+.title span {
+  margin-right: 7px;
 }
 
 .arrow {
