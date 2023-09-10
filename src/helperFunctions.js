@@ -25,6 +25,23 @@ const parseDate = (dateObj) => {
   }
 };
 
+const getUniqueId = (objects) => {
+  console.log(objects);
+
+  const ids = [...objects].map((object) => object.id);
+  let newId;
+  let i = 0;
+  while (true) {
+    newId = Math.floor(Math.random() * 10000);
+    if (!ids.includes(newId)) return newId;
+    i++;
+    if (i > 1000) {
+      console.log("ERROR");
+      break;
+    }
+  }
+};
+
 const sortGroup = (group, sortString) => {
   // User specified sorting
 
@@ -61,8 +78,7 @@ const findProjectId = (projTitle, projects) => {
   let id;
   projects.forEach((project) => {
     if (project.title === projTitle) {
-      console.log(project.projId);
-      id = project.projId;
+      id = project.id;
     }
   });
   return id;
@@ -76,4 +92,11 @@ const mergeStyles = (incomingStyles, oldStyles) => {
   return newStyles;
 };
 
-export { parseDate, sortGroup, capitalize, findProjectId, mergeStyles };
+export {
+  parseDate,
+  sortGroup,
+  capitalize,
+  findProjectId,
+  mergeStyles,
+  getUniqueId,
+};

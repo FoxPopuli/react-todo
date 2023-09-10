@@ -4,6 +4,7 @@ import Button from "../UI/Button/Button";
 import classes from "./NewProjectForm.module.css";
 import TaskContext from "../../store/task-context";
 import { useNavigate } from "react-router-dom";
+import { getUniqueId } from "../../helperFunctions";
 
 const NewProjectForm = () => {
   const titleInputRef = useRef();
@@ -18,14 +19,13 @@ const NewProjectForm = () => {
 
     const inputs = {
       title: titleInputRef.current.value,
-      projd: Math.floor(Math.random() * 100000),
+      id: getUniqueId(taskCtx.data.projects),
       dateAdded: new Date(),
       dueDate: new Date(dueDateInputRef.current.value.split("-")),
       complete: false,
       sortedBy: "Priority",
     };
 
-    console.log(inputs);
     taskCtx.addProject(inputs);
     navigate("/all-projects");
   };

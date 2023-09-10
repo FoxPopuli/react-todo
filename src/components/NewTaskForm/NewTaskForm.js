@@ -5,7 +5,7 @@ import classes from "./NewTaskForm.module.css";
 import TaskContext from "../../store/task-context";
 import { useNavigate } from "react-router-dom";
 import DropdownMenu from "../UI/DropdownMenu/DropdownMenu";
-import { findProjectId } from "../../helperFunctions";
+import { findProjectId, getUniqueId } from "../../helperFunctions";
 import testStyles from "./DropdownStyles.module.css";
 
 const NewTaskForm = () => {
@@ -20,10 +20,11 @@ const NewTaskForm = () => {
   let currentPriority = "Low";
   const submitHandler = (event) => {
     event.preventDefault();
+    const newId = getUniqueId(taskCtx.data.tasks);
 
     const inputs = {
       title: titleInputRef.current.value,
-      id: Math.floor(Math.random() * 100000),
+      id: newId,
       priority: currentPriority,
       dateAdded: new Date(),
       dueDate: new Date(dueDateInputRef.current.value.split("-")),

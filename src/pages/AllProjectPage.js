@@ -11,15 +11,15 @@ const AllProjectsPage = () => {
     <ul>
       {projects.map((project) => {
         currentProjectTasks = taskCtx.data.tasks.filter(
-          (task) => task.projId === project.projId
+          (task) => task.projId === project.id
         );
         return (
           <TaskGroup
             groupTitle={project.title}
-            groupId={project.projId}
+            groupId={project.id}
             tasks={currentProjectTasks}
             sortBy={project.sortedBy}
-            key={project.projId}
+            key={project.id}
           />
         );
       })}

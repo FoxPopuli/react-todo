@@ -19,7 +19,6 @@ const TestingButtons = () => {
 
   const resetHandler = () => {
     taskCtx.hardReset();
-    // taskCtx.projects.forEach
   };
   return (
     <div>

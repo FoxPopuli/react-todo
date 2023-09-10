@@ -19,7 +19,7 @@ const emptyDummyObj = {
   projects: [
     {
       title: "General",
-      projId: 0,
+      id: 0,
       dueDate: new Date(2023, 9, 2),
       sortedBy: "Priority",
     },

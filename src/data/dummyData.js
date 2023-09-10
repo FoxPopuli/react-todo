@@ -72,13 +72,13 @@ DummyData.projects = [
   {
     title: "Chores",
     dueDate: new Date(2023, 9, 2),
-    projId: 1,
+    id: 1,
     sortedBy: "Priority",
   },
   {
     title: "Build House",
     dueDate: new Date(2024, 9, 2),
-    projId: 2,
+    id: 2,
     sortedBy: "Priority",
   },
 ];
