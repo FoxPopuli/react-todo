@@ -50,6 +50,16 @@ export const TaskContextProvider = (props) => {
       });
 
       newData.tasks = newTasks;
+      fetch(
+        "https://react-todo-75b5d-default-rtdb.firebaseio.com/main-data.json",
+        {
+          method: "POST",
+          body: JSON.stringify(newData),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       return newData;
     });
   };
@@ -59,6 +69,16 @@ export const TaskContextProvider = (props) => {
       const newData = { ...prevData };
       const newTasks = prevData.tasks.filter((task) => task.id !== id);
       newData.tasks = newTasks;
+      fetch(
+        "https://react-todo-75b5d-default-rtdb.firebaseio.com/main-data.json",
+        {
+          method: "POST",
+          body: JSON.stringify(newData),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       return newData;
     });
   };
@@ -68,6 +88,16 @@ export const TaskContextProvider = (props) => {
       const newData = { ...prevData };
       const newTasks = prevData.tasks.concat(task);
       newData.tasks = newTasks;
+      fetch(
+        "https://react-todo-75b5d-default-rtdb.firebaseio.com/main-data.json",
+        {
+          method: "POST",
+          body: JSON.stringify(newData),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       return newData;
     });
   };
@@ -77,6 +107,16 @@ export const TaskContextProvider = (props) => {
       const newData = { ...prevData };
       const newProjects = prevData.projects.concat(project);
       newData.projects = newProjects;
+      fetch(
+        "https://react-todo-75b5d-default-rtdb.firebaseio.com/main-data.json",
+        {
+          method: "POST",
+          body: JSON.stringify(newData),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       return newData;
     });
   };
