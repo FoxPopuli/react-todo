@@ -5,15 +5,22 @@ import TaskGroup from "../components/UI/TaskGroup/TaskGroup";
 
 const AllTasksPage = () => {
   const taskCtx = useContext(TaskContext);
-  // Filter everything except group 0
-  const project = taskCtx.data.projects.filter((project) => !project.projId)[0];
+
+  if (taskCtx.getIsHardLoading()) {
+    return (
+      <section>
+        <p>Loading...</p>
+      </section>
+    );
+  }
+
   return (
     <section className={classes.home}>
       <TaskGroup
         groupTitle="All Tasks"
         tasks={taskCtx.data.tasks}
-        sortBy={project.sortedBy}
-        groupId={project.projId}
+        sortBy="Priority"
+        groupId="0"
       />
     </section>
   );

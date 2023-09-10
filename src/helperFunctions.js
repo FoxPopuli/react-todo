@@ -28,6 +28,7 @@ const parseDate = (dateObj) => {
 const sortGroup = (group, sortString) => {
   // User specified sorting
 
+  if (!group) return;
   // spread operater to avoid mutating original array
   let arrClone = [...group];
   let sortedTasks;
