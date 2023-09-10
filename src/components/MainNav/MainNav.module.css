@@ -28,11 +28,17 @@
 .headerLinks > * {
   /* padding: 10px 0px; */
   /* height: var(--header-height); */
+  transition: background-color 0.3s ease;
+
   padding: 0px 8px;
   height: var(--header-height);
   text-align: center;
   display: flex;
   align-items: center;
+}
+
+.headerLinks > *:hover {
+  background-color: var(--main-highlight);
 }
 
 .mainNav a,
@@ -43,6 +49,7 @@
 .headerLinks a:active,
 .headerLinks a:hover {
   color: var(--active-link);
+  background-color: var(--main-highlight);
 }
 
 .headerLinks:hover {

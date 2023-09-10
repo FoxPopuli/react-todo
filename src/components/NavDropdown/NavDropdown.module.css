@@ -49,7 +49,6 @@
 }
 
 .title {
-  background-color: var(--main-dark);
   display: flex;
   align-items: center;
   cursor: pointer;
