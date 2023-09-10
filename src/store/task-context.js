@@ -104,7 +104,7 @@ export const TaskContextProvider = (props) => {
     setData((prevData) => {
       const newData = { ...prevData };
       const newProjects = prevData.projects.map((project) => {
-        if (project.projId === groupId) {
+        if (project.id === groupId) {
           project.sortedBy = sortString;
         }
         return project;
