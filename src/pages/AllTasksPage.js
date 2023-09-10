@@ -3,6 +3,7 @@ import { useContext } from "react";
 import TaskContext from "../store/task-context";
 import TaskGroup from "../components/UI/TaskGroup/TaskGroup";
 
+import TestingButtons from "../components/TestingButtons/TestingButtons";
 const AllTasksPage = () => {
   const taskCtx = useContext(TaskContext);
 
@@ -22,6 +23,7 @@ const AllTasksPage = () => {
         sortBy="Priority"
         groupId="0"
       />
+      <TestingButtons />
     </section>
   );
 };

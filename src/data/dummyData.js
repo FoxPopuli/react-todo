@@ -5,7 +5,7 @@ const DummyData = {};
 DummyData.tasks = [
   {
     title: "Take out rubbish",
-    id: Math.floor(Math.random() * 1000),
+    id: 10,
     dateAdded: new Date(),
     dueDate: new Date(2023, 10, 14),
     priority: 1,
@@ -14,7 +14,7 @@ DummyData.tasks = [
   },
   {
     title: "Wash laundry",
-    id: Math.floor(Math.random() * 10000),
+    id: 11,
     dateAdded: new Date(),
     dueDate: new Date(2023, 9, 12),
     priority: 2,
@@ -23,7 +23,7 @@ DummyData.tasks = [
   },
   {
     title: "Cook dinner",
-    id: Math.floor(Math.random() * 10000),
+    id: 12,
     dateAdded: new Date(),
     dueDate: new Date(2023, 10, 15),
     priority: 3,
@@ -32,7 +32,7 @@ DummyData.tasks = [
   },
   {
     title: "Doctor's Appointment",
-    id: Math.floor(Math.random() * 10000),
+    id: 13,
     dateAdded: new Date(),
     dueDate: new Date(2023, 7, 10),
     priority: 2,
@@ -41,7 +41,7 @@ DummyData.tasks = [
   },
   {
     title: "Fetch bricks",
-    id: Math.floor(Math.random() * 10000),
+    id: 14,
     dateAdded: new Date(),
     dueDate: new Date(2023, 12, 10),
     priority: 2,
@@ -50,7 +50,7 @@ DummyData.tasks = [
   },
   {
     title: "Pour cement",
-    id: Math.floor(Math.random() * 10000),
+    id: 15,
     dateAdded: new Date(),
     dueDate: new Date(2023, 11, 19),
     priority: 3,
@@ -59,7 +59,7 @@ DummyData.tasks = [
   },
   {
     title: "Paint walls",
-    id: Math.floor(Math.random() * 10000),
+    id: 16,
     dateAdded: new Date(),
     dueDate: new Date(2024, 5, 1),
     priority: 1,
@@ -69,12 +69,6 @@ DummyData.tasks = [
 ];
 
 DummyData.projects = [
-  {
-    title: "General",
-    projId: 0,
-    dueDate: new Date(2023, 9, 2),
-    sortedBy: "Priority",
-  },
   {
     title: "Chores",
     dueDate: new Date(2023, 9, 2),

@@ -1,6 +1,5 @@
 import { createContext } from "react";
 import { useState, useEffect } from "react";
-import DummyData from "../data/dummyData";
 
 const TaskContext = createContext({
   data: [],
@@ -12,6 +11,7 @@ const TaskContext = createContext({
   setGroupSort: (groupId, sortString) => {},
   getIsLoading: () => {},
   getIsHardLoading: () => {},
+  hardReset: () => {},
 });
 
 const emptyDummyObj = {
@@ -35,25 +35,25 @@ export const TaskContextProvider = (props) => {
 
   useEffect(() => {
     setIsHardLoading(true);
+
     fetch("https://react-todo-75b5d-default-rtdb.firebaseio.com/main-data.json")
       .then((response) => {
         return response.json();
       })
       .then((serverData) => {
-        let newData =
-          serverData[
-            Object.keys(serverData)[Object.keys(serverData).length - 1]
-          ];
-        console.log(newData);
-
-        setData(newData);
-        console.log("Data fetched");
+        setData(serverData);
         setIsHardLoading(false);
       });
   }, []);
 
   const getIsLoading = () => isLoading;
   const getIsHardLoading = () => isHardLoading;
+
+  const hardReset = () => {
+    setData(emptyDummyObj);
+    postToServer(emptyDummyObj);
+    console.log("Hard reset complete");
+  };
 
   const fetchData = () => {
     setIsHardLoading(true);
@@ -62,9 +62,7 @@ export const TaskContextProvider = (props) => {
         return response.json();
       })
       .then((serverData) => {
-        console.log(serverData);
         setData(serverData);
-        console.log("Data fetched");
         setIsHardLoading(false);
       });
   };
@@ -86,6 +84,22 @@ export const TaskContextProvider = (props) => {
     });
   };
 
+  const modifyData = (data) => {
+    fetch(
+      "https://react-todo-75b5d-default-rtdb.firebaseio.com/main-data.json",
+      {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((data) => {
+      setIsLoading(false);
+      console.log("PUT complete");
+    });
+  };
+
   const setGroupSort = (groupId, sortString) => {
     setData((prevData) => {
       const newData = { ...prevData };
@@ -97,7 +111,7 @@ export const TaskContextProvider = (props) => {
       });
       newData.projects = newProjects;
 
-      postToServer(newData);
+      modifyData(newData);
 
       return newData;
     });
@@ -124,7 +138,7 @@ export const TaskContextProvider = (props) => {
       });
 
       newData.tasks = newTasks;
-      postToServer(newData);
+      modifyData(newData);
       return newData;
     });
   };
@@ -134,7 +148,7 @@ export const TaskContextProvider = (props) => {
       const newData = { ...prevData };
       const newTasks = prevData.tasks.filter((task) => task.id !== id);
       newData.tasks = newTasks;
-      postToServer(newData);
+      modifyData(newData);
       return newData;
     });
   };
@@ -144,7 +158,7 @@ export const TaskContextProvider = (props) => {
       const newData = { ...prevData };
       const newTasks = prevData.tasks.concat(task);
       newData.tasks = newTasks;
-      postToServer(newData);
+      modifyData(newData);
       return newData;
     });
   };
@@ -154,13 +168,14 @@ export const TaskContextProvider = (props) => {
       const newData = { ...prevData };
       const newProjects = prevData.projects.concat(project);
       newData.projects = newProjects;
-      postToServer(newData);
+      modifyData(newData);
       return newData;
     });
   };
 
   const context = {
     data,
+    hardReset,
     getIsLoading,
     getIsHardLoading,
     fetchData,
