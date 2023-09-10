@@ -6,6 +6,7 @@
 }
 
 .logo {
+  display: flex;
   height: var(--header-height);
   align-items: center;
   font-size: 34px;

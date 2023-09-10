@@ -5,9 +5,7 @@ import NavDropdown from "../NavDropdown/NavDropdown";
 const MainNav = () => {
   return (
     <nav className={classes.mainNav}>
-      <h3 className={classes.logo}>
-        <Link to="/">React Todo</Link>
-      </h3>
+      <h3 className={classes.logo}>React Todo</h3>
       <ul className={classes.list}>
         <li className={classes.headerLinks}>
           <Link to="/all-tasks">All Tasks</Link>

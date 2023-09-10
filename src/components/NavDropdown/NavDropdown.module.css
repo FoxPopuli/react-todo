@@ -1,6 +1,5 @@
 .dropdown {
   --header-dropdown-height: var(--header-height);
-
   --header-dropdown-width: 130px;
   display: flex;
   align-items: center;
@@ -21,7 +20,7 @@
   padding-bottom: 5px;
   translate: -8px;
 
-  transition: opacity 0.2s, background-color 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .container.hidden {
@@ -39,6 +38,7 @@
 }
 
 .container li a {
+  transition: background-color 0.2s ease;
   width: var(--header-dropdown-width);
   padding: 5px;
 }
