@@ -20,7 +20,7 @@ const emptyDummyObj = {
     {
       title: "General",
       id: 0,
-      dueDate: new Date(2023, 9, 2),
+      dueDate: "2023-09-02",
       sortedBy: "Priority",
     },
   ],
@@ -104,7 +104,7 @@ export const TaskContextProvider = (props) => {
     setData((prevData) => {
       const newData = { ...prevData };
       const newProjects = prevData.projects.map((project) => {
-        if (project.id === groupId) {
+        if (+project.id === +groupId) {
           project.sortedBy = sortString;
         }
         return project;
@@ -112,7 +112,6 @@ export const TaskContextProvider = (props) => {
       newData.projects = newProjects;
 
       modifyData(newData);
-
       return newData;
     });
   };

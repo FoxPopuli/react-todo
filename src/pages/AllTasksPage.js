@@ -6,7 +6,9 @@ import TaskGroup from "../components/UI/TaskGroup/TaskGroup";
 import TestingButtons from "../components/TestingButtons/TestingButtons";
 const AllTasksPage = () => {
   const taskCtx = useContext(TaskContext);
-  const project = taskCtx.data.projects.filter((project) => project.id === "0");
+  const project = taskCtx.data.projects.filter(
+    (project) => project.id === 0
+  )[0];
 
   if (taskCtx.getIsHardLoading()) {
     return (
