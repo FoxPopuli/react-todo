@@ -6,10 +6,19 @@
   opacity: 50%;
 }
 
+.outerContainer:first-child {
+  border-top: none;
+}
+
+.outerContainer:last-child {
+  border-bottom: none;
+}
+
 .main {
   /* border-radius: 10px; */
 
-  padding: 10px;
+  padding: 15px;
+  /* padding-bottom: 5px; */
   /* margin: 20px 0px; */
   display: flex;
   align-items: center;
@@ -65,14 +74,6 @@
 .dueDateChecked {
   text-decoration: line-through;
   color: grey;
-}
-
-.outerContainer {
-  border-bottom: 1px solid var(--main-dark);
-}
-
-.outerContainer.checked {
-  opacity: 50%;
 }
 
 @media (min-width: 400px) {
