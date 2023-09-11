@@ -7,18 +7,19 @@ import DropdownMenu from "../DropdownMenu/DropdownMenu";
 
 const TaskGroup = (props) => {
   const sortedTasks = sortGroup(props.tasks, props.sortBy);
-  // console.log()
-
   const taskCtx = useContext(TaskContext);
+
   const changeGroupSortHandler = (sortString) => {
     taskCtx.setGroupSort(props.groupId, sortString);
   };
+
   return (
     <div className={classes.taskGroup}>
       <div className={classes.titleContainer}>
         <h3 className={classes.groupTitle}>{props.groupTitle}</h3>
         <DropdownMenu
           label="Sort by "
+          currentOption={props.sortBy}
           options={["Priority", "ABC", "Date"]}
           onDropdownChange={changeGroupSortHandler}
         />

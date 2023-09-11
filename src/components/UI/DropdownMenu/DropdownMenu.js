@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { mergeStyles } from "../../../helperFunctions";
 const DropdownMenu = (props) => {
   const [isActive, setIsActive] = useState(false);
-  const [currentOption, setCurrentOption] = useState(props.options[0]);
+  const [currentOption, setCurrentOption] = useState(props.currentOption);
   const btnRef = useRef();
   useEffect(() => {
     const closeDropdown = (e) => {
