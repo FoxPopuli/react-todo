@@ -1,10 +1,12 @@
 .main {
-  opacity: 0;
+  opacity: 0.2;
+  transform: scale(1.5);
   /* height: 0; */
   transition: opacity 0.2s ease;
   display: flex;
   flex-direction: column;
   margin-left: 615px;
+  margin-bottom: 15px;
   position: absolute;
 }
 
