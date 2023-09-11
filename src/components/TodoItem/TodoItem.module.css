@@ -1,15 +1,20 @@
-.main {
-  border-radius: 10px;
+.outerContainer {
+  border-bottom: 1px solid var(--main-dark);
+}
 
-  padding: 15px;
-  margin: 15px 0;
+.outerContainer.checked {
+  opacity: 50%;
+}
+
+.main {
+  /* border-radius: 10px; */
+
+  padding: 10px;
+  /* margin: 20px 0px; */
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.main.checked {
-  opacity: 50%;
+  /* border-bottom: 1px solid var(--main-dark); */
 }
 
 .main input {
@@ -60,6 +65,14 @@
 .dueDateChecked {
   text-decoration: line-through;
   color: grey;
+}
+
+.outerContainer {
+  border-bottom: 1px solid var(--main-dark);
+}
+
+.outerContainer.checked {
+  opacity: 50%;
 }
 
 @media (min-width: 400px) {

@@ -20,12 +20,15 @@ const AllTasksPage = () => {
 
   return (
     <section className={classes.home}>
-      <TaskGroup
-        groupTitle="All Tasks"
-        tasks={taskCtx.data.tasks}
-        sortBy={project.sortedBy}
-        groupId="0"
-      />
+      <ul>
+        <TaskGroup
+          groupTitle="All Tasks"
+          tasks={taskCtx.data.tasks}
+          sortBy={project.sortedBy}
+          groupId="0"
+        />
+      </ul>
+
       <TestingButtons />
     </section>
   );

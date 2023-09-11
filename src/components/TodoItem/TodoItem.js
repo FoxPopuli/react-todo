@@ -1,4 +1,3 @@
-import Card from "../UI/Card/Card";
 import classes from "./TodoItem.module.css";
 import Button from "../UI/Button/Button";
 import PriorityMarker from "../UI/PriorityMarker/PriorityMarker";
@@ -20,10 +19,12 @@ const TodoItem = (props) => {
   };
 
   return (
-    <Card>
-      <li
-        className={`${classes.main} ${props.complete ? classes.checked : null}`}
-      >
+    <div
+      className={`${classes.outerContainer} ${
+        props.complete ? classes.checked : null
+      }`}
+    >
+      <li className={`${classes.main} `}>
         <div className={classes.leftGroup}>
           <Checkbox onClick={checkboxHandler} isChecked={props.complete} />
           <div className={classes.infoContainer}>
@@ -49,7 +50,7 @@ const TodoItem = (props) => {
           <Button onClick={removeItemHandler}>Remove</Button>
         </div>
       </li>
-    </Card>
+    </div>
   );
 };
 
