@@ -12,6 +12,7 @@ const TaskContext = createContext({
   getIsLoading: () => {},
   getIsHardLoading: () => {},
   hardReset: () => {},
+  moveProjectDown: () => {},
 });
 
 const emptyDummyObj = {
@@ -53,6 +54,44 @@ export const TaskContextProvider = (props) => {
     setData(emptyDummyObj);
     postToServer(emptyDummyObj);
     console.log("Hard reset complete");
+  };
+
+  const moveProjectUp = (id) => {
+    const newData = { ...data };
+    const newProjects = [...data.projects];
+    console.log(newProjects);
+    const ind1 = newProjects.findIndex((project) => project.id === id);
+    const ind2 = ind1 - 1;
+
+    console.log(ind1, ind2);
+    // [newProjects[ind1], newProjects[ind2]] = [
+    //   newProjects[ind2] === newProjects[ind1],
+    // ];
+
+    newData.projects = newProjects;
+    console.log(newProjects);
+
+    setData(newData);
+    // modifyData(newData);
+  };
+  const moveProjectDown = (id) => {
+    // const newData = [...data];
+    const newData = { ...data };
+
+    const newProjects = [...data.projects];
+    const ind1 = newProjects.findIndex((project) => {
+      return project.id === id;
+    });
+    const ind2 = ind1 + 1;
+    console.log(ind1, ind2);
+
+    // [newProjects[ind1], newProjects[ind2]] = [
+    //   newProjects[ind2],
+    //   newProjects[ind1],
+    // ];
+    newData.projects = newProjects;
+    setData(newData);
+    // modifyData(newData);
   };
 
   const fetchData = () => {
@@ -174,6 +213,8 @@ export const TaskContextProvider = (props) => {
 
   const context = {
     data,
+    moveProjectDown,
+    moveProjectUp,
     hardReset,
     getIsLoading,
     getIsHardLoading,

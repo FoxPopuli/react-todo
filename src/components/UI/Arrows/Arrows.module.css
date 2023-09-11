@@ -1,0 +1,50 @@
+.main {
+  opacity: 0;
+  /* height: 0; */
+  transition: opacity 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  margin-left: 615px;
+  position: absolute;
+}
+
+.main:hover {
+  opacity: 1;
+}
+
+.arrow {
+  border: solid #9b9b9b;
+
+  align-self: right;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.arrow:hover {
+  align-self: right;
+  border: solid #454545;
+
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.arrow.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  margin-bottom: 4px;
+  transition: transform 0.1s ease-in-out;
+  -webkit-transition: transform 0.1s ease-in-out;
+}
+
+.arrow.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  margin-bottom: 2px;
+  transition: transform 0.1s ease-in-out;
+
+  -webkit-transition: transform 0.1s ease-in-out;
+}
