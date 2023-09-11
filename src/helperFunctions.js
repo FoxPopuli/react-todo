@@ -1,5 +1,5 @@
 const parseDate = (dateString) => {
-  const date1 = new Date(dateString.split("").splice(0, 10).join(""));
+  const date1 = new Date(dateString);
   const date2 = new Date();
   const isOverdue = date2 - date1 > 0 ? true : false;
   const diffTime = Math.abs(date2 - date1);
@@ -26,6 +26,15 @@ const parseDate = (dateString) => {
   }
 };
 
+const dateObjToString = (date) => {
+  const offset = date.getTimezoneOffset();
+  date = new Date(date.getTime() - offset * 60 * 1000);
+  const newDate = date.toISOString().split("T")[0];
+  // console.log(newDate);
+  // console.log(new Date(newDate));
+  return newDate;
+};
+
 const getUniqueId = (objects) => {
   console.log(objects);
 
@@ -46,7 +55,7 @@ const getUniqueId = (objects) => {
 const sortGroup = (group, sortString) => {
   // User specified sorting
 
-  if (!group) return;
+  // if (!group) return;
   // spread operater to avoid mutating original array
   let arrClone = [...group];
   let sortedTasks;
@@ -61,9 +70,11 @@ const sortGroup = (group, sortString) => {
     case "Priority":
       sortedTasks = arrClone.sort((a, b) => b.priority - a.priority);
       break;
-    case "date":
+    case "Date":
     default:
-      sortedTasks = arrClone.sort((a, b) => a.dueDate - b.dueDate);
+      sortedTasks = arrClone.sort(
+        (a, b) => new Date(a.dueDate) - new Date(b.dueDate)
+      );
       break;
   }
   return sortedTasks;
@@ -100,4 +111,5 @@ export {
   findProjectId,
   mergeStyles,
   getUniqueId,
+  dateObjToString,
 };

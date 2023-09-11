@@ -7,6 +7,7 @@ import DropdownMenu from "../DropdownMenu/DropdownMenu";
 
 const TaskGroup = (props) => {
   const sortedTasks = sortGroup(props.tasks, props.sortBy);
+  // console.log()
 
   const taskCtx = useContext(TaskContext);
   const changeGroupSortHandler = (sortString) => {

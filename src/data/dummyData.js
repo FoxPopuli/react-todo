@@ -1,3 +1,4 @@
+import { dateObjToString } from "../helperFunctions";
 const DummyData = {};
 // Data is structured this way since many operations are easier with access
 // to one array containing all tasks
@@ -6,8 +7,8 @@ DummyData.tasks = [
   {
     title: "Take out rubbish",
     id: 10,
-    dateAdded: new Date(),
-    dueDate: new Date(2023, 10, 14),
+    dateAdded: dateObjToString(new Date()),
+    dueDate: "2023-10-14",
     priority: 1,
     complete: false,
     projId: 1,
@@ -15,8 +16,8 @@ DummyData.tasks = [
   {
     title: "Wash laundry",
     id: 11,
-    dateAdded: new Date(),
-    dueDate: new Date(2023, 9, 12),
+    dateAdded: dateObjToString(new Date()),
+    dueDate: "2023-09-12",
     priority: 2,
     complete: false,
     projId: 1,
@@ -24,8 +25,8 @@ DummyData.tasks = [
   {
     title: "Cook dinner",
     id: 12,
-    dateAdded: new Date(),
-    dueDate: new Date(2023, 10, 15),
+    dateAdded: dateObjToString(new Date()),
+    dueDate: "2023-10-15",
     priority: 3,
     complete: false,
     projId: 1,
@@ -33,8 +34,8 @@ DummyData.tasks = [
   {
     title: "Doctor's Appointment",
     id: 13,
-    dateAdded: new Date(),
-    dueDate: new Date(2023, 7, 10),
+    dateAdded: dateObjToString(new Date()),
+    dueDate: "2023-7-10",
     priority: 2,
     complete: false,
     projId: 0,
@@ -42,8 +43,8 @@ DummyData.tasks = [
   {
     title: "Fetch bricks",
     id: 14,
-    dateAdded: new Date(),
-    dueDate: new Date(2023, 12, 10),
+    dateAdded: dateObjToString(new Date()),
+    dueDate: "2023-12-10",
     priority: 2,
     complete: false,
     projId: 2,
@@ -51,8 +52,8 @@ DummyData.tasks = [
   {
     title: "Pour cement",
     id: 15,
-    dateAdded: new Date(),
-    dueDate: new Date(2023, 11, 19),
+    dateAdded: dateObjToString(new Date()),
+    dueDate: "2023-12-10",
     priority: 3,
     complete: false,
     projId: 2,
@@ -60,8 +61,8 @@ DummyData.tasks = [
   {
     title: "Paint walls",
     id: 16,
-    dateAdded: new Date(),
-    dueDate: new Date(2024, 5, 1),
+    dateAdded: dateObjToString(new Date()),
+    dueDate: "2023-12-10",
     priority: 1,
     complete: false,
     projId: 2,
@@ -71,13 +72,13 @@ DummyData.tasks = [
 DummyData.projects = [
   {
     title: "Chores",
-    dueDate: new Date(2023, 9, 2),
+    dueDate: "2023-12-10",
     id: 1,
     sortedBy: "Priority",
   },
   {
     title: "Build House",
-    dueDate: new Date(2024, 9, 2),
+    dueDate: "2023-12-10",
     id: 2,
     sortedBy: "Priority",
   },

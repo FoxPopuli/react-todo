@@ -36,7 +36,7 @@ export const TaskContextProvider = (props) => {
   useEffect(() => {
     setIsHardLoading(true);
 
-    fetch("https://react-todo-75b5d-default-rtdb.firebaseio.com/main-data.json")
+    fetch("https://react-todo-75b5d-default-rtdb.firebaseio.com/test-data.json")
       .then((response) => {
         return response.json();
       })
@@ -70,7 +70,7 @@ export const TaskContextProvider = (props) => {
   const postToServer = (data) => {
     setIsLoading(true);
     fetch(
-      "https://react-todo-75b5d-default-rtdb.firebaseio.com/main-data.json",
+      "https://react-todo-75b5d-default-rtdb.firebaseio.com/test-data.json",
       {
         method: "POST",
         body: JSON.stringify(data),
@@ -86,7 +86,7 @@ export const TaskContextProvider = (props) => {
 
   const modifyData = (data) => {
     fetch(
-      "https://react-todo-75b5d-default-rtdb.firebaseio.com/main-data.json",
+      "https://react-todo-75b5d-default-rtdb.firebaseio.com/test-data.json",
       {
         method: "PUT",
         body: JSON.stringify(data),

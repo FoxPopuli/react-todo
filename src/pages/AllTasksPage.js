@@ -6,6 +6,7 @@ import TaskGroup from "../components/UI/TaskGroup/TaskGroup";
 import TestingButtons from "../components/TestingButtons/TestingButtons";
 const AllTasksPage = () => {
   const taskCtx = useContext(TaskContext);
+  const project = taskCtx.data.projects.filter((project) => project.id === "0");
 
   if (taskCtx.getIsHardLoading()) {
     return (
@@ -20,7 +21,7 @@ const AllTasksPage = () => {
       <TaskGroup
         groupTitle="All Tasks"
         tasks={taskCtx.data.tasks}
-        sortBy="Priority"
+        sortBy={project.sortedBy}
         groupId="0"
       />
       <TestingButtons />
