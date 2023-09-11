@@ -61,12 +61,16 @@ export const TaskContextProvider = (props) => {
     const newProjects = [...data.projects];
     console.log(newProjects);
     const ind1 = newProjects.findIndex((project) => project.id === id);
-    const ind2 = ind1 - 1;
+    let ind2 = ind1 - 1;
+
+    if (ind2 < 0) {
+      ind2 = newProjects.length - 1;
+    }
 
     console.log(ind1, ind2);
-    // [newProjects[ind1], newProjects[ind2]] = [
-    //   newProjects[ind2] === newProjects[ind1],
-    // ];
+    const proj1 = newProjects[ind1];
+    newProjects[ind1] = newProjects[ind2];
+    newProjects[ind2] = proj1;
 
     newData.projects = newProjects;
     console.log(newProjects);
@@ -75,21 +79,23 @@ export const TaskContextProvider = (props) => {
     // modifyData(newData);
   };
   const moveProjectDown = (id) => {
-    // const newData = [...data];
     const newData = { ...data };
-
     const newProjects = [...data.projects];
-    const ind1 = newProjects.findIndex((project) => {
-      return project.id === id;
-    });
-    const ind2 = ind1 + 1;
-    console.log(ind1, ind2);
+    const ind1 = newProjects.findIndex((project) => project.id === id);
+    let ind2 = ind1 + 1;
 
-    // [newProjects[ind1], newProjects[ind2]] = [
-    //   newProjects[ind2],
-    //   newProjects[ind1],
-    // ];
+    if (ind2 === newProjects.length) {
+      ind2 = 0;
+    }
+
+    console.log(ind1, ind2);
+    const proj1 = newProjects[ind1];
+    newProjects[ind1] = newProjects[ind2];
+    newProjects[ind2] = proj1;
+
     newData.projects = newProjects;
+    console.log(newProjects);
+
     setData(newData);
     // modifyData(newData);
   };
