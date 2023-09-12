@@ -26,8 +26,9 @@ const TaskGroup = (props) => {
       <Card>
         <div className={classes.taskGroup}>
           <div
-            className={classes.titleContainer}
-            onClick={toggleCollapsedHandler}
+            className={`${classes.titleContainer} ${
+              !isOpen ? classes.hidden : ""
+            }`}
           >
             <h3 className={classes.groupTitle}>{props.groupTitle}</h3>
             <DropdownMenu
@@ -39,6 +40,16 @@ const TaskGroup = (props) => {
           </div>
 
           <TodoList tasks={sortedTasks} isHidden={!isOpen} />
+          <div
+            className={`${classes.toggleButton}`}
+            onClick={toggleCollapsedHandler}
+          >
+            <div
+              className={`${classes.arrow} ${
+                isOpen ? classes.up : classes.down
+              }`}
+            ></div>
+          </div>
         </div>
       </Card>
     </div>
