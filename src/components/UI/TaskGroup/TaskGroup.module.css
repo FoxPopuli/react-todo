@@ -8,12 +8,12 @@
   align-items: center;
   padding: 0px 10px;
   padding-bottom: 15px;
-  border-bottom: 1px solid var(--main-dark);
+  /* border-bottom: 1px solid var(--main-dark); */
 }
 
-.titleContainer.hidden {
+/* .titleContainer.hidden {
   border-bottom: none;
-}
+} */
 
 .taskGroup {
   padding: 25px;

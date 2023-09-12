@@ -7,7 +7,7 @@
 }
 
 .outerContainer:first-child {
-  border-top: none;
+  border-top: 1px solid var(--main-dark);
 }
 
 .outerContainer:last-child {
