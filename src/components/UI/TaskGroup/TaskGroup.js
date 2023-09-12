@@ -5,7 +5,6 @@ import { useContext, useState } from "react";
 import TaskContext from "../../../store/task-context";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import Card from "../Card/Card";
-import Arrows from "../Arrows/Arrows";
 
 const TaskGroup = (props) => {
   const taskCtx = useContext(TaskContext);
@@ -44,7 +43,6 @@ const TaskGroup = (props) => {
             className={`${classes.toggleButton}`}
             onClick={toggleCollapsedHandler}
           >
-            {/* <div></div> */}
             <div
               className={`${classes.arrow} ${
                 isOpen ? classes.up : classes.down

@@ -2,6 +2,8 @@ import Button from "../UI/Button/Button";
 import { useContext } from "react";
 import DummyData from "../../data/dummyData";
 import TaskContext from "../../store/task-context";
+import classes from ".";
+
 const TestingButtons = () => {
   const taskCtx = useContext(TaskContext);
   const populateHandler = () => {
@@ -21,7 +23,7 @@ const TestingButtons = () => {
     taskCtx.hardReset();
   };
   return (
-    <div>
+    <div className={`${classes.devButtons}`}>
       <Button onClick={populateHandler} theme="blue">
         Populate
       </Button>

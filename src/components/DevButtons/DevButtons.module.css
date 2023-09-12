@@ -1,0 +1,32 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.devButtons {
+  display: flex;
+  /* width: 400px; */
+  justify-content: center;
+}
+
+.devButtons.hidden {
+  display: none;
+}
+
+.devButtonToggle {
+  opacity: 0.5;
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.devButtonToggle:hover {
+  text-decoration: underline;
+}
+
+.devButtons * {
+  flex: 1;
+  margin: 0px 5px;
+}
