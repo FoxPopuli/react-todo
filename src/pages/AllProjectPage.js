@@ -2,27 +2,16 @@ import TaskContext from "../store/task-context";
 import TaskGroup from "../components/UI/TaskGroup/TaskGroup";
 import Arrows from "../components/UI/Arrows/Arrows";
 import classes from "./AllProjectPage.module.css";
-import { useState, useContext } from "react";
-
-const swapElements = (myArray, index1, index2) => {
-  [myArray[index1], myArray[index2]] = [myArray[index2], myArray[index1]];
-};
+import { useContext } from "react";
 
 const AllProjectsPage = () => {
   const taskCtx = useContext(TaskContext);
-  // taskCtx.hardReset();
 
   const moveProjectUp = (id) => {
-    // swapElements(projects, ind1, ind2);
     taskCtx.moveProjectUp(id);
-    console.log("Moving up");
   };
   const moveProjectDown = (id) => {
-    // const ind1 = projects.filter((project) => project.id === id);
-    // const ind2 = ind1 - 1;
-    // swapElements(projects, ind1, ind2);
     taskCtx.moveProjectDown(id);
-    console.log("Moving down");
   };
 
   if (taskCtx.getIsHardLoading()) {
@@ -33,6 +22,10 @@ const AllProjectsPage = () => {
     );
   }
 
+  if (!taskCtx.data.tasks.length) {
+    return <p>No Tasks!</p>;
+  }
+
   let currentProjectTasks;
   return (
     <ul>
@@ -41,16 +34,17 @@ const AllProjectsPage = () => {
           (task) => task.projId === project.id
         );
         return (
-          <div className={classes.container}>
+          <div className={classes.container} key={project.id}>
             <TaskGroup
               groupTitle={project.title}
               groupId={project.id}
               tasks={currentProjectTasks}
               sortBy={project.sortedBy}
-              key={project.id}
+              // key={project.id}
             />
             <Arrows
               projId={project.id}
+              key={Math.floor(Math.random() * 100000)}
               onUpClick={moveProjectUp}
               onDownClick={moveProjectDown}
             />

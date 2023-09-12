@@ -32,7 +32,7 @@ const TaskGroup = (props) => {
             <h3 className={classes.groupTitle}>{props.groupTitle}</h3>
             <DropdownMenu
               label="Sort by "
-              currentOption={props.sortBy}
+              default={props.sortBy}
               options={["Priority", "ABC", "Date"]}
               onDropdownChange={changeGroupSortHandler}
             />

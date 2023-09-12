@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { mergeStyles } from "../../../helperFunctions";
 const DropdownMenu = (props) => {
   const [isActive, setIsActive] = useState(false);
-  const [currentOption, setCurrentOption] = useState(props.currentOption);
+  const [currentOption, setCurrentOption] = useState(props.default);
   const btnRef = useRef();
   useEffect(() => {
     const closeDropdown = (e) => {
@@ -15,9 +15,9 @@ const DropdownMenu = (props) => {
         setIsActive(false);
       }
     };
-    document.body.addEventListener("click", closeDropdown);
+    document.addEventListener("click", closeDropdown);
 
-    return () => document.body.removeEventListener("click", closeDropdown);
+    return () => document.removeEventListener("click", closeDropdown);
   }, []);
 
   let activeClass = mergeStyles(props.styles, classes);
@@ -36,7 +36,7 @@ const DropdownMenu = (props) => {
         <div
           onClick={showDropdownHandler}
           className={`${activeClass.currentOption} ${
-            isActive ? activeClass.open : null
+            isActive ? activeClass.open : ""
           }`}
           ref={btnRef}
         >
@@ -49,7 +49,7 @@ const DropdownMenu = (props) => {
         </div>
         <ul
           className={`${activeClass.container} ${
-            !isActive ? activeClass.hidden : null
+            !isActive ? activeClass.hidden : ""
           }`}
         >
           {props.options.map((option) => {

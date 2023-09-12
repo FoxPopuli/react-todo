@@ -16,8 +16,8 @@ const NewTaskForm = () => {
 
   const navigate = useNavigate();
 
+  let currentPriority;
   let currentProject = "General";
-  let currentPriority = "Low";
   const submitHandler = (event) => {
     event.preventDefault();
     const newId = getUniqueId(taskCtx.data.tasks);
@@ -78,6 +78,7 @@ const NewTaskForm = () => {
             options={["Low", "High", "Urgent"]}
             onDropdownChange={priorityChangeHandler}
             styles={testStyles}
+            default={"Low"}
           />
         </div>
         <div className={classes.formSection}>
@@ -91,6 +92,7 @@ const NewTaskForm = () => {
             options={projectTitles}
             onDropdownChange={projectChangeHandler}
             styles={testStyles}
+            default={projectTitles[0]}
           />
         </div>
         <div className={classes.buttonContainer}>

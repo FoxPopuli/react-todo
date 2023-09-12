@@ -50,7 +50,7 @@ export const TaskContextProvider = (props) => {
 
   const hardReset = () => {
     setData(emptyDummyObj);
-    postToServer(emptyDummyObj);
+    modifyServerData(emptyDummyObj);
     console.log("Hard reset complete");
   };
 
@@ -65,6 +65,7 @@ export const TaskContextProvider = (props) => {
           modifier--;
           break;
         case "down":
+        default:
           modifier++;
           break;
       }
