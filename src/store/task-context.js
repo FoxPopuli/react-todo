@@ -209,8 +209,6 @@ export const TaskContextProvider = (props) => {
     });
   };
 
-  const toggleOpenHandler = (projId) => {};
-
   const context = {
     data,
     moveProjectDown,

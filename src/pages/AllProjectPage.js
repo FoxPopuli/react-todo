@@ -25,6 +25,14 @@ const AllProjectsPage = () => {
     console.log("Moving down");
   };
 
+  if (taskCtx.getIsHardLoading()) {
+    return (
+      <section>
+        <p>Loading...</p>
+      </section>
+    );
+  }
+
   let currentProjectTasks;
   return (
     <ul>
