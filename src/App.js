@@ -1,6 +1,5 @@
 import "./index.css";
 import Layout from "./layout/Layout";
-import HomePage from "./pages/HomePage";
 
 import AllTasksPage from "./pages/AllTasksPage";
 import AllProjectsPage from "./pages/AllProjectPage";

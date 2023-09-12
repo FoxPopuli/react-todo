@@ -13,6 +13,7 @@ const TaskContext = createContext({
   getIsHardLoading: () => {},
   hardReset: () => {},
   moveProjectDown: () => {},
+  removeProject: () => {},
 });
 
 const emptyDummyObj = {
@@ -90,6 +91,16 @@ export const TaskContextProvider = (props) => {
     });
   };
 
+  const removeProject = (id) => {
+    setData((prevData) => {
+      const newData = { ...prevData };
+      const newTasks = prevData.projects.filter((project) => project.id !== id);
+      newData.projects = newTasks;
+      modifyServerData(newData);
+      return newData;
+    });
+  };
+
   const moveProjectUp = (id) => moveProject(id, "up");
   const moveProjectDown = (id) => moveProject(id, "down");
 
@@ -105,22 +116,22 @@ export const TaskContextProvider = (props) => {
       });
   };
 
-  const postToServer = (data) => {
-    setIsLoading(true);
-    fetch(
-      "https://react-todo-75b5d-default-rtdb.firebaseio.com/test-data.json",
-      {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    ).then((data) => {
-      setIsLoading(false);
-      console.log("POST complete");
-    });
-  };
+  // const postToServer = (data) => {
+  //   setIsLoading(true);
+  //   fetch(
+  //     "https://react-todo-75b5d-default-rtdb.firebaseio.com/test-data.json",
+  //     {
+  //       method: "POST",
+  //       body: JSON.stringify(data),
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     }
+  //   ).then((data) => {
+  //     setIsLoading(false);
+  //     console.log("POST complete");
+  //   });
+  // };
 
   const modifyServerData = (data) => {
     fetch(
@@ -218,6 +229,7 @@ export const TaskContextProvider = (props) => {
     getIsLoading,
     getIsHardLoading,
     fetchData,
+    removeProject,
     setGroupSort,
     toggleComplete: toggleCompleteHandler,
     removeTask: removeTaskHandler,

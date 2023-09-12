@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import TaskContext from "../../../store/task-context";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import Card from "../Card/Card";
+import Button from "../Button/Button";
 
 const TaskGroup = (props) => {
   const taskCtx = useContext(TaskContext);
@@ -20,6 +21,27 @@ const TaskGroup = (props) => {
     setIsOpen((prev) => !prev);
   };
 
+  const removeProjectHandler = () => {
+    taskCtx.removeProject(props.groupId);
+  };
+
+  const dropdown = (
+    <DropdownMenu
+      label="Sort by "
+      default={props.sortBy}
+      options={["Priority", "ABC", "Date"]}
+      onDropdownChange={changeGroupSortHandler}
+    />
+  );
+
+  const removeProjectButton = (
+    <div className={classes.buttonContainer}>
+      <Button theme="blue" onClick={removeProjectHandler}>
+        Remove
+      </Button>
+    </div>
+  );
+
   return (
     <div>
       <Card>
@@ -30,12 +52,7 @@ const TaskGroup = (props) => {
             }`}
           >
             <h3 className={classes.groupTitle}>{props.groupTitle}</h3>
-            <DropdownMenu
-              label="Sort by "
-              default={props.sortBy}
-              options={["Priority", "ABC", "Date"]}
-              onDropdownChange={changeGroupSortHandler}
-            />
+            {isOpen ? dropdown : removeProjectButton}
           </div>
 
           <TodoList tasks={sortedTasks} isHidden={!isOpen} />
