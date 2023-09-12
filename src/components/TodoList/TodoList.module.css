@@ -1,7 +1,27 @@
 .todoList {
   width: 90vw;
   max-width: 550px;
+  opacity: 1;
+  max-height: 1000px;
+
+  /* height: auto; */
+  -webkit-transition: max-height 0.2s, opacity 0.5s ease 0.2s;
+  transition: max-height 0.2s, opacity 0.5s ease 0.2s;
+  /* 
+  -webkit-transition: opacity 2s, max-height 2s ease 2s;
+  transition: opacity 2s, max-height 2s ease 2s; */
+  /* transition-property: opacity, height;
+  transition-duration: 0.5s, 0.5s;
+  transition-delay: 0s, 1s;
+  transition-timing-function: linear; */
 }
+
+.todoList.hidden {
+  max-height: 0px;
+  opacity: 0;
+  overflow: hidden;
+}
+
 .todoList li {
   list-style: none;
 }

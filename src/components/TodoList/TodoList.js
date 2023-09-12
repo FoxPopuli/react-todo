@@ -6,7 +6,9 @@ const TodoList = (props) => {
   const completeTasks = props.tasks.filter((task) => task.complete);
 
   return (
-    <ul className={classes.todoList}>
+    <ul
+      className={`${classes.todoList} ${props.isHidden ? classes.hidden : ""}`}
+    >
       {incompleteTasks.map((entry) => {
         return (
           <TodoItem
