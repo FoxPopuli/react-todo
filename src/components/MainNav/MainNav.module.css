@@ -21,13 +21,9 @@
   display: flex;
   align-items: center;
   font-size: 24px;
-  border-bottom: 3px solid var(--main-dark);
-  transition: border-bottom 0.2s ease-in-out;
 }
 
 .headerLinks > * {
-  /* padding: 10px 0px; */
-  /* height: var(--header-height); */
   transition: background-color 0.3s ease;
 
   padding: 0px 8px;
@@ -48,10 +44,6 @@
 
 .headerLinks a:active,
 .headerLinks a:hover {
-  color: var(--active-link);
+  color: white;
   background-color: var(--main-highlight);
-}
-
-.headerLinks:hover {
-  border-bottom: 3px solid var(--main-highlight);
 }
