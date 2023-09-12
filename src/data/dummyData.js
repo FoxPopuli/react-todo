@@ -70,23 +70,19 @@ DummyData.tasks = [
 ];
 
 DummyData.projects = [
-  // {
-  //   title: "General",
-  //   dueDate: "2023-09-30",
-  //   id: 0,
-  //   sortedBy: "Priority",
-  // },
   {
     title: "Chores",
     dueDate: "2024-02-10",
     id: 1,
     sortedBy: "Priority",
+    isOpen: true,
   },
   {
     title: "Build House",
     dueDate: "2025-12-10",
     id: 2,
     sortedBy: "Priority",
+    isOpen: true,
   },
 ];
 

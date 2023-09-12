@@ -12,7 +12,7 @@ function App() {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<AllProjectsPage />}></Route>
+        <Route path="/react-todo" element={<AllProjectsPage />}></Route>
         <Route path="/all-projects" element={<AllProjectsPage />}></Route>
         <Route path="/new-task" element={<NewTaskPage />}></Route>
         <Route path="/new-project" element={<NewProjectPage />}></Route>

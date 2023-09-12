@@ -27,8 +27,6 @@ const emptyDummyObj = {
   ],
 };
 
-// const
-
 export const TaskContextProvider = (props) => {
   const [data, setData] = useState(emptyDummyObj);
   const [isLoading, setIsLoading] = useState(false);
@@ -56,49 +54,43 @@ export const TaskContextProvider = (props) => {
     console.log("Hard reset complete");
   };
 
-  const moveProjectUp = (id) => {
-    const newData = { ...data };
-    const newProjects = [...data.projects];
-    console.log(newProjects);
-    const ind1 = newProjects.findIndex((project) => project.id === id);
-    let ind2 = ind1 - 1;
+  const moveProject = (id, direction) => {
+    setData((prevData) => {
+      const newData = { ...prevData };
+      const newProjects = [...newData.projects];
 
-    if (ind2 < 0) {
-      ind2 = newProjects.length - 1;
-    }
+      let modifier = 0;
+      switch (direction) {
+        case "up":
+          modifier--;
+          break;
+        case "down":
+          modifier++;
+          break;
+      }
 
-    console.log(ind1, ind2);
-    const proj1 = newProjects[ind1];
-    newProjects[ind1] = newProjects[ind2];
-    newProjects[ind2] = proj1;
+      const ind1 = newProjects.findIndex((project) => project.id === id);
+      let ind2 = ind1 + modifier;
 
-    newData.projects = newProjects;
-    console.log(newProjects);
+      if (ind2 < 0) {
+        ind2 = newProjects.length - 1;
+      } else if (ind2 === newProjects.length) {
+        ind2 = 0;
+      }
 
-    setData(newData);
-    // modifyData(newData);
+      const proj1 = newProjects[ind1];
+      newProjects[ind1] = newProjects[ind2];
+      newProjects[ind2] = proj1;
+
+      newData.projects = newProjects;
+
+      modifyServerData(newData);
+      return newData;
+    });
   };
-  const moveProjectDown = (id) => {
-    const newData = { ...data };
-    const newProjects = [...data.projects];
-    const ind1 = newProjects.findIndex((project) => project.id === id);
-    let ind2 = ind1 + 1;
 
-    if (ind2 === newProjects.length) {
-      ind2 = 0;
-    }
-
-    console.log(ind1, ind2);
-    const proj1 = newProjects[ind1];
-    newProjects[ind1] = newProjects[ind2];
-    newProjects[ind2] = proj1;
-
-    newData.projects = newProjects;
-    console.log(newProjects);
-
-    setData(newData);
-    // modifyData(newData);
-  };
+  const moveProjectUp = (id) => moveProject(id, "up");
+  const moveProjectDown = (id) => moveProject(id, "down");
 
   const fetchData = () => {
     setIsHardLoading(true);
@@ -129,7 +121,7 @@ export const TaskContextProvider = (props) => {
     });
   };
 
-  const modifyData = (data) => {
+  const modifyServerData = (data) => {
     fetch(
       "https://react-todo-75b5d-default-rtdb.firebaseio.com/test-data.json",
       {
@@ -156,7 +148,7 @@ export const TaskContextProvider = (props) => {
       });
       newData.projects = newProjects;
 
-      modifyData(newData);
+      modifyServerData(newData);
       return newData;
     });
   };
@@ -182,7 +174,7 @@ export const TaskContextProvider = (props) => {
       });
 
       newData.tasks = newTasks;
-      modifyData(newData);
+      modifyServerData(newData);
       return newData;
     });
   };
@@ -192,7 +184,7 @@ export const TaskContextProvider = (props) => {
       const newData = { ...prevData };
       const newTasks = prevData.tasks.filter((task) => task.id !== id);
       newData.tasks = newTasks;
-      modifyData(newData);
+      modifyServerData(newData);
       return newData;
     });
   };
@@ -202,7 +194,7 @@ export const TaskContextProvider = (props) => {
       const newData = { ...prevData };
       const newTasks = prevData.tasks.concat(task);
       newData.tasks = newTasks;
-      modifyData(newData);
+      modifyServerData(newData);
       return newData;
     });
   };
@@ -212,10 +204,12 @@ export const TaskContextProvider = (props) => {
       const newData = { ...prevData };
       const newProjects = prevData.projects.concat(project);
       newData.projects = newProjects;
-      modifyData(newData);
+      modifyServerData(newData);
       return newData;
     });
   };
+
+  const toggleOpenHandler = (projId) => {};
 
   const context = {
     data,
