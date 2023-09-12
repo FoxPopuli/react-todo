@@ -8,7 +8,6 @@
   align-items: center;
   padding: 0px 10px;
   padding-bottom: 15px;
-  /* margin-bottom: 15px; */
   border-bottom: 1px solid var(--main-dark);
 }
 
@@ -24,10 +23,6 @@
 }
 
 .toggleButton {
-  /* transform: scale(1.9); */
-  /* width: 600px;
-  max-width: 600px; */
-
   display: flex;
   justify-content: center;
   cursor: pointer;
@@ -36,7 +31,8 @@
 
 .arrow {
   align-self: right;
-  border: solid #cecece9a;
+  border: solid #454545;
+  opacity: 0.2;
 
   border-width: 0 3px 3px 0;
   display: inline-block;
@@ -44,27 +40,25 @@
 }
 
 .arrow.down {
-  transform: rotate(45deg), scale(1.9);
-  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg) scale(1.5);
+  -webkit-transform: rotate(45deg) scale(1.5);
   margin-bottom: 4px;
   transition: transform 0.1s ease-in-out;
   -webkit-transition: transform 0.1s ease-in-out;
 }
 
 .arrow.up {
-  transform: rotate(45deg), scale(1.5);
-
-  -webkit-transform: rotate(-135deg);
   margin-bottom: 2px;
+  transform: rotate(-135deg) scale(1.5);
+  -webkit-transform: rotate(-135deg) scale(1.5);
   transition: transform 0.1s ease-in-out;
-
   -webkit-transition: transform 0.1s ease-in-out;
 }
 
 .toggleButton:hover .arrow.up,
 .toggleButton:hover .arrow.down {
   align-self: right;
-  border: solid #454545;
+  opacity: 0.8;
 
   border-width: 0 3px 3px 0;
   display: inline-block;

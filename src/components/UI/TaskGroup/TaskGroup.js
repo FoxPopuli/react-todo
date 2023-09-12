@@ -44,6 +44,7 @@ const TaskGroup = (props) => {
             className={`${classes.toggleButton}`}
             onClick={toggleCollapsedHandler}
           >
+            {/* <div></div> */}
             <div
               className={`${classes.arrow} ${
                 isOpen ? classes.up : classes.down
