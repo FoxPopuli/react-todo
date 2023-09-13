@@ -34,6 +34,8 @@ const TaskGroup = (props) => {
     />
   );
 
+  // throw new Error("An error");
+
   const removeProjectButton = (
     <div className={classes.buttonContainer}>
       <Button theme="blue" onClick={removeProjectHandler}>

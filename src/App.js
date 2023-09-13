@@ -1,5 +1,6 @@
 import "./index.css";
 import Layout from "./layout/Layout";
+import ErrorBoundary from "./error/ErrorBoundary";
 
 import AllTasksPage from "./pages/AllTasksPage";
 import AllProjectsPage from "./pages/AllProjectPage";
@@ -10,14 +11,16 @@ import { Route, Routes } from "react-router-dom";
 function App() {
   return (
     <Layout>
-      <Routes>
-        <Route path="/react-todo" element={<AllProjectsPage />}></Route>
-        <Route path="/" element={<AllProjectsPage />}></Route>
-        <Route path="/all-projects" element={<AllProjectsPage />}></Route>
-        <Route path="/new-task" element={<NewTaskPage />}></Route>
-        <Route path="/new-project" element={<NewProjectPage />}></Route>
-        <Route path="/all-tasks" element={<AllTasksPage />} />
-      </Routes>
+      <ErrorBoundary>
+        <Routes>
+          <Route path="/react-todo" element={<AllProjectsPage />}></Route>
+          <Route path="/" element={<AllProjectsPage />}></Route>
+          <Route path="/all-projects" element={<AllProjectsPage />}></Route>
+          <Route path="/new-task" element={<NewTaskPage />}></Route>
+          <Route path="/new-project" element={<NewProjectPage />}></Route>
+          <Route path="/all-tasks" element={<AllTasksPage />} />
+        </Routes>
+      </ErrorBoundary>
     </Layout>
   );
 }
