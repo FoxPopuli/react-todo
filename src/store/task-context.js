@@ -94,8 +94,16 @@ export const TaskContextProvider = (props) => {
   const removeProject = (id) => {
     setData((prevData) => {
       const newData = { ...prevData };
-      const newTasks = prevData.projects.filter((project) => project.id !== id);
-      newData.projects = newTasks;
+      const newProjects = prevData.projects.filter(
+        (project) => project.id !== id
+      );
+      newData.projects = newProjects;
+
+      const newTasks = newData.tasks.filter((task) => {
+        return task.projId !== id;
+      });
+      newData.tasks = newTasks;
+
       modifyServerData(newData);
       return newData;
     });

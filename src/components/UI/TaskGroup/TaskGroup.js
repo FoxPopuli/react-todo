@@ -52,7 +52,8 @@ const TaskGroup = (props) => {
             }`}
           >
             <h3 className={classes.groupTitle}>{props.groupTitle}</h3>
-            {isOpen ? dropdown : removeProjectButton}
+            {/* Don't render remove for General (groupId 0) */}
+            {!isOpen && +props.groupId ? removeProjectButton : dropdown}
           </div>
 
           <TodoList tasks={sortedTasks} isHidden={!isOpen} />
