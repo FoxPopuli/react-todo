@@ -4,7 +4,7 @@ import DummyData from "../../data/dummyData";
 import TaskContext from "../../store/task-context";
 import classes from "./DevButtons.module.css";
 
-const TestingButtons = () => {
+const DevButtons = () => {
   const taskCtx = useContext(TaskContext);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -16,11 +16,13 @@ const TestingButtons = () => {
     DummyData.tasks.forEach((task) => {
       if (!taskCtx.data.tasks.includes(task)) {
         taskCtx.addTask(task);
+        console.log(task);
       }
     });
     DummyData.projects.forEach((project) => {
       if (!taskCtx.data.projects.includes(project)) {
         taskCtx.addProject(project);
+        console.log(project);
       }
     });
   };
@@ -45,4 +47,4 @@ const TestingButtons = () => {
   );
 };
 
-export default TestingButtons;
+export default DevButtons;
