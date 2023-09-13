@@ -1,4 +1,4 @@
-import { useRef, useContext } from "react";
+import { useRef, useContext, useState } from "react";
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
 import classes from "./NewProjectForm.module.css";
@@ -11,17 +11,25 @@ const NewProjectForm = () => {
   const dueDateInputRef = useRef();
 
   const taskCtx = useContext(TaskContext);
+  const [errorText, setErrorText] = useState("");
 
   const navigate = useNavigate();
 
   const submitHandler = (event) => {
     event.preventDefault();
 
+    const projTitle = titleInputRef.current.value;
+
+    console.log(!!dueDateInputRef.current.value.split("-")[0]);
+    if (!projTitle) {
+      setErrorText("Please enter a valid title.");
+      return;
+    }
+
     const inputs = {
-      title: titleInputRef.current.value,
+      title: projTitle,
       id: getUniqueId(taskCtx.data.projects),
-      dateAdded: new Date(),
-      dueDate: new Date(dueDateInputRef.current.value.split("-")),
+      dueDate: dueDateInputRef.current.value.split("-"),
       complete: false,
       sortedBy: "Priority",
     };
@@ -55,6 +63,7 @@ const NewProjectForm = () => {
             Add
           </Button>
         </div>
+        <div className={classes.errorTextContainer}>{errorText}</div>
       </form>
     </Card>
   );
