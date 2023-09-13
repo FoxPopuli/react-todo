@@ -1,0 +1,22 @@
+.infoContainer {
+  margin-left: 10px;
+}
+
+.dueDate {
+  font-size: 14px;
+  color: rgb(79, 79, 79);
+}
+
+.dueDate.checked {
+  text-decoration: line-through;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.title.checked {
+  text-decoration: line-through;
+  color: rgb(79, 79, 79);
+}

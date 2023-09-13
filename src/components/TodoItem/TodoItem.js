@@ -3,9 +3,9 @@ import Button from "../UI/Button/Button";
 import PriorityMarker from "../UI/PriorityMarker/PriorityMarker";
 import Checkbox from "../UI/Checkbox/Checkbox";
 import { useContext } from "react";
-import { parseDate } from "../../helperFunctions";
 
 import TaskContext from "../../store/task-context";
+import TitleContainer from "../TitleContainer/TitleContainer";
 
 const TodoItem = (props) => {
   const taskCtx = useContext(TaskContext);
@@ -21,28 +21,17 @@ const TodoItem = (props) => {
   return (
     <div
       className={`${classes.outerContainer} ${
-        props.complete ? classes.checked : null
+        props.complete ? classes.checked : ""
       }`}
     >
       <li className={`${classes.main} `}>
         <div className={classes.leftGroup}>
           <Checkbox onClick={checkboxHandler} isChecked={props.complete} />
-          <div className={classes.infoContainer}>
-            <h3
-              className={`${classes.title} ${
-                props.complete ? classes.checked : null
-              }`}
-            >
-              {props.title}
-            </h3>
-            <i
-              className={`${classes.dueDate} ${
-                props.complete ? classes.checked : null
-              }`}
-            >
-              {parseDate(props.dueDate)}
-            </i>
-          </div>
+          <TitleContainer
+            dueDate={props.dueDate}
+            complete={props.complete}
+            title={props.title}
+          />
         </div>
 
         <div className={classes.rightGroup}>

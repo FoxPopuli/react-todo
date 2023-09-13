@@ -24,7 +24,7 @@
   border-radius: 5px;
 }
 
-.title {
+/* .title {
   font-weight: bold;
   font-size: 22px;
 }
@@ -32,7 +32,7 @@
 .title.checked {
   text-decoration: line-through;
   color: rgb(79, 79, 79);
-}
+} */
 
 .leftGroup,
 .rightGroup {
@@ -40,14 +40,14 @@
   align-items: center;
 }
 
-.dueDate {
+/* .dueDate {
   font-size: 14px;
   color: rgb(79, 79, 79);
 }
 
 .dueDate.checked {
   text-decoration: line-through;
-}
+} */
 
 .priority {
   display: none;
@@ -55,12 +55,6 @@
 
 .infoContainer {
   margin-left: 10px;
-}
-
-.titleChecked,
-.dueDateChecked {
-  text-decoration: line-through;
-  color: grey;
 }
 
 @media (min-width: 400px) {
