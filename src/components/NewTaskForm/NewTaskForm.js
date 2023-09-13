@@ -20,19 +20,27 @@ const NewTaskForm = () => {
   let currentProject = "General";
   const submitHandler = (e) => {
     e.preventDefault();
-    const newId = getUniqueId(taskCtx.data.tasks);
-    const taskTitle = titleInputRef.current.value;
+    const id = getUniqueId(taskCtx.data.tasks);
 
-    if (!taskTitle) {
+    const title = titleInputRef.current.value;
+    const dueDate = dueDateInputRef.current.value.split("-");
+
+    if (!dueDate[0] && !title) {
+      setErrorText("Please enter a valid title and date.");
+      return;
+    } else if (!title) {
       setErrorText("Please enter a valid title.");
+      return;
+    } else if (!dueDate[0]) {
+      setErrorText("Please enter a valid date");
       return;
     }
 
     const inputs = {
-      title: taskTitle,
-      id: newId,
+      title,
+      dueDate,
+      id,
       priority: currentPriority,
-      dueDate: dueDateInputRef.current.value.split("-"),
       complete: false,
       projId: findProjectId(currentProject, taskCtx.data.projects),
     };

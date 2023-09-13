@@ -15,21 +15,27 @@ const NewProjectForm = () => {
 
   const navigate = useNavigate();
 
-  const submitHandler = (event) => {
-    event.preventDefault();
+  const submitHandler = (e) => {
+    e.preventDefault();
 
-    const projTitle = titleInputRef.current.value;
+    const title = titleInputRef.current.value;
+    const dueDate = dueDateInputRef.current.value.split("-");
 
-    console.log(!!dueDateInputRef.current.value.split("-")[0]);
-    if (!projTitle) {
+    if (!dueDate[0] && !title) {
+      setErrorText("Please enter a valid title and date.");
+      return;
+    } else if (!title) {
       setErrorText("Please enter a valid title.");
+      return;
+    } else if (!dueDate[0]) {
+      setErrorText("Please enter a valid date");
       return;
     }
 
     const inputs = {
-      title: projTitle,
+      title,
+      dueDate,
       id: getUniqueId(taskCtx.data.projects),
-      dueDate: dueDateInputRef.current.value.split("-"),
       complete: false,
       sortedBy: "Priority",
     };
