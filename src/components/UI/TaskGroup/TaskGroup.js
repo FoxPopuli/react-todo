@@ -6,6 +6,7 @@ import TaskContext from "../../../store/task-context";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
+import DueDate from "../../DueDate/DueDate";
 
 const TaskGroup = (props) => {
   const taskCtx = useContext(TaskContext);
@@ -13,8 +14,12 @@ const TaskGroup = (props) => {
   const [isOpen, setIsOpen] = useState(true);
   const sortedTasks = sortGroup(props.tasks, props.sortBy);
 
+  const project = taskCtx.data.projects.filter(
+    (project) => +project.id === props.groupId
+  )[0];
+
   const changeGroupSortHandler = (sortString) => {
-    taskCtx.setGroupSort(props.groupId, sortString);
+    taskCtx.setGroupSort(project.id, sortString);
   };
 
   const toggleCollapsedHandler = () => {
@@ -22,7 +27,7 @@ const TaskGroup = (props) => {
   };
 
   const removeProjectHandler = () => {
-    taskCtx.removeProject(props.groupId);
+    taskCtx.removeProject(project.id);
   };
 
   const dropdown = (
@@ -33,8 +38,6 @@ const TaskGroup = (props) => {
       onDropdownChange={changeGroupSortHandler}
     />
   );
-
-  // throw new Error("An error");
 
   const removeProjectButton = (
     <div className={classes.buttonContainer}>
@@ -49,9 +52,12 @@ const TaskGroup = (props) => {
       <Card>
         <div className={classes.taskGroup}>
           <div className={`${classes.titleContainer}`}>
-            <h3 className={classes.groupTitle}>{props.groupTitle}</h3>
+            <div>
+              <h3 className={classes.groupTitle}>{props.groupTitle}</h3>
+              <DueDate dueDate={project.dueDate} />
+            </div>
             {/* Don't render remove for General (groupId 0) */}
-            {!isOpen && +props.groupId ? removeProjectButton : dropdown}
+            {!isOpen && +project.id ? removeProjectButton : dropdown}
           </div>
 
           <TodoList tasks={sortedTasks} isHidden={!isOpen} />

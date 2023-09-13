@@ -1,4 +1,4 @@
-import { useRef, useContext } from "react";
+import { useRef, useContext, useState } from "react";
 import Card from "../UI/Card/Card";
 import Button from "../UI/Button/Button";
 import classes from "./NewTaskForm.module.css";
@@ -9,25 +9,30 @@ import { findProjectId, getUniqueId } from "../../helperFunctions";
 import testStyles from "./DropdownStyles.module.css";
 
 const NewTaskForm = () => {
+  const taskCtx = useContext(TaskContext);
+  const [errorText, setErrorText] = useState("");
   const titleInputRef = useRef();
   const dueDateInputRef = useRef();
-
-  const taskCtx = useContext(TaskContext);
 
   const navigate = useNavigate();
 
   let currentPriority;
   let currentProject = "General";
-  const submitHandler = (event) => {
-    event.preventDefault();
+  const submitHandler = (e) => {
+    e.preventDefault();
     const newId = getUniqueId(taskCtx.data.tasks);
+    const taskTitle = titleInputRef.current.value;
+
+    if (!taskTitle) {
+      setErrorText("Please enter a valid title.");
+      return;
+    }
 
     const inputs = {
-      title: titleInputRef.current.value,
+      title: taskTitle,
       id: newId,
       priority: currentPriority,
-      dateAdded: new Date(),
-      dueDate: new Date(dueDateInputRef.current.value.split("-")),
+      dueDate: dueDateInputRef.current.value.split("-"),
       complete: false,
       projId: findProjectId(currentProject, taskCtx.data.projects),
     };
@@ -103,6 +108,7 @@ const NewTaskForm = () => {
             Add
           </Button>
         </div>
+        <div className={classes.errorTextContainer}>{errorText}</div>
       </form>
     </Card>
   );

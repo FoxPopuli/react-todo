@@ -22,7 +22,6 @@ const emptyDummyObj = {
     {
       title: "General",
       id: 0,
-      dueDate: "2023-09-02",
       sortedBy: "Priority",
     },
   ],
