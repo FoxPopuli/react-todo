@@ -48,11 +48,7 @@ const TaskGroup = (props) => {
     <div>
       <Card>
         <div className={classes.taskGroup}>
-          <div
-            className={`${classes.titleContainer} ${
-              !isOpen ? classes.hidden : ""
-            }`}
-          >
+          <div className={`${classes.titleContainer}`}>
             <h3 className={classes.groupTitle}>{props.groupTitle}</h3>
             {/* Don't render remove for General (groupId 0) */}
             {!isOpen && +props.groupId ? removeProjectButton : dropdown}
