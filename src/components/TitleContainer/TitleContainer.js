@@ -1,5 +1,5 @@
 import classes from "./TitleContainer.module.css";
-import { parseDate } from "../../helperFunctions";
+import DueDate from "../DueDate/DueDate";
 
 const TitleContainer = (props) => {
   return (
@@ -11,13 +11,7 @@ const TitleContainer = (props) => {
       >
         {props.title}
       </h3>
-      <i
-        className={`${classes.dueDate} ${
-          props.complete ? classes.checked : null
-        }`}
-      >
-        {parseDate(props.dueDate)}
-      </i>
+      <DueDate complete={props.complete} dueDate={props.dueDate} />
     </div>
   );
 };
