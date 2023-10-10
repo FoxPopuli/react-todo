@@ -12,6 +12,7 @@ const TaskContext = createContext({
   getIsLoading: () => {},
   getIsHardLoading: () => {},
   hardReset: () => {},
+  moveProjectUp: () => {},
   moveProjectDown: () => {},
   removeProject: () => {},
 });
