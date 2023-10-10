@@ -6,6 +6,7 @@ import AllTasksPage from "./pages/AllTasksPage";
 import AllProjectsPage from "./pages/AllProjectPage";
 import NewTaskPage from "./pages/NewTaskPage";
 import NewProjectPage from "./pages/NewProjectPage";
+import SignupPage from "./pages/SignupPage";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/new-task" element={<NewTaskPage />}></Route>
           <Route path="/new-project" element={<NewProjectPage />}></Route>
           <Route path="/all-tasks" element={<AllTasksPage />} />
+          <Route path="/login" element={<SignupPage />} />
         </Routes>
       </ErrorBoundary>
     </Layout>

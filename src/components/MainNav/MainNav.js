@@ -14,6 +14,9 @@ const MainNav = () => {
           <Link to="/all-projects">All Projects</Link>
         </li>
         <li className={classes.headerLinks}>
+          <Link to="/login">Login</Link>
+        </li>
+        <li className={classes.headerLinks}>
           <NavDropdown
             options={[
               {
