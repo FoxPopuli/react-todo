@@ -41,7 +41,8 @@ export const TaskContextProvider = (props) => {
         return response.json();
       })
       .then((serverData) => {
-        setData(serverData);
+        console.log(serverData);
+        // setData(serverData);
         setIsHardLoading(false);
       });
   }, []);

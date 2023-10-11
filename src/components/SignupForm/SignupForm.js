@@ -1,7 +1,7 @@
 import classes from "./SignupForm.module.css";
 import Card from "../UI/Card/Card";
 import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import Button from "../UI/Button/Button";
@@ -33,7 +33,7 @@ const SignupForm = () => {
 
   return (
     <Card>
-      <form>
+      <form className={classes.form}>
         <h2>Sign Up</h2>
         <div className={classes.formSection}>
           <label htmlFor="email">E-mail</label>
@@ -47,7 +47,7 @@ const SignupForm = () => {
           />
         </div>
         <div className={classes.formSection}>
-          <label htmlFor="password">E-mail</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             label="Create password"
@@ -57,7 +57,9 @@ const SignupForm = () => {
             placeholder="Password"
           />
         </div>
-        <Button theme="blue"></Button>
+        <Button theme="blue" onClick={onSubmit}>
+          Submit
+        </Button>
       </form>
     </Card>
   );
