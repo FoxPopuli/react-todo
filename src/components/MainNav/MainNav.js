@@ -5,7 +5,7 @@ import NavDropdown from "../NavDropdown/NavDropdown";
 const MainNav = () => {
   return (
     <nav className={classes.mainNav}>
-      <h3 className={classes.logo}>React Todo</h3>
+      <h3 className={classes.logo}>React To-Do</h3>
       <ul className={classes.list}>
         <li className={classes.headerLinks}>
           <Link to="/all-tasks">All Tasks</Link>
@@ -13,9 +13,7 @@ const MainNav = () => {
         <li className={classes.headerLinks}>
           <Link to="/all-projects">All Projects</Link>
         </li>
-        <li className={classes.headerLinks}>
-          <Link to="/login">Login</Link>
-        </li>
+
         <li className={classes.headerLinks}>
           <NavDropdown
             options={[
@@ -30,6 +28,14 @@ const MainNav = () => {
             ]}
             title="Add New"
           />
+        </li>
+      </ul>
+      <ul className={classes.list}>
+        <li className={classes.headerLinks}>
+          <Link to="/login">Log in</Link>
+        </li>
+        <li className={classes.headerLinks}>
+          <Link to="/signup">Sign up</Link>
         </li>
       </ul>
     </nav>
