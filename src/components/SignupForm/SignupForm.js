@@ -31,6 +31,10 @@ const SignupForm = () => {
       });
   };
 
+  const cancelHandler = () => {
+    navigate("/react-todo");
+  };
+
   return (
     <Card>
       <form className={classes.form}>
@@ -57,9 +61,15 @@ const SignupForm = () => {
             placeholder="Password"
           />
         </div>
-        <Button theme="blue" onClick={onSubmit}>
-          Submit
-        </Button>
+
+        <div className={classes.buttonContainer}>
+          <Button onClick={cancelHandler} theme="light">
+            Cancel
+          </Button>
+          <Button theme="blue" onClick={onSubmit}>
+            Submit
+          </Button>
+        </div>
       </form>
     </Card>
   );
