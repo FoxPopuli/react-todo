@@ -1,6 +1,6 @@
 .dropdown {
   --header-dropdown-height: var(--header-height);
-  --header-dropdown-width: 130px;
+  --header-dropdown-width: 114px;
   display: flex;
   align-items: center;
   color: var(--header-text);
@@ -9,9 +9,9 @@
 .container {
   position: absolute;
   margin-right: 20px;
-  margin-top: calc(77px + var(--header-dropdown-height));
+  margin-top: calc(70px + var(--header-dropdown-height));
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 3px;
+  border-radius: 0px 0px 3px 3px;
   background-color: var(--main-dark);
   opacity: 1;
   height: auto;
