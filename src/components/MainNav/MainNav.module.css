@@ -10,6 +10,7 @@
   height: var(--header-height);
   align-items: center;
   font-size: 34px;
+  padding: 5px;
 }
 
 .list {
@@ -27,7 +28,7 @@
   transition: background-color 0.3s ease;
 
   padding: 0px 8px;
-  height: var(--header-height);
+  min-height: var(--header-height);
   text-align: center;
   display: flex;
   align-items: center;
