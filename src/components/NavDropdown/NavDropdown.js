@@ -18,13 +18,9 @@ const NavDropdown = (props) => {
     return () => document.body.removeEventListener("click", closeDropdown);
   }, []);
 
-  const showDropdownHandler = () => {
-    setIsActive(!isActive);
-  };
+  const showDropdownHandler = () => setIsActive(!isActive);
+  const selectOptionHandler = () => setIsActive(false);
 
-  const selectOptionHandler = () => {
-    setIsActive(false);
-  };
   return (
     <div className={classes.dropdown}>
       <div onClick={showDropdownHandler} className={classes.title} ref={btnRef}>

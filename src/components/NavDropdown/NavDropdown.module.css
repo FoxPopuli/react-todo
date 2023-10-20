@@ -9,9 +9,9 @@
 .container {
   position: absolute;
   margin-right: 20px;
-  margin-top: calc(81px + var(--header-dropdown-height));
+  margin-top: calc(77px + var(--header-dropdown-height));
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 3px;
   background-color: var(--main-dark);
   opacity: 1;
   height: auto;
@@ -38,6 +38,8 @@
   transition: background-color 0.2s ease;
   width: var(--header-dropdown-width);
   padding: 5px;
+  text-align: left;
+  padding-left: 8px;
 }
 
 .container li a:hover {
