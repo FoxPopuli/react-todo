@@ -13,12 +13,12 @@ const MainNav = () => {
   return (
     <nav className={classes.mainNav}>
       <h3 className={classes.logo}>React To-Do</h3>
-      <ul className={classes.list}>
+      <ul className={classes.centerAlign}>
         <li className={classes.headerLinks}>
-          <Link to="/all-tasks">All Tasks</Link>
+          <Link to="/react-todo/all-tasks">All Tasks</Link>
         </li>
         <li className={classes.headerLinks}>
-          <Link to="/all-projects">All Projects</Link>
+          <Link to="/react-todo/all-projects">All Projects</Link>
         </li>
 
         <li className={classes.headerLinks}>
@@ -26,25 +26,28 @@ const MainNav = () => {
             options={[
               {
                 value: "Project",
-                link: "/new-project",
+                link: "/react-todo/new-project",
               },
               {
                 value: "Task",
-                link: "/new-task",
+                link: "/react-todo/new-task",
               },
             ]}
             title="Add New"
           />
         </li>
       </ul>
-      <ul className={classes.rightList}>
+      <ul className={classes.rightAlign}>
         <li className={classes.headerLinks}>
-          <Link to="/login">Log in</Link>
+          <Link to="/react-todo/login">Log in</Link>
         </li>
         <li className={classes.headerLinks}>
-          <Link to="/signup">Sign up</Link>
+          <Link to="/react-todo/signup">Sign up</Link>
         </li>
-        <li className={classes.headerLinks} onClick={burgerClickHandler}>
+        <li
+          className={`${classes.headerLinks} ${classes.burgerMenu}`}
+          onClick={burgerClickHandler}
+        >
           BAR
         </li>
       </ul>

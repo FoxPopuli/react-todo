@@ -16,13 +16,19 @@ function App() {
       <ErrorBoundary>
         <Routes>
           <Route path="/react-todo" element={<AllProjectsPage />}></Route>
-          <Route path="/" element={<AllProjectsPage />}></Route>
-          <Route path="/all-projects" element={<AllProjectsPage />}></Route>
-          <Route path="/new-task" element={<NewTaskPage />}></Route>
-          <Route path="/new-project" element={<NewProjectPage />}></Route>
-          <Route path="/all-tasks" element={<AllTasksPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          {/* <Route path="/" element={<AllProjectsPage />}></Route> */}
+          <Route
+            path="/react-todo/all-projects"
+            element={<AllProjectsPage />}
+          ></Route>
+          <Route path="/react-todo/new-task" element={<NewTaskPage />}></Route>
+          <Route
+            path="/react-todo/new-project"
+            element={<NewProjectPage />}
+          ></Route>
+          <Route path="/react-todo/all-tasks" element={<AllTasksPage />} />
+          <Route path="/react-todo/signup" element={<SignupPage />} />
+          <Route path="/react-todo/login" element={<LoginPage />} />
         </Routes>
       </ErrorBoundary>
     </Layout>

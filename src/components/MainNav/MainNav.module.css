@@ -13,10 +13,14 @@
   padding: 5px;
 }
 
-.list,
-.rightList {
+.centerAlign,
+.rightAlign {
   display: flex;
   list-style: none;
+}
+
+.centerAlign {
+  display: none;
 }
 
 .headerLinks {
@@ -50,8 +54,13 @@
   background-color: var(--main-highlight);
 }
 
-@media only screen and (max-width: 730px) {
-  .list {
+@media only screen and (min-width: 730px) {
+  .burgerMenu {
     display: none;
+  }
+
+  .centerAlign {
+    display: flex;
+    list-style: none;
   }
 }
