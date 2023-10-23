@@ -30,7 +30,7 @@ const MainNav = () => {
           />
         </li>
       </ul>
-      <ul className={classes.list}>
+      <ul className={classes.rightList}>
         <li className={classes.headerLinks}>
           <Link to="/login">Log in</Link>
         </li>

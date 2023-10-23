@@ -13,7 +13,8 @@
   padding: 5px;
 }
 
-.list {
+.list,
+.rightList {
   display: flex;
   list-style: none;
 }
@@ -47,4 +48,10 @@
 .headerLinks a:hover {
   color: white;
   background-color: var(--main-highlight);
+}
+
+@media only screen and (max-width: 730px) {
+  .list {
+    display: none;
+  }
 }
