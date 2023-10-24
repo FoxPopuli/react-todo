@@ -10,7 +10,9 @@
 .formSection {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: left;
+  margin-bottom: 20px;
 }
 
 .formSection label {
@@ -24,7 +26,6 @@
   border-radius: 4px;
   border: 1px solid #ccc;
   font-size: 16px;
-  margin-bottom: 20px;
   padding: 8px;
 }
 
@@ -46,4 +47,16 @@
   color: red;
   text-align: center;
   margin-top: 10px;
+}
+
+@media only screen and (min-width: 450px) {
+  .formSection {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .formSection input {
+    width: 185px;
+  }
 }

@@ -2,13 +2,13 @@
   justify-content: space-between;
   border: 1px solid #ccc;
   background-color: #fff;
-  width: 185px;
   height: 36px;
   display: flex;
   align-items: center;
   padding: 5px 8px;
   cursor: pointer;
   border-radius: 5px;
+  width: 185px;
 }
 
 .listItem {
@@ -22,8 +22,8 @@
 
   padding: 5px 8px;
   background-color: #fff;
-  width: 185px;
   height: 36px;
+  width: 185px;
 
   cursor: pointer;
 }

@@ -7,14 +7,25 @@
   max-width: 350px;
 }
 
-.formSection {
+.formSection,
+.dropDownFormSection {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: left;
   margin-bottom: 20px;
+  width: 100%;
 }
 
-.formSection label {
+.dropDownFormSection {
+  /* flex-direction: row; */
+  /* align-items: center; */
+  align-items: left;
+
+  justify-content: space-between;
+}
+
+.formSection label,
+.dropDownFormSection label {
   font-size: 22px;
   font-weight: bold;
   padding-left: 5px;
@@ -26,7 +37,6 @@
   border: 1px solid #ccc;
   font-size: 16px;
   padding: 8px;
-  width: 185px;
 }
 
 .form h2 {
@@ -47,4 +57,21 @@
   color: red;
   text-align: center;
   margin-top: 10px;
+}
+
+@media only screen and (min-width: 450px) {
+  .formSection {
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .formSection input {
+    width: 185px;
+  }
+
+  .dropDownFormSection {
+    flex-direction: row;
+    align-items: center;
+  }
 }

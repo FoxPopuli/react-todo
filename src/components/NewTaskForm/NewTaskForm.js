@@ -85,7 +85,7 @@ const NewTaskForm = () => {
           <label htmlFor="title">Title</label>
           <input type="text" required ref={titleInputRef}></input>
         </div>
-        <div className={classes.formSection}>
+        <div className={classes.dropDownFormSection}>
           <label htmlFor="priority">Priority</label>
           <DropdownMenu
             options={["Low", "High", "Urgent"]}
@@ -98,7 +98,7 @@ const NewTaskForm = () => {
           <label htmlFor="due-date">Due Date</label>
           <input type="date" ref={dueDateInputRef}></input>
         </div>
-        <div className={classes.formSection}>
+        <div className={classes.dropDownFormSection}>
           <label htmlFor="due-date">Project</label>
 
           <DropdownMenu
