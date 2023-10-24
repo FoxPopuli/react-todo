@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import classes from "./MainNav.module.css";
 import NavDropdown from "../NavDropdown/NavDropdown";
-import ModalContext from "../../store/ModalContext";
+import ModalContext from "../../store/modal-context";
+import burgerIcon from "../../img/menu-icon.svg";
+
 import { useContext } from "react";
 
 const MainNav = () => {
@@ -38,17 +40,21 @@ const MainNav = () => {
         </li>
       </ul>
       <ul className={classes.rightAlign}>
-        <li className={classes.headerLinks}>
+        <li className={`${classes.headerLinks} ${classes.authLinks}`}>
           <Link to="/react-todo/login">Log in</Link>
         </li>
-        <li className={classes.headerLinks}>
+        <li className={`${classes.headerLinks} ${classes.authLinks}`}>
           <Link to="/react-todo/signup">Sign up</Link>
         </li>
         <li
-          className={`${classes.headerLinks} ${classes.burgerMenu}`}
+          className={`${classes.headerLink} ${classes.burgerMenu}`}
           onClick={burgerClickHandler}
         >
-          BAR
+          <img
+            src={burgerIcon}
+            className={classes.invert}
+            alt="Sidebar Button"
+          ></img>
         </li>
       </ul>
     </nav>

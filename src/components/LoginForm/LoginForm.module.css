@@ -9,8 +9,9 @@
 
 .formSection {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: left;
+
+  flex-direction: column;
   margin-bottom: 20px;
 }
 
@@ -26,7 +27,6 @@
   border: 1px solid #ccc;
   font-size: 16px;
   padding: 8px;
-  width: 185px;
 }
 
 .form h2 {
@@ -47,4 +47,16 @@
   color: red;
   text-align: center;
   margin-top: 10px;
+}
+
+@media only screen and (min-width: 450px) {
+  .formSection {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .formSection input {
+    width: 185px;
+  }
 }

@@ -1,6 +1,6 @@
 import classes from "./Modal.module.css";
 import Sidebar from "../components/Sidebar/Sidebar";
-import ModalContext from "../store/ModalContext";
+import ModalContext from "../store/modal-context";
 
 import { useContext } from "react";
 const SidebarModal = (props) => {

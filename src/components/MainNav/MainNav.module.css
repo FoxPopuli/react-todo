@@ -54,6 +54,31 @@
   background-color: var(--main-highlight);
 }
 
+.burgerMenu {
+  display: flex;
+  align-items: center;
+}
+
+.invert {
+  -webkit-filter: invert(100%); /* safari 6.0 - 9.0 */
+  filter: invert(100%);
+  max-width: 40px;
+  max-height: 40px;
+  padding: 0px 8px;
+
+  /* margin: 0 10px; */
+}
+
+.authLinks {
+  display: none;
+}
+
+@media only screen and (min-width: 450px) {
+  .authLinks {
+    display: flex;
+  }
+}
+
 @media only screen and (min-width: 730px) {
   .burgerMenu {
     display: none;

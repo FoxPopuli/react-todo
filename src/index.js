@@ -5,7 +5,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { TaskContextProvider } from "./store/task-context";
 import SidebarModal from "./modals/SidebarModal";
-import { ModalContextProvider } from "./store/ModalContext";
+import { ModalContextProvider } from "./store/modal-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
