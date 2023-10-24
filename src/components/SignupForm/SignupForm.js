@@ -1,4 +1,4 @@
-import classes from "./SignupForm.module.css";
+import classes from "../LoginForm/LoginForm.module.css";
 import Card from "../UI/Card/Card";
 import { useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
