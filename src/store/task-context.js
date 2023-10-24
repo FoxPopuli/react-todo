@@ -1,6 +1,8 @@
 import { createContext } from "react";
 import { useState, useEffect } from "react";
 
+import tempData from "../data/dummyData";
+
 const TaskContext = createContext({
   data: [],
   // For autocompletion
@@ -42,7 +44,7 @@ export const TaskContextProvider = (props) => {
       })
       .then((serverData) => {
         console.log(serverData);
-        // setData(serverData);
+        setData(tempData);
         setIsHardLoading(false);
       });
   }, []);
