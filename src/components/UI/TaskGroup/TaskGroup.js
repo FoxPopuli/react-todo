@@ -7,6 +7,7 @@ import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import Card from "../Card/Card";
 import Button from "../Button/Button";
 import DueDate from "../../DueDate/DueDate";
+import RemoveButton from "../RemoveButton/RemoveButton";
 
 const TaskGroup = (props) => {
   const taskCtx = useContext(TaskContext);
@@ -41,9 +42,10 @@ const TaskGroup = (props) => {
 
   const removeProjectButton = (
     <div className={classes.buttonContainer}>
-      <Button theme="blue" onClick={removeProjectHandler}>
+      {/* <Button theme="blue" onClick={removeProjectHandler}>
         Remove
-      </Button>
+      </Button> */}
+      <RemoveButton removeItem={removeProjectHandler} />
     </div>
   );
 

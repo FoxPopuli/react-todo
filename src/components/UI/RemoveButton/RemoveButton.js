@@ -7,7 +7,7 @@ const RemoveButton = (props) => {
     props.removeItem();
   };
   return (
-    <div>
+    <div className={classes.buttonContainer}>
       {/* <div className={classes.button} onClick={onClickHandler}></div> */}
       <img
         src={xButton}
