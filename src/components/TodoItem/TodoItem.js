@@ -6,6 +6,7 @@ import { useContext } from "react";
 
 import TaskContext from "../../store/task-context";
 import TitleContainer from "../TitleContainer/TitleContainer";
+import RemoveButton from "../UI/RemoveButton/RemoveButton";
 
 const TodoItem = (props) => {
   const taskCtx = useContext(TaskContext);
@@ -36,7 +37,8 @@ const TodoItem = (props) => {
 
         <div className={classes.rightGroup}>
           <PriorityMarker priority={props.priority} />
-          <Button onClick={removeItemHandler}>Remove</Button>
+          {/* <Button onClick={removeItemHandler}>Remove</Button> */}
+          <RemoveButton removeItem={removeItemHandler} />
         </div>
       </li>
     </div>
