@@ -1,35 +1,44 @@
 import classes from "../LoginForm/LoginForm.module.css";
 import Card from "../UI/Card/Card";
 import { useNavigate } from "react-router-dom";
-import { useRef, useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import { useRef, useState, useContext } from "react";
 import Button from "../UI/Button/Button";
+import AuthContext from "../../store/auth-context";
 
 const SignupForm = () => {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const authCtx = useContext(AuthContext);
 
-  const onSubmit = async (e) => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const submitHandler = (e) => {
     e.preventDefault();
-
-    await createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        navigate("/login");
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-        // ..
-      });
+    authCtx.signUp(emailRef.current.value, passwordRef.current.value);
   };
+
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   await createUserWithEmailAndPassword(auth, email, password)
+  //     .then((userCredential) => {
+  //       // Signed in
+  //       const user = userCredential.user;
+  //       console.log(user);
+  //       navigate("/login");
+  //       // ...
+  //     })
+  //     .catch((error) => {
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //       console.log(errorCode, errorMessage);
+  //       // ..
+  //     });
+  // };
 
   const cancelHandler = () => {
     navigate("/react-todo");
@@ -44,8 +53,9 @@ const SignupForm = () => {
           <input
             type="email"
             label="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            // value={email}
+            // onChange={(e) => setEmail(e.target.value)}
+            ref={emailRef}
             required
             placeholder="Email address"
           />
@@ -55,8 +65,9 @@ const SignupForm = () => {
           <input
             type="password"
             label="Create password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            // value={password}
+            // onChange={(e) => setPassword(e.target.value)}
+            ref={passwordRef}
             required
             placeholder="Password"
           />
@@ -66,7 +77,7 @@ const SignupForm = () => {
           <Button onClick={cancelHandler} theme="light">
             Cancel
           </Button>
-          <Button theme="blue" onClick={onSubmit}>
+          <Button theme="blue" onClick={submitHandler}>
             Sign up
           </Button>
         </div>
