@@ -6,43 +6,32 @@ import Button from "../UI/Button/Button";
 import AuthContext from "../../store/auth-context";
 
 const SignupForm = () => {
+  const [errorText, setErrorText] = useState("");
   const navigate = useNavigate();
 
   const authCtx = useContext(AuthContext);
 
   const emailRef = useRef();
-  const passwordRef = useRef();
+  const password1Ref = useRef();
+  const password2Ref = useRef();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    authCtx.signUp(emailRef.current.value, passwordRef.current.value);
+
+    if (password1Ref.current.value !== password2Ref.current.value) {
+      setErrorText("Passwords do not match.");
+      return;
+    }
+
+    if (password1Ref.current.value.length < 7) {
+      setErrorText("Passwords must be at least 6 characters");
+      return;
+    }
+
+    authCtx.signUp(emailRef.current.value, password1Ref.current.value);
   };
 
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-
-  // const onSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   await createUserWithEmailAndPassword(auth, email, password)
-  //     .then((userCredential) => {
-  //       // Signed in
-  //       const user = userCredential.user;
-  //       console.log(user);
-  //       navigate("/login");
-  //       // ...
-  //     })
-  //     .catch((error) => {
-  //       const errorCode = error.code;
-  //       const errorMessage = error.message;
-  //       console.log(errorCode, errorMessage);
-  //       // ..
-  //     });
-  // };
-
-  const cancelHandler = () => {
-    navigate("/react-todo");
-  };
+  const cancelHandler = () => navigate("/react-todo");
 
   return (
     <Card>
@@ -53,25 +42,33 @@ const SignupForm = () => {
           <input
             type="email"
             label="Email address"
-            // value={email}
-            // onChange={(e) => setEmail(e.target.value)}
             ref={emailRef}
             required
             placeholder="Email address"
           />
         </div>
         <div className={classes.formSection}>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Create Password</label>
           <input
             type="password"
             label="Create password"
-            // value={password}
-            // onChange={(e) => setPassword(e.target.value)}
-            ref={passwordRef}
+            ref={password1Ref}
             required
             placeholder="Password"
           />
         </div>
+        <div className={classes.formSection}>
+          <label htmlFor="password">Repeat Password</label>
+          <input
+            type="password"
+            label="Repeat password"
+            ref={password2Ref}
+            required
+            placeholder="Password"
+          />
+        </div>
+
+        <p className={classes.errorTextContainer}>{errorText}</p>
 
         <div className={classes.buttonContainer}>
           <Button onClick={cancelHandler} theme="light">
