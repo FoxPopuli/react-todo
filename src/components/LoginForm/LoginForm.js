@@ -8,8 +8,7 @@ import Button from "../UI/Button/Button";
 const LoginForm = () => {
   const navigate = useNavigate();
 
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
+  const [errorText, setErrorText] = useState("");
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -18,8 +17,20 @@ const LoginForm = () => {
 
   const logInHandler = (e) => {
     e.preventDefault();
-    authCtx.logIn(emailRef, passwordRef);
-    navigate("/react-todo");
+
+    const email = emailRef.current.value;
+    const passwd = passwordRef.current.value;
+
+    if (!email.includes("@") || !email.includes(".")) {
+      setErrorText("Please provide a valid email address");
+      return;
+    }
+
+    if (passwd.length < 7) {
+      setErrorText("Passwords must be at least 6 characters");
+    }
+
+    authCtx.logIn(email, passwd);
   };
 
   const cancelHandler = () => {
@@ -36,8 +47,6 @@ const LoginForm = () => {
             type="email"
             label="Email address"
             ref={emailRef}
-            // value={email}
-            // onChange={(e) => setEmail(e.target.value)}
             required
             placeholder="Email address"
           />
@@ -48,12 +57,12 @@ const LoginForm = () => {
             type="password"
             label="Create password"
             ref={passwordRef}
-            // value={password}
-            // onChange={(e) => setPassword(e.target.value)}
             required
             placeholder="Password"
           />
         </div>
+
+        <p className={classes.errorTextContainer}>{errorText}</p>
 
         <div className={classes.buttonContainer}>
           <Button onClick={cancelHandler} theme="light">
