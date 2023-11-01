@@ -7,6 +7,8 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
+import TaskContext from "./task-context";
+
 const AuthContext = createContext({
   //   currentUser,
   signUp: () => {},
@@ -20,31 +22,38 @@ export const useAuth = () => {
 export const AuthContextProvider = (props) => {
   const [currentUser, setCurrentUser] = useState();
   const auth = getAuth();
+  const taskCtx = useContext(TaskContext);
 
   const signUp = (email, password) => {
+    taskCtx.setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        taskCtx.setIsLoading(false);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+        taskCtx.setIsLoading(false);
       });
   };
 
   const logIn = (email, password) => {
+    taskCtx.setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         console.log(user);
+        taskCtx.setIsLoading(false);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+        taskCtx.setIsLoading(false);
       });
   };
 

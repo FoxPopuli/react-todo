@@ -17,6 +17,7 @@ const TaskContext = createContext({
   moveProjectUp: () => {},
   moveProjectDown: () => {},
   removeProject: () => {},
+  setIsLoading: (isLoading) => {},
 });
 
 const emptyDummyObj = {
@@ -234,6 +235,7 @@ export const TaskContextProvider = (props) => {
 
   const context = {
     data,
+    setIsLoading,
     moveProjectDown,
     moveProjectUp,
     hardReset,
