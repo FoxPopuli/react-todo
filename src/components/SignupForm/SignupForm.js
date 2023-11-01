@@ -29,6 +29,7 @@ const SignupForm = () => {
     }
 
     authCtx.signUp(emailRef.current.value, password1Ref.current.value);
+    navigate("/react-todo");
   };
 
   const cancelHandler = () => navigate("/react-todo");
