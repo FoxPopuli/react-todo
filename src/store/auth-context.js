@@ -1,10 +1,15 @@
 import { useState, createContext, useContext, useEffect } from "react";
 // import { auth } from "../firebase";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const AuthContext = createContext({
   //   currentUser,
   signUp: () => {},
+  logIn: () => {},
 });
 
 export const useAuth = () => {
@@ -16,15 +21,31 @@ export const AuthContextProvider = (props) => {
   const auth = getAuth();
 
   const signUp = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password).then(
-      (userCredential) => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
-      }
-    );
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
   };
 
-  //   auth.createUserWithEmailAndPassword;
+  const logIn = (email, password) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -37,6 +58,7 @@ export const AuthContextProvider = (props) => {
   const context = {
     currentUser,
     signUp,
+    logIn,
   };
 
   return (

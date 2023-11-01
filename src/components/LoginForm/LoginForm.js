@@ -1,31 +1,25 @@
 import classes from "./LoginForm.module.css";
 import Card from "../UI/Card/Card";
 import { useNavigate } from "react-router-dom";
-import { useRef, useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import { useRef, useState, useContext } from "react";
+import AuthContext from "../../store/auth-context";
 import Button from "../UI/Button/Button";
 
 const LoginForm = () => {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
-  const onLogin = (e) => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const authCtx = useContext(AuthContext);
+
+  const logInHandler = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        navigate("/react-todo");
-        console.log(user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-      });
+    authCtx.logIn(emailRef, passwordRef);
+    navigate("/react-todo");
   };
 
   const cancelHandler = () => {
@@ -41,8 +35,9 @@ const LoginForm = () => {
           <input
             type="email"
             label="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            ref={emailRef}
+            // value={email}
+            // onChange={(e) => setEmail(e.target.value)}
             required
             placeholder="Email address"
           />
@@ -52,8 +47,9 @@ const LoginForm = () => {
           <input
             type="password"
             label="Create password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            ref={passwordRef}
+            // value={password}
+            // onChange={(e) => setPassword(e.target.value)}
             required
             placeholder="Password"
           />
@@ -63,7 +59,7 @@ const LoginForm = () => {
           <Button onClick={cancelHandler} theme="light">
             Cancel
           </Button>
-          <Button theme="blue" onClick={onLogin}>
+          <Button theme="blue" onClick={logInHandler}>
             Log in
           </Button>
         </div>
