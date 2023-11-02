@@ -40,7 +40,6 @@ const SignupForm = () => {
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
         <h2>Sign up</h2>
-        {authCtx.currentUser && authCtx.currentUser.email}
         <div className={classes.formSection}>
           <label htmlFor="email">E-mail</label>
           <input

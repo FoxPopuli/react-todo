@@ -1,7 +1,23 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../../store/auth-context";
 import classes from "./Sidebar.module.css";
 
 const Sidebar = (props) => {
+  const authCtx = useContext(AuthContext);
+
+  const logInLink = (
+    <li>
+      <Link to="/react-todo/login">Log in</Link>
+    </li>
+  );
+
+  const signUpLink = (
+    <li>
+      <Link to="/react-todo/signup">Sign up</Link>
+    </li>
+  );
+
   return (
     <nav
       className={`${classes.sidebar} ${
@@ -21,12 +37,9 @@ const Sidebar = (props) => {
         <li>
           <Link to="/react-todo/new-task">Add New Task</Link>
         </li>
-        <li>
-          <Link to="/react-todo/login">Log in</Link>
-        </li>
-        <li>
-          <Link to="/react-todo/signup">Sign up</Link>
-        </li>
+
+        {!authCtx.currentUser && logInLink}
+        {!authCtx.currentUser && signUpLink}
       </ul>
     </nav>
   );
