@@ -14,6 +14,7 @@ const SignupForm = () => {
   const taskCtx = useContext(TaskContext);
 
   const emailRef = useRef();
+  const usernameRef = useRef();
   const password1Ref = useRef();
   const password2Ref = useRef();
 
@@ -30,7 +31,11 @@ const SignupForm = () => {
       return;
     }
 
-    authCtx.signUp(emailRef.current.value, password1Ref.current.value);
+    authCtx.signUp(
+      emailRef.current.value,
+      password1Ref.current.value,
+      usernameRef.current.value
+    );
     navigate("/react-todo");
   };
 
@@ -41,6 +46,16 @@ const SignupForm = () => {
       <form className={classes.form} onSubmit={submitHandler}>
         <h2>Sign up</h2>
         <div className={classes.formSection}>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            label="username"
+            ref={usernameRef}
+            required
+            placeholder="Username"
+          />
+        </div>
+        <div className={classes.formSection}>
           <label htmlFor="email">E-mail</label>
           <input
             type="email"
@@ -50,6 +65,7 @@ const SignupForm = () => {
             placeholder="Email address"
           />
         </div>
+
         <div className={classes.formSection}>
           <label htmlFor="password">Create Password</label>
           <input

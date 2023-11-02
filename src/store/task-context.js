@@ -1,6 +1,5 @@
-import { createContext } from "react";
-import { useState, useEffect } from "react";
-
+import { createContext, useState, useEffect, useContext } from "react";
+import AuthContext from "./auth-context";
 import tempData from "../data/dummyData";
 
 const TaskContext = createContext({
@@ -33,13 +32,17 @@ const emptyDummyObj = {
 
 export const TaskContextProvider = (props) => {
   const [data, setData] = useState(emptyDummyObj);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isHardLoading, setIsHardLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // For database sync
+  const [isHardLoading, setIsHardLoading] = useState(false); // For displaying loading screen
+  const authCtx = useContext(AuthContext);
 
   useEffect(() => {
     setIsHardLoading(true);
 
-    fetch("https://react-todo-75b5d-default-rtdb.firebaseio.com/test-data.json")
+    fetch(
+      // `https://react-to-do-development-default-rtdb.firebaseio.com/${authCtx.currentUser.uid}/data.json`
+      "https://react-todo-75b5d-default-rtdb.firebaseio.com/test-data.json"
+    )
       .then((response) => {
         return response.json();
       })
@@ -52,7 +55,8 @@ export const TaskContextProvider = (props) => {
 
   const modifyServerData = (data) => {
     fetch(
-      "https://react-todo-75b5d-default-rtdb.firebaseio.com/test-data.json",
+      // "https://react-todo-75b5d-default-rtdb.firebaseio.com/test-data.json",
+      `https://react-to-do-development-default-rtdb.firebaseio.com/${authCtx.currentUser.uid}/data.json`,
       {
         method: "PUT",
         body: JSON.stringify(data),
@@ -61,6 +65,8 @@ export const TaskContextProvider = (props) => {
         },
       }
     ).then((data) => {
+      setData(data);
+
       setIsLoading(false);
       console.log("PUT complete");
     });
@@ -71,7 +77,7 @@ export const TaskContextProvider = (props) => {
 
   const hardReset = () => {
     setData(emptyDummyObj);
-    modifyServerData(emptyDummyObj);
+    if (authCtx.currentUser) modifyServerData(emptyDummyObj);
     console.log("Hard reset complete");
   };
 
@@ -106,7 +112,7 @@ export const TaskContextProvider = (props) => {
 
       newData.projects = newProjects;
 
-      modifyServerData(newData);
+      if (authCtx.currentUser) modifyServerData(newData);
       return newData;
     });
   };
@@ -124,7 +130,7 @@ export const TaskContextProvider = (props) => {
       });
       newData.tasks = newTasks;
 
-      modifyServerData(newData);
+      if (authCtx.currentUser) modifyServerData(newData);
       return newData;
     });
   };
@@ -172,12 +178,12 @@ export const TaskContextProvider = (props) => {
       });
       newData.projects = newProjects;
 
-      modifyServerData(newData);
+      if (authCtx.currentUser) modifyServerData(newData);
       return newData;
     });
   };
 
-  const toggleCompleteHandler = (id) => {
+  const toggleComplete = (id) => {
     // When the updated state value depends on the previous value,
     // pass an arrow function since useState doesn't update instantly and
     // can lead to desync otherwise (scheduler)
@@ -198,37 +204,37 @@ export const TaskContextProvider = (props) => {
       });
 
       newData.tasks = newTasks;
-      modifyServerData(newData);
+      if (authCtx.currentUser) modifyServerData(newData);
       return newData;
     });
   };
 
-  const removeTaskHandler = (id) => {
+  const removeTask = (id) => {
     setData((prevData) => {
       const newData = { ...prevData };
       const newTasks = prevData.tasks.filter((task) => task.id !== id);
       newData.tasks = newTasks;
-      modifyServerData(newData);
+      if (authCtx.currentUser) modifyServerData(newData);
       return newData;
     });
   };
 
-  const addTaskHandler = (task) => {
+  const addTask = (task) => {
     setData((prevData) => {
       const newData = { ...prevData };
       const newTasks = prevData.tasks.concat(task);
       newData.tasks = newTasks;
-      modifyServerData(newData);
+      if (authCtx.currentUser) modifyServerData(newData);
       return newData;
     });
   };
 
-  const addProjectHandler = (project) => {
+  const addProject = (project) => {
     setData((prevData) => {
       const newData = { ...prevData };
       const newProjects = prevData.projects.concat(project);
       newData.projects = newProjects;
-      modifyServerData(newData);
+      if (authCtx.currentUser) modifyServerData(newData);
       return newData;
     });
   };
@@ -244,10 +250,10 @@ export const TaskContextProvider = (props) => {
     fetchData,
     removeProject,
     setGroupSort,
-    toggleComplete: toggleCompleteHandler,
-    removeTask: removeTaskHandler,
-    addTask: addTaskHandler,
-    addProject: addProjectHandler,
+    toggleComplete,
+    removeTask,
+    addTask,
+    addProject,
   };
 
   return (

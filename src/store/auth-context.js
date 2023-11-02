@@ -1,18 +1,19 @@
 import { useState, createContext, useContext, useEffect } from "react";
-
 import { auth } from "../firebase";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 
 import TaskContext from "./task-context";
 
 const AuthContext = createContext({
   currentUser: null,
-  signUp: () => {},
-  logIn: () => {},
+  signUp: (email, password, username) => {},
+  logIn: (email, password) => {},
+  signUserOut: () => {},
 });
 
 export const useAuth = () => {
@@ -24,12 +25,13 @@ export const AuthContextProvider = (props) => {
   const auth = getAuth();
   const taskCtx = useContext(TaskContext);
 
-  const signUp = (email, password) => {
+  const signUp = (email, password, username) => {
     taskCtx.setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential);
         const user = userCredential.user;
+        user.displayName = username;
         console.log(user);
         taskCtx.setIsLoading(false);
       })
@@ -59,6 +61,14 @@ export const AuthContextProvider = (props) => {
       });
   };
 
+  const signUserOut = () => {
+    taskCtx.setIsLoading(true);
+    signOut(auth).then(() => {
+      console.log(`${currentUser.displayName} signed out.`);
+      setCurrentUser(null);
+    });
+  };
+
   useEffect(() => {
     taskCtx.setIsLoading(true);
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -72,6 +82,7 @@ export const AuthContextProvider = (props) => {
     currentUser,
     signUp,
     logIn,
+    signUserOut,
   };
 
   return (

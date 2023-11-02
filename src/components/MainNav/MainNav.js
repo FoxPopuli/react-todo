@@ -6,13 +6,13 @@ import AuthContext from "../../store/auth-context";
 import burgerIcon from "../../img/menu-icon.svg";
 
 import { useContext } from "react";
-import LoginForm from "../LoginForm/LoginForm";
 
 const MainNav = () => {
   const ctx = useContext(ModalContext);
   const authCtx = useContext(AuthContext);
 
   const burgerClickHandler = () => ctx.openSidebar();
+  const signOutHandler = () => authCtx.signUserOut();
 
   const signUpLink = (
     <li className={`${classes.headerLinks} ${classes.authLinks}`}>
@@ -28,7 +28,13 @@ const MainNav = () => {
 
   const profileIcon = (
     <li className={`${classes.headerLinks} ${classes.authLinks}`}>
-      <p>Welcome, {authCtx.currentUser.email}!</p>
+      {authCtx.currentUser && <p>Welcome, {authCtx.currentUser.email}!</p>}
+    </li>
+  );
+
+  const signOutButton = (
+    <li className={`${classes.headerLinks} ${classes.authLinks}`}>
+      {authCtx.currentUser && <p onClick={signOutHandler}>Sign out</p>}
     </li>
   );
 
@@ -63,6 +69,7 @@ const MainNav = () => {
         {!authCtx.currentUser && logInLink}
         {!authCtx.currentUser && signUpLink}
         {authCtx.currentUser && profileIcon}
+        {authCtx.currentUser && signOutButton}
         <li className={`${classes.burgerMenu}`} onClick={burgerClickHandler}>
           <img
             src={burgerIcon}
