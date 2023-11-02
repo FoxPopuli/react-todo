@@ -78,11 +78,7 @@ const SignupForm = () => {
           <Button onClick={cancelHandler} theme="light">
             Cancel
           </Button>
-          <Button
-            theme="blue"
-            // onClick={submitHandler}
-            disabled={taskCtx.getIsLoading()}
-          >
+          <Button theme="blue" disabled={taskCtx.getIsLoading()}>
             Sign up
           </Button>
         </div>
