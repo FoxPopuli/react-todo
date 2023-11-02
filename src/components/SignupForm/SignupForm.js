@@ -4,12 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { useRef, useState, useContext } from "react";
 import Button from "../UI/Button/Button";
 import AuthContext from "../../store/auth-context";
+import TaskContext from "../../store/task-context";
 
 const SignupForm = () => {
   const [errorText, setErrorText] = useState("");
   const navigate = useNavigate();
 
   const authCtx = useContext(AuthContext);
+  const taskCtx = useContext(TaskContext);
 
   const emailRef = useRef();
   const password1Ref = useRef();
@@ -36,8 +38,9 @@ const SignupForm = () => {
 
   return (
     <Card>
-      <form className={classes.form}>
+      <form className={classes.form} onSubmit={submitHandler}>
         <h2>Sign up</h2>
+        {authCtx.currentUser && authCtx.currentUser.email}
         <div className={classes.formSection}>
           <label htmlFor="email">E-mail</label>
           <input
@@ -75,7 +78,11 @@ const SignupForm = () => {
           <Button onClick={cancelHandler} theme="light">
             Cancel
           </Button>
-          <Button theme="blue" onClick={submitHandler}>
+          <Button
+            theme="blue"
+            // onClick={submitHandler}
+            disabled={taskCtx.getIsLoading()}
+          >
             Sign up
           </Button>
         </div>

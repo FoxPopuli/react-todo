@@ -39,7 +39,7 @@ const LoginForm = () => {
 
   return (
     <Card>
-      <form className={classes.form}>
+      <form className={classes.form} onSubmit={logInHandler}>
         <h2>Log in</h2>
         <div className={classes.formSection}>
           <label htmlFor="email">E-mail</label>
@@ -68,13 +68,11 @@ const LoginForm = () => {
           <Button
             onClick={cancelHandler}
             theme="light"
-            disabled={taskCtx.getIsLoading}
+            disabled={taskCtx.getIsLoading()}
           >
             Cancel
           </Button>
-          <Button theme="blue" onClick={logInHandler}>
-            Log in
-          </Button>
+          <Button theme="blue">Log in</Button>
         </div>
       </form>
     </Card>

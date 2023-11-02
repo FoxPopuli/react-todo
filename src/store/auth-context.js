@@ -10,7 +10,7 @@ import {
 import TaskContext from "./task-context";
 
 const AuthContext = createContext({
-  //   currentUser,
+  currentUser: null,
   signUp: () => {},
   logIn: () => {},
 });
@@ -28,6 +28,7 @@ export const AuthContextProvider = (props) => {
     taskCtx.setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        console.log(userCredential);
         const user = userCredential.user;
         console.log(user);
         taskCtx.setIsLoading(false);
@@ -45,6 +46,7 @@ export const AuthContextProvider = (props) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
+
         const user = userCredential.user;
         console.log(user);
         taskCtx.setIsLoading(false);
@@ -58,10 +60,11 @@ export const AuthContextProvider = (props) => {
   };
 
   useEffect(() => {
+    taskCtx.setIsLoading(true);
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
+      taskCtx.setIsLoading(false);
     });
-
     return unsubscribe;
   }, []);
 
@@ -73,7 +76,7 @@ export const AuthContextProvider = (props) => {
 
   return (
     <AuthContext.Provider value={context}>
-      {props.children}
+      {!taskCtx.getIsLoading() && props.children}
     </AuthContext.Provider>
   );
 };
