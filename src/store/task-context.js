@@ -50,6 +50,22 @@ export const TaskContextProvider = (props) => {
       });
   }, []);
 
+  const modifyServerData = (data) => {
+    fetch(
+      "https://react-todo-75b5d-default-rtdb.firebaseio.com/test-data.json",
+      {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((data) => {
+      setIsLoading(false);
+      console.log("PUT complete");
+    });
+  };
+
   const getIsLoading = () => isLoading;
   const getIsHardLoading = () => isHardLoading;
 
@@ -144,22 +160,6 @@ export const TaskContextProvider = (props) => {
   //     console.log("POST complete");
   //   });
   // };
-
-  const modifyServerData = (data) => {
-    fetch(
-      "https://react-todo-75b5d-default-rtdb.firebaseio.com/test-data.json",
-      {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    ).then((data) => {
-      setIsLoading(false);
-      console.log("PUT complete");
-    });
-  };
 
   const setGroupSort = (groupId, sortString) => {
     setData((prevData) => {
