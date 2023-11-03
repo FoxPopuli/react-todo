@@ -1,7 +1,6 @@
 import { useState, createContext, useContext, useEffect } from "react";
 import { auth } from "../firebase";
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
@@ -22,26 +21,26 @@ export const useAuth = () => {
 
 export const AuthContextProvider = (props) => {
   const [currentUser, setCurrentUser] = useState();
-  const auth = getAuth();
   const taskCtx = useContext(TaskContext);
 
-  const signUp = (email, password, username) => {
+  const signUp = async (email, password) => {
     taskCtx.setIsLoading(true);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential);
-        const user = userCredential.user;
-        user.displayName = username;
-        console.log(user);
+    await createUserWithEmailAndPassword(auth, email, password);
 
-        taskCtx.setIsLoading(false);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-        taskCtx.setIsLoading(false);
-      });
+    // .then((userCredential) => {
+    //   console.log(userCredential);
+    //   const user = userCredential.user;
+    //   user.displayName = username;
+    //   console.log(user);
+
+    //   taskCtx.setIsLoading(false);
+    // })
+    // .catch((error) => {
+    //   const errorCode = error.code;
+    //   const errorMessage = error.message;
+    //   console.log(errorCode, errorMessage);
+    //   taskCtx.setIsLoading(false);
+    // });
   };
 
   const logIn = (email, password) => {
