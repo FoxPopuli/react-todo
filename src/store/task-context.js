@@ -17,6 +17,8 @@ const TaskContext = createContext({
   moveProjectDown: () => {},
   removeProject: () => {},
   setIsLoading: (isLoading) => {},
+  initUser: () => {},
+  fetchData: () => {},
 });
 
 const emptyDummyObj = {
@@ -36,22 +38,33 @@ export const TaskContextProvider = (props) => {
   const [isHardLoading, setIsHardLoading] = useState(false); // For displaying loading screen
   const authCtx = useContext(AuthContext);
 
-  useEffect(() => {
-    setIsHardLoading(true);
+  document.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") console.log(data);
+  });
 
-    fetch(
-      // `https://react-to-do-development-default-rtdb.firebaseio.com/${authCtx.currentUser.uid}/data.json`
-      "https://react-todo-75b5d-default-rtdb.firebaseio.com/test-data.json"
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((serverData) => {
-        console.log(serverData);
-        setData(tempData);
-        setIsHardLoading(false);
-      });
-  }, []);
+  // useEffect(() => {
+  //   setIsHardLoading(true);
+
+  // fetch(
+  //   // `https://react-to-do-development-default-rtdb.firebaseio.com/${authCtx.currentUser.uid}/data.json`
+  //   "https://react-todo-75b5d-default-rtdb.firebaseio.com/test-data.json"
+  // )
+  //   .then((response) => {
+  //     return response.json();
+  //   })
+  //   .then((serverData) => {
+  //     console.log(serverData);
+  //     setData(tempData);
+  //     setIsHardLoading(false);
+  //   });
+  // }, []);
+
+  const initUser = (uid) => {
+    // Initializes a new user for local data tracking
+    setIsHardLoading(true);
+    setData(emptyDummyObj);
+    postToServer(data);
+  };
 
   const modifyServerData = (data) => {
     fetch(
@@ -64,12 +77,35 @@ export const TaskContextProvider = (props) => {
           "Content-Type": "application/json",
         },
       }
-    ).then((data) => {
-      setData(data);
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setData(data);
+        setIsLoading(false);
+        console.log("PUT complete");
+      });
+  };
 
-      setIsLoading(false);
-      console.log("PUT complete");
-    });
+  const fetchData = () => {
+    setIsHardLoading(true);
+    if (authCtx.currentUser) {
+      fetch(
+        `https://react-to-do-development-default-rtdb.firebaseio.com/${authCtx.currentUser.uid}/data.json`
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then((serverData) => {
+          setData(serverData);
+          console.log(serverData);
+          setIsHardLoading(false);
+        });
+    } else {
+      console.log("No user logged in.");
+      setIsHardLoading(false);
+    }
   };
 
   const getIsLoading = () => isLoading;
@@ -138,34 +174,23 @@ export const TaskContextProvider = (props) => {
   const moveProjectUp = (id) => moveProject(id, "up");
   const moveProjectDown = (id) => moveProject(id, "down");
 
-  const fetchData = () => {
-    setIsHardLoading(true);
-    fetch("https://react-todo-75b5d-default-rtdb.firebaseio.com/main-data.json")
-      .then((response) => {
-        return response.json();
-      })
-      .then((serverData) => {
-        setData(serverData);
-        setIsHardLoading(false);
-      });
-  };
+  const postToServer = (data) => {
+    setIsLoading(true);
+    fetch(
+      `https://react-to-do-development-default-rtdb.firebaseio.com/${authCtx.currentUser.uid}/data.json`,
 
-  // const postToServer = (data) => {
-  //   setIsLoading(true);
-  //   fetch(
-  //     "https://react-todo-75b5d-default-rtdb.firebaseio.com/test-data.json",
-  //     {
-  //       method: "POST",
-  //       body: JSON.stringify(data),
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     }
-  //   ).then((data) => {
-  //     setIsLoading(false);
-  //     console.log("POST complete");
-  //   });
-  // };
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((data) => {
+      setIsLoading(false);
+      console.log("POST complete");
+    });
+  };
 
   const setGroupSort = (groupId, sortString) => {
     setData((prevData) => {
@@ -254,6 +279,8 @@ export const TaskContextProvider = (props) => {
     removeTask,
     addTask,
     addProject,
+    initUser,
+    fetchData,
   };
 
   return (

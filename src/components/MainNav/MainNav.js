@@ -28,7 +28,9 @@ const MainNav = () => {
 
   const profileIcon = (
     <li className={`${classes.headerLinks} ${classes.authLinks}`}>
-      {authCtx.currentUser && <p>Welcome, {authCtx.currentUser.email}!</p>}
+      {authCtx.currentUser && (
+        <p>Welcome, {authCtx.currentUser.displayName}!</p>
+      )}
     </li>
   );
 

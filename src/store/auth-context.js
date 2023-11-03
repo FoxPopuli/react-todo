@@ -33,6 +33,7 @@ export const AuthContextProvider = (props) => {
         const user = userCredential.user;
         user.displayName = username;
         console.log(user);
+
         taskCtx.setIsLoading(false);
       })
       .catch((error) => {
@@ -51,6 +52,7 @@ export const AuthContextProvider = (props) => {
 
         const user = userCredential.user;
         console.log(user);
+        taskCtx.fetchData();
         taskCtx.setIsLoading(false);
       })
       .catch((error) => {
@@ -66,6 +68,7 @@ export const AuthContextProvider = (props) => {
     signOut(auth).then(() => {
       console.log(`${currentUser.displayName} signed out.`);
       setCurrentUser(null);
+      taskCtx.setIsLoading(false);
     });
   };
 
