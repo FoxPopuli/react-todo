@@ -1,8 +1,9 @@
 import { useState, createContext, useContext, useEffect } from "react";
-import { auth } from "../firebase";
+import { auth, googleProvider } from "../firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 
@@ -13,6 +14,7 @@ const AuthContext = createContext({
   signUp: (email, password, username) => {},
   logIn: (email, password) => {},
   signUserOut: () => {},
+  signUpWithGoogle: () => {},
 });
 
 export const useAuth = () => {
@@ -32,20 +34,19 @@ export const AuthContextProvider = (props) => {
       console.error(err);
     }
 
-    // .then((userCredential) => {
-    //   console.log(userCredential);
-    //   const user = userCredential.user;
-    //   user.displayName = username;
-    //   console.log(user);
+    taskCtx.setIsLoading(false);
+  };
 
-    //   taskCtx.setIsLoading(false);
-    // })
-    // .catch((error) => {
-    //   const errorCode = error.code;
-    //   const errorMessage = error.message;
-    //   console.log(errorCode, errorMessage);
-    //   taskCtx.setIsLoading(false);
-    // });
+  const signUpWithGoogle = async () => {
+    taskCtx.setIsLoading(true);
+
+    try {
+      await signInWithPopup(auth, googleProvider);
+    } catch (err) {
+      console.error(err);
+    }
+
+    taskCtx.setIsLoading(false);
   };
 
   const logIn = (email, password) => {
@@ -90,6 +91,7 @@ export const AuthContextProvider = (props) => {
     signUp,
     logIn,
     signUserOut,
+    signUpWithGoogle,
   };
 
   return (

@@ -39,7 +39,10 @@ const SignupForm = () => {
     navigate("/react-todo");
   };
 
-  const cancelHandler = () => navigate("/react-todo");
+  const signUpWithGoogle = (e) => {
+    e.preventDefault();
+    authCtx.signUpWithGoogle();
+  };
 
   return (
     <Card>
@@ -90,11 +93,11 @@ const SignupForm = () => {
         <p className={classes.errorTextContainer}>{errorText}</p>
 
         <div className={classes.buttonContainer}>
-          <Button onClick={cancelHandler} theme="light">
-            Cancel
-          </Button>
           <Button theme="blue" disabled={taskCtx.getIsLoading()}>
-            Sign up
+            Sign up with E-mail.
+          </Button>
+          <Button onClick={signUpWithGoogle} theme="light">
+            Sign up with Google
           </Button>
         </div>
       </form>
