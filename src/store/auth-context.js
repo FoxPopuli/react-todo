@@ -25,7 +25,12 @@ export const AuthContextProvider = (props) => {
 
   const signUp = async (email, password) => {
     taskCtx.setIsLoading(true);
-    await createUserWithEmailAndPassword(auth, email, password);
+
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+    } catch (err) {
+      console.error(err);
+    }
 
     // .then((userCredential) => {
     //   console.log(userCredential);

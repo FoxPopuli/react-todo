@@ -1,6 +1,5 @@
-import { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import AuthContext from "./auth-context";
-import tempData from "../data/dummyData";
 
 const TaskContext = createContext({
   data: [],
@@ -41,6 +40,10 @@ export const TaskContextProvider = (props) => {
   document.addEventListener("keypress", (e) => {
     if (e.key === "Enter") console.log(data);
   });
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   // useEffect(() => {
   //   setIsHardLoading(true);
