@@ -1,5 +1,10 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import AuthContext from "./auth-context";
+<<<<<<< Updated upstream
+=======
+import { auth } from "../firebase";
+import tempData from "../data/dummyData";
+>>>>>>> Stashed changes
 
 const TaskContext = createContext({
   data: [],
@@ -72,7 +77,7 @@ export const TaskContextProvider = (props) => {
   const modifyServerData = (data) => {
     fetch(
       // "https://react-todo-75b5d-default-rtdb.firebaseio.com/test-data.json",
-      `https://react-to-do-development-default-rtdb.firebaseio.com/${authCtx.currentUser.uid}/data.json`,
+      `https://react-to-do-development-default-rtdb.firebaseio.com/${auth?.currentUser?.uid}/data.json`,
       {
         method: "PUT",
         body: JSON.stringify(data),
@@ -93,6 +98,7 @@ export const TaskContextProvider = (props) => {
 
   const fetchData = () => {
     setIsHardLoading(true);
+<<<<<<< Updated upstream
     if (authCtx.currentUser) {
       fetch(
         `https://react-to-do-development-default-rtdb.firebaseio.com/${authCtx.currentUser.uid}/data.json`
@@ -109,6 +115,20 @@ export const TaskContextProvider = (props) => {
       console.log("No user logged in.");
       setIsHardLoading(false);
     }
+=======
+
+    fetch(
+      `https://react-to-do-development-default-rtdb.firebaseio.com/${auth?.currentUser?.uid}/data.json`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((serverData) => {
+        setData(serverData);
+        console.log(serverData);
+        setIsHardLoading(false);
+      });
+>>>>>>> Stashed changes
   };
 
   const getIsLoading = () => isLoading;
@@ -180,7 +200,7 @@ export const TaskContextProvider = (props) => {
   const postToServer = (data) => {
     setIsLoading(true);
     fetch(
-      `https://react-to-do-development-default-rtdb.firebaseio.com/${authCtx.currentUser.uid}/data.json`,
+      `https://react-to-do-development-default-rtdb.firebaseio.com/${auth?.currentUser?.uid}/data.json`,
 
       {
         method: "POST",
