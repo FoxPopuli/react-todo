@@ -25,6 +25,10 @@ export const AuthContextProvider = (props) => {
   const [currentUser, setCurrentUser] = useState();
   const taskCtx = useContext(TaskContext);
 
+  document.addEventListener("keypress", (e) => {
+    if (e.key === "=") console.log(currentUser);
+  });
+
   const signUp = async (email, password) => {
     taskCtx.setIsLoading(true);
 

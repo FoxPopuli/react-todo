@@ -4,6 +4,7 @@ import NavDropdown from "../NavDropdown/NavDropdown";
 import ModalContext from "../../store/modal-context";
 import AuthContext from "../../store/auth-context";
 import burgerIcon from "../../img/menu-icon.svg";
+import ProfileButton from "../ProfileButton/ProfileButton";
 
 import { useContext } from "react";
 
@@ -23,14 +24,6 @@ const MainNav = () => {
   const logInLink = (
     <li className={`${classes.headerLinks} ${classes.authLinks}`}>
       <Link to="/react-todo/login">Log in</Link>
-    </li>
-  );
-
-  const profileIcon = (
-    <li className={`${classes.headerLinks} ${classes.authLinks}`}>
-      {authCtx.currentUser && (
-        <p>Welcome, {authCtx.currentUser.displayName}!</p>
-      )}
     </li>
   );
 
@@ -70,7 +63,7 @@ const MainNav = () => {
       <ul className={classes.rightAlign}>
         {!authCtx.currentUser && logInLink}
         {!authCtx.currentUser && signUpLink}
-        {authCtx.currentUser && profileIcon}
+        {authCtx.currentUser && <ProfileButton />}
         {authCtx.currentUser && signOutButton}
         <li className={`${classes.burgerMenu}`} onClick={burgerClickHandler}>
           <img

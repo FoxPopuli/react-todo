@@ -5,13 +5,10 @@ import blankProfilePic from "../../img/blank-profile-pic.svg";
 
 const ProfileButton = () => {
   const authCtx = useContext(AuthContext);
-  let profilePicSrc;
 
-  if (!authCtx.currentUser) {
-    profilePicSrc = blankProfilePic;
-  } else {
-    profilePicSrc = blankProfilePic;
-  }
+  const profilePicSrc = authCtx.currentUser.photoURL
+    ? authCtx.currentUser.photoURL
+    : blankProfilePic;
 
   return (
     <div className={classes.main}>
