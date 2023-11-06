@@ -8,19 +8,19 @@ const ProfileButton = () => {
 
   const authCtx = useContext(AuthContext);
 
-  //   useEffect(() => {
-  //     const closeDropdown = (e) => {
-  //       if (
-  //         e.composedPath()[0] !== btnRef.current &&
-  //         e.composedPath()[1] !== btnRef.current
-  //       ) {
-  //         setIsActive(false);
-  //       }
-  //     };
-  //     document.body.addEventListener("click", closeDropdown);
+  useEffect(() => {
+    const closeDropdown = (e) => {
+      if (
+        e.composedPath()[0] !== btnRef.current &&
+        e.composedPath()[1] !== btnRef.current
+      ) {
+        setIsActive(false);
+      }
+    };
+    document.body.addEventListener("click", closeDropdown);
 
-  //     return () => document.body.removeEventListener("click", closeDropdown);
-  //   }, []);
+    return () => document.body.removeEventListener("click", closeDropdown);
+  }, []);
 
   const toggleDropdown = () => {
     setIsActive(!isActive);
@@ -41,6 +41,7 @@ const ProfileButton = () => {
         src={profilePicSrc}
         className={classes.profileImage}
         onClick={toggleDropdown}
+        ref={btnRef}
       ></img>
       <div className={`${classes.dropdown} ${!isActive ? classes.hidden : ""}`}>
         <p className={classes.displayName}>
@@ -52,7 +53,6 @@ const ProfileButton = () => {
         </p>
         <button
           onClick={logoutHandler}
-          ref={btnRef}
           className={`${classes.button} ${classes.light}`}
         >
           Log out
