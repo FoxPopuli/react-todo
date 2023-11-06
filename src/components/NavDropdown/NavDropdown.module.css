@@ -11,7 +11,7 @@
   margin-right: 20px;
   margin-top: calc(70px + var(--header-dropdown-height));
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 0px 0px 3px 3px;
+  border-radius: 0px 0px 5px 5px;
   background-color: var(--main-dark);
   opacity: 1;
   height: auto;

@@ -59,6 +59,7 @@
 .burgerMenu {
   display: flex;
   align-items: center;
+  margin-left: 10px;
 }
 
 .invert {
@@ -82,7 +83,7 @@
 
 .rightAlign {
   justify-content: end;
-  transform: translate(-60px);
+  transform: translate(-40px);
 }
 
 @media only screen and (min-width: 450px) {
