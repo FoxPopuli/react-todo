@@ -1,13 +1,15 @@
 .mainNav {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   background-color: var(--main-dark);
   color: white;
 }
 
-.logo {
+.leftAlign {
   display: flex;
   height: var(--header-height);
+  justify-content: center;
+  flex: 1;
   align-items: center;
   font-size: 34px;
   padding: 5px;
@@ -71,6 +73,16 @@
 
 .authLinks {
   display: none;
+}
+
+.rightAlign,
+.leftAlign {
+  flex: 1;
+}
+
+.rightAlign {
+  justify-content: end;
+  transform: translate(-60px);
 }
 
 @media only screen and (min-width: 450px) {

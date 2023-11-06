@@ -51,12 +51,16 @@ const ProfileButton = () => {
         <p className={classes.email}>
           {authCtx.currentUser.email && authCtx.currentUser.email}
         </p>
-        <button
-          onClick={logoutHandler}
-          className={`${classes.button} ${classes.light}`}
-        >
-          Log out
-        </button>
+        {isActive ? (
+          <button
+            onClick={logoutHandler}
+            className={`${classes.button} ${classes.light}`}
+          >
+            Log out
+          </button>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

@@ -35,7 +35,7 @@ const MainNav = () => {
 
   return (
     <nav className={classes.mainNav}>
-      <h3 className={classes.logo}>React To-Do</h3>
+      <h3 className={classes.leftAlign}>React To-Do</h3>
       <ul className={classes.centerAlign}>
         <li className={classes.headerLinks}>
           <Link to="/react-todo/all-tasks">All Tasks</Link>

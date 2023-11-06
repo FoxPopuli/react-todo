@@ -33,8 +33,8 @@ const LoginForm = () => {
     authCtx.logIn(email, passwd);
   };
 
-  const cancelHandler = () => {
-    navigate("/react-todo");
+  const googleLoginHandler = () => {
+    authCtx.signUpWithGoogle();
   };
 
   return (
@@ -66,13 +66,13 @@ const LoginForm = () => {
 
         <div className={classes.buttonContainer}>
           <Button
-            onClick={cancelHandler}
+            onClick={googleLoginHandler}
             theme="light"
             disabled={taskCtx.getIsLoading()}
           >
-            Cancel
+            Log in with Google
           </Button>
-          <Button theme="blue">Log in</Button>
+          <Button theme="blue">Log in with email</Button>
         </div>
       </form>
     </Card>
