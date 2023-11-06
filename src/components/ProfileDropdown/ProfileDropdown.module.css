@@ -1,4 +1,4 @@
-.main {
+.dropdown {
   position: absolute;
   width: 150px;
   height: 100px;
@@ -19,7 +19,7 @@
   transition: max-height 0.3s, opacity, 0.3s ease;
 }
 
-.main.hidden {
+.dropdown.hidden {
   max-height: 0px;
   opacity: 0;
 }

@@ -64,7 +64,7 @@ const MainNav = () => {
         {!authCtx.currentUser && logInLink}
         {!authCtx.currentUser && signUpLink}
         {authCtx.currentUser && <ProfileButton />}
-        {authCtx.currentUser && signOutButton}
+        {/* {authCtx.currentUser && signOutButton} */}
         <li className={`${classes.burgerMenu}`} onClick={burgerClickHandler}>
           <img
             src={burgerIcon}
