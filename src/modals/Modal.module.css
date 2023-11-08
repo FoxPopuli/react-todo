@@ -5,6 +5,7 @@
   height: 100vh;
   display: flex;
   opacity: 1;
+  transition: z-index, 0.4s;
 }
 
 .modal.hidden {
